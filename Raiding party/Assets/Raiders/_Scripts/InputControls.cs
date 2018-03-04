@@ -8,11 +8,15 @@ public class InputControls : MonoBehaviour
 	[SerializeField] LayerMask mask;
 	UnitMover mover;
 	Animator anim;
+	BoxCollider2D myCollider;
 	PlayerHealth myHealth;
 	PlayerWeapon myWeapon;
+	bool canAttack = true;
+	float lastInputX, lastInputY;
 
 	void Start()
 	{
+		myCollider = GetComponent<BoxCollider2D>();
 		anim = GetComponent<Animator>();
 		mover = GetComponent<UnitMover>();
 		myHealth = GetComponent<PlayerHealth>();
@@ -21,9 +25,9 @@ public class InputControls : MonoBehaviour
 
 	void Update () 
 	{
-		float lastInputX = Input.GetAxisRaw ("Horizontal");
-		float lastInputY = Input.GetAxisRaw ("Vertical");
-		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		lastInputX = Input.GetAxisRaw ("Horizontal");
+		lastInputY = Input.GetAxisRaw ("Vertical");
+		//Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 //		float lastInputScroll = Input.GetAxis("Mouse ScrollWheel");
 //		if(lastInputScroll>0f || lastInputScroll<0f)
 //		{
@@ -33,27 +37,47 @@ public class InputControls : MonoBehaviour
 //
 		if(lastInputX != 0f || lastInputY != 0f)
 		{
-			Vector2 movement = new Vector2(lastInputX, lastInputY);
 			mover.Move(new Vector3(lastInputX, lastInputY));
 			anim.SetFloat("X",lastInputX);
 			anim.SetFloat("Y",lastInputY);
-			anim.SetFloat("Speed", movement.magnitude);
+			anim.SetFloat("Speed", 1);
 		}else {
 			anim.SetFloat("Speed", 0);
 		}
 
 		if (Input.GetMouseButtonDown (0)) 
 		{
-//			GetComponent<BoxCollider2D>().enabled = false;
-//			RaycastHit2D hit = Physics2D.Raycast (transform.position, transform.up, 1f, mask);
-//			if (hit.collider!=null && !hit.collider.CompareTag("Player")) 
-//			{
-//				Debug.DrawRay(transform.position, transform.up);
-			anim.SetTrigger("Swing");
-			myWeapon.PrimaryAttack(Vector2.zero);
-//			}
-//			GetComponent<BoxCollider2D>().enabled = true;
+			if(canAttack)
+			{
+				canAttack = false;
+				StartCoroutine(CoolDown());
+				myCollider.enabled = false;
+				Vector3 movement = new Vector3(anim.GetFloat("X"), anim.GetFloat("Y"));
+				Debug.DrawRay(transform.position, movement);
+				anim.SetTrigger("Swing");
+			
+				RaycastHit2D hit = Physics2D.Raycast (transform.position, movement, 1f, mask);
+				if (hit.collider!= null && hit.collider!= myCollider) 
+				{
+					var enemy = hit.collider.GetComponent<IHealth>();
+					if(enemy!=null)
+						enemy.TakeDamage(1);
+				//myWeapon.PrimaryAttack(Vector2.zero);
+				}
+				myCollider.enabled = true;
+			}
 		}
+	}
+
+	IEnumerator CoolDown()
+	{
+		float time = 0;
+		while(time<0.25f)
+		{
+			time+= Time.deltaTime;
+			yield return null;
+		}
+		canAttack = true;
 	}
 
 	void OnTriggerEnter2D(Collider2D bam)

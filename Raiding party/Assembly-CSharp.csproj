@@ -84,11 +84,11 @@
      <Compile Include="Assets\Raiders\_Scripts\UnityEventManager.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Weapon.cs" />
      <Compile Include="Assets\Raiders\_Scripts\WeaponUI.cs" />
-     <None Include="Assets\Free Pack\Metal Loop Pack\readme Unity.txt" />
-     <None Include="Assets\Free Pack\Door SFX Pack\Readme.txt" />
-     <None Include="Assets\Free Pack\Rock Loops Pack\Unity Readme.txt" />
-     <None Include="Assets\ActRPGsprites\readme.txt" />
-     <None Include="Assets\Free Pack\Rock Stingers Pack\Unity Readme.txt" />
+     <None Include="Assets\Raiders\Assets\Free Audio\Metal Loop Pack\readme Unity.txt" />
+     <None Include="Assets\Raiders\Assets\Free Audio\Door SFX Pack\Readme.txt" />
+     <None Include="Assets\Raiders\Assets\Free Audio\Rock Loops Pack\Unity Readme.txt" />
+     <None Include="Assets\Raiders\Assets\ActRPGsprites\readme.txt" />
+     <None Include="Assets\Raiders\Assets\Free Audio\Rock Stingers Pack\Unity Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
