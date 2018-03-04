@@ -12,22 +12,21 @@ public class ScoreUI : MonoBehaviour
 
 	void Start()
 	{
-		variableName +=": ";
 		//SecondString +=": ";
 		text = GetComponent<Text>();
-		text.text =  string.Format("{0} {1}", variableName, variable);
+		text.text =  string.Format("{0}: {1}", variableName, variable);
 		//GetComponent<Text>().text =  string.Format("{0} {1}  {2} {3}",FirstString, FirstValue, SecondString, SecondValue);
 		//UnityEventManager.StartListeningInt("Score", AddPoints);
-		UnityEventManager.StartListening(variableName+"Event", AddValue);
+		UnityEventManager.StartListeningInt(variableName+"Event", AddValue);
 	}
 	void OnDisable()
 	{
 		//UnityEventManager.StopListeningInt("Score", AddPoints);
-		UnityEventManager.StopListening(variableName+"Event", AddValue);
+		UnityEventManager.StopListeningInt(variableName+"Event", AddValue);
 	}
 	void OnGUI()
 	{
-		text.text =  string.Format("{0} {1}", variableName, variable);
+		text.text =  string.Format("{0}: {1}", variableName, variable);
 		//GetComponent<Text>().text =  string.Format("{0} {1} {2} {3}",FirstString, FirstValue, SecondString, SecondValue);
 	}
 
@@ -41,8 +40,8 @@ public class ScoreUI : MonoBehaviour
 //		FirstValue+= SecondValue*amount;
 //	
 //	}
-	public void AddValue()
+	public void AddValue(int value)
 	{
-		variable++;
+		variable+=value;
 	}
 }

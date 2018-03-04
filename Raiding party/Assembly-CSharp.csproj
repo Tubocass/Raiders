@@ -64,6 +64,7 @@
      <Compile Include="Assets\Raiders\_Scripts\AI\GuardAI.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\PeasantAI.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\WarriorAI.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\Bullet.cs" />
      <Compile Include="Assets\Raiders\_Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Raiders\_Scripts\EnemyController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\GameController.cs" />
@@ -74,11 +75,15 @@
      <Compile Include="Assets\Raiders\_Scripts\ItemPickup.cs" />
      <Compile Include="Assets\Raiders\_Scripts\ObjectPool.cs" />
      <Compile Include="Assets\Raiders\_Scripts\PlayerHealth.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\PlayerWeapon.cs" />
      <Compile Include="Assets\Raiders\_Scripts\ScoreUI.cs" />
      <Compile Include="Assets\Raiders\_Scripts\SoundManager.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\SwordController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Treasure.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UnitMover.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UnityEventManager.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\Weapon.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\WeaponUI.cs" />
      <None Include="Assets\Free Pack\Metal Loop Pack\readme Unity.txt" />
      <None Include="Assets\Free Pack\Door SFX Pack\Readme.txt" />
      <None Include="Assets\Free Pack\Rock Loops Pack\Unity Readme.txt" />

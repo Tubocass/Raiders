@@ -71,7 +71,7 @@ public class PeasantAI : MonoBehaviour, IHealth
 			Die();
 		}else
 		{
-			SoundManager.instance.PlaySingle(hit);
+			//SoundManager.instance.PlaySingle(hit);
 			spriteRenderer.color = Color.white;
 			StartCoroutine(FlashDamage());
 		}
@@ -84,7 +84,7 @@ public class PeasantAI : MonoBehaviour, IHealth
 	public void Die ()
 	{
 		this.gameObject.SetActive(false);
-		SoundManager.instance.PlaySingle(death);
+		//SoundManager.instance.PlaySingle(death);
 		StopCoroutine(FlashDamage());
 		spriteRenderer.color = original;
 	}

@@ -67,23 +67,13 @@ public class PlayerHealth : MonoBehaviour, IHealth
 				currentHeart = hearts[activeHeart].GetComponent<HealthBar>();
 			}else return;
 		}
+	}
 
-		//newAmount = currentHeart.AddHealth(amount);
-//		if(newAmount>0 && activeHeart<maxHearts-1)
+//	void OnCollisionEnter2D(Collision2D bam)
+//	{
+//		if(bam.collider.CompareTag("Enemy"))
 //		{
-//			activeHeart += 1;
-//			hearts[activeHeart].SetActive(true);
-//			currentHeart = hearts[activeHeart].GetComponent<HealthBar>();
-//			currentHeart.AddHealth(newAmount);
-//
+//			TakeDamage(1);
 //		}
-	}
-
-	void OnCollisionEnter2D(Collision2D bam)
-	{
-		if(bam.collider.CompareTag("Enemy"))
-		{
-			TakeDamage(1);
-		}
-	}
+//	}
 }

@@ -8,6 +8,7 @@ TagManager:
   - LargeTile
   - LevelChanger
   - Treasure
+  - WeaponUI
   layers:
   - Default
   - TransparentFX

@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour, IHealth
 			Die();
 		}else
 		{
-			SoundManager.instance.PlaySingle(hit);
+			//SoundManager.instance.PlaySingle(hit);
 			spriteRenderer.color = Color.white;
 			StartCoroutine(FlashDamage());
 		}
@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour, IHealth
 	{
 		this.gameObject.SetActive(false);
 		UnityEventManager.TriggerEvent("Score",pointValue);
-		SoundManager.instance.PlaySingle(death);
+		//SoundManager.instance.PlaySingle(death);
 		StopCoroutine(FlashDamage());
 		spriteRenderer.color = original;
 	}
