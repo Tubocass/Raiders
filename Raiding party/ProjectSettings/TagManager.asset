@@ -5,10 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - DangerousTile
-  - LargeTile
   - LevelChanger
   - Treasure
   - WeaponUI
+  - NPC
+  - Unit
   layers:
   - Default
   - TransparentFX
