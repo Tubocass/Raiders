@@ -180,9 +180,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421c03e20df83924aaf4ea9a9026cb4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitID: 0
+  teamID: 0
   mask:
     serializedVersion: 2
     m_Bits: 768
+  refractoryPeriod: 0.15
+  attackStrength: 1
 --- !u!114 &114404762590611292
 MonoBehaviour:
   m_ObjectHideFlags: 1

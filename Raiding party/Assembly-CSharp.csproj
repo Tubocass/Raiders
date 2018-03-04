@@ -81,6 +81,7 @@
      <Compile Include="Assets\Raiders\_Scripts\SoundManager.cs" />
      <Compile Include="Assets\Raiders\_Scripts\SwordController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Treasure.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\UnitController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UnitMover.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UnityEventManager.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Weapon.cs" />
