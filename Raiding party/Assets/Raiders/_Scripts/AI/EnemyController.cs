@@ -7,7 +7,9 @@ using UnityEngine.Events;
 public class EnemyController : UnitController 
 {
 	[SerializeField] GameObject weapon;
-	[SerializeField] bool canFight = false;
+	[SerializeField] bool canFight = false, isFollowing = false;
+	[SerializeField] UnitController Leader;
+	Transform target;
 	UnitController targetEnemy;
 	List<UnitController> enemies = new List<UnitController>();
 
@@ -25,6 +27,8 @@ public class EnemyController : UnitController
 	{
 		base.Start();
 		targetEnemy = TargetNearest();
+		if(targetEnemy!=null)
+		target = targetEnemy.transform;
 //		if(weapon!=null)
 //		{
 //			currentWeapon = weapon.GetComponent<Weapon>();
@@ -33,31 +37,57 @@ public class EnemyController : UnitController
 
 	void Update()
 	{
-		if(IsTargetingEnemy())
+//		if(IsTargetingEnemy())
+//		{
+//			if(Vector3.Distance(Location,targetEnemy.Location)<1f)
+//			{
+//				if(canAttack)
+//				{
+//					Attack();
+//				}
+//				animSpeed = 0f;
+//			}
+//		}else{
+//			
+//		}
+
+		//if(isFollowing)
+		if(target!=null && Vector3.Distance(Location,target.position)>1f)
 		{
-			if(Vector3.Distance(Location,targetEnemy.Location)<1f)
+			movement = (target.position-Location).normalized;
+			animSpeed = 1f;
+			mover.Move(movement);
+		}else{
+			animSpeed = 0f;
+			if(IsTargetingEnemy())
 			{
 				if(canAttack)
 				{
 					Attack();
 				}
-				animSpeed = 0f;
-			}else{
-				movement = (targetEnemy.Location-Location).normalized;
-				animSpeed = 1f;
-				mover.Move(movement);
+			}else if(canFight)
+				{
+					targetEnemy = TargetNearest();
+				if(targetEnemy!=null)
+					target = targetEnemy.transform;
+				else
+					FollowLeader();
+				}
 			}
-		}else{
-			if(canFight)
-			targetEnemy = TargetNearest();
-			if(targetEnemy ==null)
-			{
-				targetEnemy = GameObject.FindGameObjectWithTag("Player").GetComponent<UnitController>();
-			}
-		}
+
+
 		Animate();
 	}
-
+	void FollowLeader()
+	{
+		if(Leader != null && Leader.isActive)
+		{
+			isFollowing = true;
+			target = Leader.transform;
+			
+		}
+		
+	}
 	bool IsTargetingEnemy()
 	{
 		if(targetEnemy!=null && targetEnemy.isActive)
