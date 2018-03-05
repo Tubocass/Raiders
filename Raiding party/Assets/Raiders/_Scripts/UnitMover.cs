@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitMover : MonoBehaviour 
 {
+	public Vector3 targetDir = Vector3.down;
 	[SerializeField] float moveSpeed;
 	Transform tran;
 	Vector3 movement;
@@ -31,7 +32,7 @@ public class UnitMover : MonoBehaviour
 	public void Move(Vector3 direction)
 	{
 //		direction = direction/direction.magnitude;
-		Vector3 targetDir  = tran.position + direction * moveSpeed * Time.deltaTime;
+		targetDir  = tran.position + direction * moveSpeed * Time.deltaTime;
 		if(rigid!=null)
 		{
 			rigid.MovePosition(targetDir);

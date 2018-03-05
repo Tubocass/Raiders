@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class EnemyController : UnitController 
 {
 	[SerializeField] GameObject weapon;
-	[SerializeField] bool canFight = false, isFollowing = false;
+	[SerializeField] bool allowedToFight = false, isFollowing = false;
 	[SerializeField] UnitController Leader;
 	Transform target;
 	UnitController targetEnemy;
@@ -52,30 +52,36 @@ public class EnemyController : UnitController
 //		}
 
 		//if(isFollowing)
-		if(target!=null && Vector3.Distance(Location,target.position)>1f)
+		if(target!=null && Vector3.Distance(Location,target.position)>1f)//Am I going somewhere
 		{
 			movement = (target.position-Location).normalized;
 			animSpeed = 1f;
 			mover.Move(movement);
-		}else{
+		}else{//we don't have a target, or we've arrived
 			animSpeed = 0f;
 			if(IsTargetingEnemy())
 			{
-				if(canAttack)
+				Vector3 enemyVector = targetEnemy.Location-Location;
+
+				if(Vector3.Dot(enemyVector,movement)>0)//am I facing the enemy
 				{
-					Attack();
+					if(canAttack)
+					{
+						Attack();
+					}
+				}else{
+					mover.Move(enemyVector);
 				}
-			}else if(canFight)
+			}else if(allowedToFight)
 				{
 					targetEnemy = TargetNearest();
 				if(targetEnemy!=null)
 					target = targetEnemy.transform;
 				else
-					FollowLeader();
+					FollowLeader();//Can't find any targets, follow the Leader
 				}
 			}
-
-
+			
 		Animate();
 	}
 	void FollowLeader()
@@ -84,9 +90,7 @@ public class EnemyController : UnitController
 		{
 			isFollowing = true;
 			target = Leader.transform;
-			
 		}
-		
 	}
 	bool IsTargetingEnemy()
 	{
@@ -100,7 +104,7 @@ public class EnemyController : UnitController
 		float nearestEnemyDist, newDist;
 		UnitController enemy = null;
 
-		Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position,100,mask);
+		Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position,50,mask);
 		if(cols.Length>0)
 		{
 			for(int f = 0; f<cols.Length-1;f++)
@@ -140,6 +144,7 @@ public class EnemyController : UnitController
 		{
 			enemies.Clear();
 			targetEnemy = null;
+			target = null;
 			animSpeed = 0f;
 			//ArrivedAtTargetLocation();
 		}

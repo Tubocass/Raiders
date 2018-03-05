@@ -94,4 +94,9 @@ public class UnitController : MonoBehaviour
 		yield return new WaitForSeconds(refractoryPeriod);
 		canAttack = true;
 	}
+	public bool IsFacing(Vector3 origin, Vector3 target)
+	{
+		float dotFace = Vector3.Dot(origin,target);
+		return dotFace>0;
+	}
 }

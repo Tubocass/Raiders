@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4695804219110670}
   - component: {fileID: 212210226340320298}
-  - component: {fileID: 114531283044843052}
   - component: {fileID: 114934068411710370}
   - component: {fileID: 114321221617093730}
+  - component: {fileID: 114707573508340076}
   - component: {fileID: 50222591145147782}
   - component: {fileID: 95587318569368884}
   - component: {fileID: 61257581524640522}
@@ -119,8 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78bf1e14cc8b404a944136b5f9a78e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
---- !u!114 &114531283044843052
+  targetDir: {x: 0, y: -1, z: 0}
+  moveSpeed: 1.5
+--- !u!114 &114707573508340076
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -128,17 +129,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1856145446860388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 356cecfbfbe1d4b41b9584a6835803b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 78300295d35573d4184de770989018ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unitID: 0
   teamID: 1
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   refractoryPeriod: 0
   attackStrength: 0
-  weapon: {fileID: 0}
+  filter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 256
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  safeSpace: {fileID: 0}
+  target: {fileID: 0}
+  alertRaised: 1
+  spotEnemy: 0
 --- !u!114 &114934068411710370
 MonoBehaviour:
   m_ObjectHideFlags: 1

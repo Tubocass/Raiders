@@ -73,6 +73,7 @@
      <Compile Include="Assets\Raiders\_Scripts\IHealth.cs" />
      <Compile Include="Assets\Raiders\_Scripts\IPickup.cs" />
      <Compile Include="Assets\Raiders\_Scripts\ItemPickup.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\LeftRight.cs" />
      <Compile Include="Assets\Raiders\_Scripts\ObjectPool.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Player\InputControls.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Player\PlayerHealth.cs" />
