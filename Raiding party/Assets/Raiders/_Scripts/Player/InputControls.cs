@@ -38,14 +38,13 @@ public class InputControls : UnitController
 //
 		if(lastInputX != 0f || lastInputY != 0f)
 		{
-			mover.Move(new Vector3(lastInputX, lastInputY));
-			anim.SetFloat("X",lastInputX);
-			anim.SetFloat("Y",lastInputY);
-			anim.SetFloat("Speed", 1);
+			movement = new Vector3(lastInputX, lastInputY);
+			mover.Move(movement);
+			animSpeed = 1f;
 		}else {
-			anim.SetFloat("Speed", 0);
+			animSpeed = 0f;
 		}
-
+		Animate();
 		if (Input.GetMouseButtonDown (0)) 
 		{
 			Attack();

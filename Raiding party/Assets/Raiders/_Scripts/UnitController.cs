@@ -11,12 +11,13 @@ public class UnitController : MonoBehaviour
 	[SerializeField] protected LayerMask mask;
 	[SerializeField] protected float refractoryPeriod;
 	[SerializeField] protected int attackStrength;
+	[SerializeField] ContactFilter2D filter;
 	protected Collider2D myCollider;
 	protected UnitMover mover;
 	protected Vector3 movement;
 	protected Animator anim;
 	protected Weapon currentWeapon;
-	protected float speed = 1f;
+	protected float animSpeed = 1f;
 	protected bool canAttack = true;
 
 	protected virtual void OnEnable()
@@ -40,6 +41,15 @@ public class UnitController : MonoBehaviour
 		//			currentWeapon = weapon.GetComponent<Weapon>();
 		//		}
 	}
+	protected void Animate()
+	{
+		if(anim.runtimeAnimatorController!=null)
+		{
+			anim.SetFloat("X",movement.x);
+			anim.SetFloat("Y",movement.y);
+			anim.SetFloat("Speed", animSpeed);
+		}
+	}
 	public virtual void Attack()
 	{
 		if(canAttack)
@@ -50,15 +60,32 @@ public class UnitController : MonoBehaviour
 			Vector3 dir = new Vector3(anim.GetFloat("X"), anim.GetFloat("Y"));
 			Debug.DrawRay(transform.position, dir);
 			anim.SetTrigger("Swing");
-
-			RaycastHit2D hit = Physics2D.Raycast (transform.position, dir, 1f, mask);
-			if (hit.collider!= null && hit.collider.GetComponent<EnemyController>().teamID!= teamID) 
+			RaycastHit2D[] results = new RaycastHit2D[10];
+			if(Physics2D.Raycast(transform.position, dir, filter, results, 1f)>0)
 			{
-				var enemy = hit.collider.GetComponent<IHealth>();
-				if(enemy!=null)
-					enemy.TakeDamage(1);
-				//myWeapon.PrimaryAttack(Vector2.zero);
+				for(int r=0; r<results.Length-1;r++)
+				{
+					if(results[r].collider!=null)
+					{
+						UnitController uni = results[r].collider.GetComponent<UnitController>();
+						if (uni!= null && uni.teamID!= teamID) 
+						{
+							var enemyHealth = uni.GetComponent<IHealth>();
+							if(enemyHealth!=null)
+								enemyHealth.TakeDamage(attackStrength);
+							//myWeapon.PrimaryAttack(Vector2.zero);
+						}
+					}
+				}
 			}
+//			RaycastHit2D hit = Physics2D.Raycast (transform.position, dir, 1f, mask);
+//			if (hit.collider!= null && hit.collider.GetComponent<UnitController>().teamID!= teamID) 
+//			{
+//				var enemy = hit.collider.GetComponent<IHealth>();
+//				if(enemy!=null)
+//					enemy.TakeDamage(1);
+//				//myWeapon.PrimaryAttack(Vector2.zero);
+//			}
 			myCollider.enabled = true;
 		}
 	}

@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class EnemyController : UnitController 
 {
 	[SerializeField] GameObject weapon;
+	[SerializeField] bool canFight = false;
 	UnitController targetEnemy;
 	List<UnitController> enemies = new List<UnitController>();
 
@@ -29,15 +30,7 @@ public class EnemyController : UnitController
 //			currentWeapon = weapon.GetComponent<Weapon>();
 //		}
 	}
-	void Animate()
-	{
-		if(anim.runtimeAnimatorController!=null)
-		{
-			anim.SetFloat("X",movement.x);
-			anim.SetFloat("Y",movement.y);
-			anim.SetFloat("Speed", speed);
-		}
-	}
+
 	void Update()
 	{
 		if(IsTargetingEnemy())
@@ -48,14 +41,19 @@ public class EnemyController : UnitController
 				{
 					Attack();
 				}
-				speed = 0f;
+				animSpeed = 0f;
 			}else{
 				movement = (targetEnemy.Location-Location).normalized;
-				speed = 1f;
+				animSpeed = 1f;
 				mover.Move(movement);
 			}
 		}else{
+			if(canFight)
 			targetEnemy = TargetNearest();
+			if(targetEnemy ==null)
+			{
+				targetEnemy = GameObject.FindGameObjectWithTag("Player").GetComponent<UnitController>();
+			}
 		}
 		Animate();
 	}
@@ -66,7 +64,6 @@ public class EnemyController : UnitController
 			return true;
 		else return false;
 	}
-
 
 	UnitController TargetNearest()
 	{
@@ -105,7 +102,6 @@ public class EnemyController : UnitController
 			}
 		}
 
-
 		return enemy;
 	}
 	protected void TargetLost(int id)
@@ -114,8 +110,8 @@ public class EnemyController : UnitController
 		{
 			enemies.Clear();
 			targetEnemy = null;
+			animSpeed = 0f;
 			//ArrivedAtTargetLocation();
 		}
 	}
-
 }

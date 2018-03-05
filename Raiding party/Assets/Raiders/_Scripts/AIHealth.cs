@@ -9,14 +9,12 @@ public class AIHealth : MonoBehaviour, IHealth
 	[SerializeField] int startHealth = 3;
 	SpriteRenderer spriteRenderer;
 	Color original;
-	Animator anim;
 	int health;
 	//bool isDead = false;
 
 	void OnEnable()
 	{
 		health = startHealth;
-		anim = GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		original = spriteRenderer.color;
 	}
