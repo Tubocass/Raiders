@@ -8,6 +8,7 @@ public class UnitController : MonoBehaviour
 	public int unitID, teamID;
 	public Vector3 Location{get{return transform.position;}}
 	public bool isActive{get{return gameObject.activeSelf;}set{gameObject.SetActive(value); if(value==false)OnDisable();}}
+	[SerializeField] GameObject TreasureDrop;
 	[SerializeField] protected LayerMask mask;
 	[SerializeField] protected float refractoryPeriod;
 	[SerializeField] protected int attackStrength;
@@ -98,5 +99,9 @@ public class UnitController : MonoBehaviour
 	{
 		float dotFace = Vector3.Dot(origin,target);
 		return dotFace>0;
+	}
+	public void Dead()
+	{
+		GameObject insta = Instantiate(TreasureDrop,Location,Quaternion.identity) as GameObject;
 	}
 }

@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetDir: {x: 0, y: -1, z: 0}
-  moveSpeed: 1.5
+  moveSpeed: 1
 --- !u!114 &114707573508340076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,6 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitID: 0
   teamID: 1
+  TreasureDrop: {fileID: 1203950778869374, guid: 55397c3f9341b9c46aadfde070411341,
+    type: 2}
   mask:
     serializedVersion: 2
     m_Bits: 256

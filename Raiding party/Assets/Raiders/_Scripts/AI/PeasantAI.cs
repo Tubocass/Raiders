@@ -14,6 +14,7 @@ public class PeasantAI : UnitController
 
 	[SerializeField] Transform safeSpace;
 	[SerializeField] Transform target;
+
 	List<UnitController> enemies = new List<UnitController>();
 	UnitController targetEnemy;
 	public bool alertRaised, spotEnemy;

@@ -10,10 +10,12 @@ public class AIHealth : MonoBehaviour, IHealth
 	SpriteRenderer spriteRenderer;
 	Color original;
 	int health;
+	UnitController controller;
 	//bool isDead = false;
 
 	void OnEnable()
 	{
+		controller = GetComponent<UnitController>();
 		health = startHealth;
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		original = spriteRenderer.color;
@@ -45,6 +47,7 @@ public class AIHealth : MonoBehaviour, IHealth
 		//UnityEventManager.TriggerEvent("Score",pointValue);
 		//SoundManager.instance.PlaySingle(death);
 		UnityEventManager.TriggerEvent("TargetUnavailable",GetComponent<UnitController>().unitID);
+		controller.Dead();
 		StopCoroutine(FlashDamage());
 		spriteRenderer.color = original;
 		this.gameObject.SetActive(false);
