@@ -35,7 +35,7 @@ public class EnemyController : UnitController
 //		}
 	}
 
-	void Update()
+	public override void Update()
 	{
 //		if(IsTargetingEnemy())
 //		{
@@ -52,6 +52,7 @@ public class EnemyController : UnitController
 //		}
 
 		//if(isFollowing)
+		base.Update();
 		if(target!=null && Vector3.Distance(Location,target.position)>1f)//Am I going somewhere
 		{
 			movement = (target.position-Location).normalized;

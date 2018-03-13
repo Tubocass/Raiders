@@ -24,8 +24,9 @@ public class InputControls : UnitController
 		myWeapon = GetComponent<PlayerWeapon>();
 	}
 
-	void Update () 
+	public override void Update()
 	{
+		base.Update();
 		lastInputX = Input.GetAxisRaw ("Horizontal");
 		lastInputY = Input.GetAxisRaw ("Vertical");
 		//Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -35,8 +35,9 @@ public class PeasantAI : UnitController
 		//target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 
-	void Update()
+	public override void Update()
 	{
+		base.Update();
 		if(target!=null && Vector3.Distance(Location,target.position)>1f)//Am I going somewhere
 		{
 			movement = (target.position-Location).normalized;

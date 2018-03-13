@@ -148,10 +148,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitID: 0
   teamID: 0
+  TreasureDrop: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 256
   refractoryPeriod: 0.5
+  distToFeet: 0.35
   attackStrength: 1
   filter:
     useTriggers: 0

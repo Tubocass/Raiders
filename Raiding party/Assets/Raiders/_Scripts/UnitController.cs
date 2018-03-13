@@ -8,11 +8,13 @@ public class UnitController : MonoBehaviour
 	public int unitID, teamID;
 	public Vector3 Location{get{return transform.position;}}
 	public bool isActive{get{return gameObject.activeSelf;}set{gameObject.SetActive(value); if(value==false)OnDisable();}}
-	[SerializeField] GameObject TreasureDrop;
+
+	[SerializeField] protected GameObject TreasureDrop;
 	[SerializeField] protected LayerMask mask;
-	[SerializeField] protected float refractoryPeriod;
+	[SerializeField] protected float refractoryPeriod, distToFeet = 0.35f;
 	[SerializeField] protected int attackStrength;
 	[SerializeField] ContactFilter2D filter;
+
 	protected Collider2D myCollider;
 	protected UnitMover mover;
 	protected Vector3 movement;
@@ -37,10 +39,15 @@ public class UnitController : MonoBehaviour
 		mover = GetComponent<UnitMover>();
 		unitID = TotalCreated;
 		TotalCreated+=1;
+		//transform.position = new Vector3(Location.x,Location.y,ZOrderer.NormalZ(Location.y));
 		//		if(weapon!=null)
 		//		{
 		//			currentWeapon = weapon.GetComponent<Weapon>();
 		//		}
+	}
+	public virtual void Update()
+	{
+		transform.position = new Vector3(Location.x,Location.y,ZOrderer.NormalZ(Location.y-distToFeet));
 	}
 	protected void Animate()
 	{

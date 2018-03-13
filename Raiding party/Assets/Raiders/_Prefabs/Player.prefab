@@ -182,10 +182,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitID: 0
   teamID: 0
+  TreasureDrop: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 768
   refractoryPeriod: 0.15
+  distToFeet: 0.35
   attackStrength: 1
   filter:
     useTriggers: 0
@@ -259,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78bf1e14cc8b404a944136b5f9a78e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetDir: {x: 0, y: -1, z: 0}
   moveSpeed: 5
 --- !u!212 &212045640468332860
 SpriteRenderer:
