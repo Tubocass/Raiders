@@ -10,6 +10,7 @@ TagManager:
   - WeaponUI
   - NPC
   - Unit
+  - Impass
   layers:
   - Default
   - TransparentFX

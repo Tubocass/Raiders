@@ -7,7 +7,6 @@ public class UnitMover : MonoBehaviour
 	public Vector3 targetDir = Vector3.down;
 	[SerializeField] float moveSpeed;
 	Transform tran;
-	Vector3 movement;
 	Rigidbody2D rigid;
 	void Start () 
 	{
@@ -41,5 +40,14 @@ public class UnitMover : MonoBehaviour
 			tran.position = Vector3.MoveTowards(tran.position,targetDir,1f);
 		}
 	}
-
+	public void Stop()
+	{
+		if(rigid!=null)
+		{
+			rigid.velocity = Vector2.zero;
+		}
+		else{
+			tran.position = Vector3.MoveTowards(tran.position,tran.position,0f);
+		}
+	}
 }

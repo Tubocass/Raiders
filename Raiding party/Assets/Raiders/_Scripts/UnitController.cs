@@ -17,7 +17,7 @@ public class UnitController : MonoBehaviour
 
 	protected Collider2D myCollider;
 	protected UnitMover mover;
-	protected Vector3 movement;
+	protected Vector3 movement = Vector3.zero;
 	protected Animator anim;
 	protected Weapon currentWeapon;
 	protected float animSpeed = 1f;
@@ -66,7 +66,7 @@ public class UnitController : MonoBehaviour
 			StartCoroutine(AttackCooldown());
 			myCollider.enabled = false;
 			Vector3 dir = new Vector3(anim.GetFloat("X"), anim.GetFloat("Y"));
-			Debug.DrawRay(transform.position, dir);
+			//Debug.DrawRay(transform.position, dir);
 			anim.SetTrigger("Swing");
 			RaycastHit2D[] results = new RaycastHit2D[10];
 			if(Physics2D.Raycast(transform.position, dir, filter, results, 1f)>0)
@@ -102,13 +102,43 @@ public class UnitController : MonoBehaviour
 		yield return new WaitForSeconds(refractoryPeriod);
 		canAttack = true;
 	}
-	public bool IsFacing(Vector3 origin, Vector3 target)
+	public bool IsFacingWall(Vector3 dir)
 	{
-		float dotFace = Vector3.Dot(origin,target);
-		return dotFace>0;
+		RaycastHit2D hit = Physics2D.Raycast (transform.position+(dir*0.3f), dir, 0.2f, mask);
+		if (hit.collider!= null && hit.collider.CompareTag("Impass")) 
+		{
+			return true;
+		}else return false;
 	}
 	public void Dead()
 	{
-		GameObject insta = Instantiate(TreasureDrop,Location,Quaternion.identity) as GameObject;
+		GameObject.Instantiate(TreasureDrop,Location,Quaternion.identity);
 	}
+	protected virtual void OnTriggerEnter2D(Collider2D other)
+	{
+//		if(other.CompareTag("Impass"))
+//		{
+//			Debug.Log("stop!");
+//			movement = Vector3.zero;
+//			mover.Stop();
+//		}
+	}
+//	protected virtual void OnTriggerStay2D(Collider2D other)
+//	{
+//		if(other.CompareTag("Impass"))
+//		{
+//			Debug.Log("stop!");
+//			movement = Vector3.zero;
+//			mover.Stop();
+//		}
+//	}
+//	protected virtual void OnCollisionEnter2D(Collision2D other)
+//	{
+//		if(other.collider.CompareTag("Impass"))
+//		{
+//			Debug.Log("stop!");
+//			movement = Vector3.zero;
+//			mover.Move(movement);
+//		}else return;
+//	}
 }

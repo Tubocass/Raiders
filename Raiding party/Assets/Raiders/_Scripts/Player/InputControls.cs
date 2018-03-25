@@ -39,21 +39,37 @@ public class InputControls : UnitController
 //
 		if(lastInputX != 0f || lastInputY != 0f)
 		{
-			movement = new Vector3(lastInputX, lastInputY);
-			mover.Move(movement);
+			movement.Set(lastInputX, lastInputY, 0);
+			if(!IsFacingWall(movement))
+			{
+				mover.Move(movement);
+			}
 			animSpeed = 1f;
 		}else {
 			animSpeed = 0f;
 		}
+			
 		Animate();
 		if (Input.GetMouseButtonDown (0)) 
 		{
 			Attack();
 		}
 	}
-		
-	void OnTriggerEnter2D(Collider2D bam)
+
+	bool IsBlocked(Vector3 dir)
 	{
+		RaycastHit2D hit = Physics2D.Raycast(Location,dir,1,mask);
+		if(hit.collider!=null&& hit.collider.CompareTag("Impass"))
+		{
+			Debug.Log("Blocked");
+			return true;
+		}else{
+			return false;
+		}
+	}
+	protected override void OnTriggerEnter2D(Collider2D bam)
+	{
+		base.OnTriggerEnter2D(bam);
 		if(bam.CompareTag("Treasure")&& bam.GetComponent<Renderer>().enabled)
 		{
 			IPickup pickup = bam.GetComponent<IPickup>();
