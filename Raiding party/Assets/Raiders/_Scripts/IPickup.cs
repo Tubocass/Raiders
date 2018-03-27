@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IPickup 
 {	
-	void Pickup();
-
+	void Pickup(Transform t);
+	void PutDown();
 }

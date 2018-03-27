@@ -8,6 +8,8 @@ public class InputControls : UnitController
 	PlayerHealth myHealth;
 	PlayerWeapon myWeapon;
 	float lastInputX, lastInputY;
+	bool bCarryingTreasure = false;
+	Treasure myTreasure;
 
 	protected override void OnEnable()
 	{
@@ -70,19 +72,20 @@ public class InputControls : UnitController
 	protected override void OnTriggerEnter2D(Collider2D bam)
 	{
 		base.OnTriggerEnter2D(bam);
-		if(bam.CompareTag("Treasure")&& bam.GetComponent<Renderer>().enabled)
+		if(bam.CompareTag("Treasure"))
 		{
-			IPickup pickup = bam.GetComponent<IPickup>();
-			//if(pickup.item.CompareTag("Health"))
-			{
-				//myHealth.Heal(6);
-			}
-			//if(pickup.item.CompareTag("Weapon"))
-			{
-				//myWeapon.EquipWeapon(pickup.item);
-				pickup.Pickup();
-			}
-			bam.gameObject.SetActive(false);
+			Treasure pickup = bam.GetComponent<Treasure>();//treasure implements IPickup
+			pickup.Pickup(transform);
+			bCarryingTreasure = true;
+			myTreasure = pickup;
+			//bam.gameObject.SetActive(false);
+		}
+		if(bam.CompareTag("Capture") && bCarryingTreasure)
+		{
+			UnityEventManager.TriggerEvent("TreasureEvent", myTreasure.Value);
+			bCarryingTreasure = false;
+			myTreasure.PutDown();
+			myTreasure = null;
 		}
 	}
 }

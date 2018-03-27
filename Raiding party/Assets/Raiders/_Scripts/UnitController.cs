@@ -9,7 +9,7 @@ public class UnitController : MonoBehaviour
 	public Vector3 Location{get{return transform.position;}}
 	public bool isActive{get{return gameObject.activeSelf;}set{gameObject.SetActive(value); if(value==false)OnDisable();}}
 
-	[SerializeField] protected GameObject TreasureDrop;
+	[SerializeField] protected GameObject treasureDrop;
 	[SerializeField] protected LayerMask mask;
 	[SerializeField] protected float refractoryPeriod, distToFeet = 0.35f;
 	[SerializeField] protected int attackStrength;
@@ -112,16 +112,15 @@ public class UnitController : MonoBehaviour
 	}
 	public void Dead()
 	{
-		GameObject.Instantiate(TreasureDrop,Location,Quaternion.identity);
+		GameObject.Instantiate(treasureDrop,Location,Quaternion.identity);
 	}
 	protected virtual void OnTriggerEnter2D(Collider2D other)
 	{
-//		if(other.CompareTag("Impass"))
-//		{
-//			Debug.Log("stop!");
-//			movement = Vector3.zero;
-//			mover.Stop();
-//		}
+		if(other.CompareTag("Capture"))
+		{
+			Debug.Log("Cap!");
+
+		}
 	}
 //	protected virtual void OnTriggerStay2D(Collider2D other)
 //	{

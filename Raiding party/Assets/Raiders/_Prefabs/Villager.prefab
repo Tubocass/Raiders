@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitID: 0
   teamID: 1
-  TreasureDrop: {fileID: 1203950778869374, guid: 55397c3f9341b9c46aadfde070411341,
+  treasureDrop: {fileID: 1203950778869374, guid: 55397c3f9341b9c46aadfde070411341,
     type: 2}
   mask:
     serializedVersion: 2

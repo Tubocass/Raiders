@@ -82,7 +82,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.018868, y: 3.018868}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 3.018868, y: 3.018868}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -148,7 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitID: 0
   teamID: 0
-  TreasureDrop: {fileID: 0}
+  treasureDrop: {fileID: 1231188486983670, guid: 1ef491b1d9399b44a837c5fd2630fff3,
+    type: 2}
   mask:
     serializedVersion: 2
     m_Bits: 256

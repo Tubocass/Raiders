@@ -11,6 +11,7 @@ TagManager:
   - NPC
   - Unit
   - Impass
+  - Capture
   layers:
   - Default
   - TransparentFX

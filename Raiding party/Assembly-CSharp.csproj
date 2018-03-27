@@ -58,6 +58,7 @@
      <Compile Include="Assets\Raiders\_Scripts\AIHealth.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Bullet.cs" />
      <Compile Include="Assets\Raiders\_Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\CapturePoint.cs" />
      <Compile Include="Assets\Raiders\_Scripts\DistanceTrigger.cs" />
      <Compile Include="Assets\Raiders\_Scripts\GameController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\HealthBar.cs" />

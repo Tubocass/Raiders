@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public class EnemyController : UnitController 
 {
@@ -12,10 +13,12 @@ public class EnemyController : UnitController
 	Transform target;
 	UnitController targetEnemy;
 	List<UnitController> enemies = new List<UnitController>();
+	NavMeshAgent agent;
 
 	protected override void OnEnable()
 	{
 		base.OnEnable();
+		//agent = GetComponent<NavMeshAgent>();
 		UnityEventManager.StartListeningInt("TargetUnavailable", TargetLost);
 	}
 	protected override void OnDisable()
@@ -57,6 +60,7 @@ public class EnemyController : UnitController
 		{
 			movement = (target.position-Location).normalized;
 			animSpeed = 1f;
+			//agent.destination = target.position;
 			mover.Move(movement);
 		}else{//we don't have a target, or we've arrived
 			animSpeed = 0f;
@@ -71,7 +75,7 @@ public class EnemyController : UnitController
 						Attack();
 					}
 				}else{
-					mover.Move(enemyVector);
+					//mover.Move(enemyVector);
 				}
 			}else if(allowedToFight)
 				{
