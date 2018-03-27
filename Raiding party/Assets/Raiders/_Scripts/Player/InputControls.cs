@@ -72,7 +72,7 @@ public class InputControls : UnitController
 	protected override void OnTriggerEnter2D(Collider2D bam)
 	{
 		base.OnTriggerEnter2D(bam);
-		if(bam.CompareTag("Treasure"))
+		if(bam.CompareTag("Treasure")&& !bCarryingTreasure)
 		{
 			Treasure pickup = bam.GetComponent<Treasure>();//treasure implements IPickup
 			pickup.Pickup(transform);

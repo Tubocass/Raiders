@@ -14,6 +14,8 @@ public class EnemyController : UnitController
 	UnitController targetEnemy;
 	List<UnitController> enemies = new List<UnitController>();
 	NavMeshAgent agent;
+	bool bCarryingTreasure = false;
+	Treasure myTreasure;
 
 	protected override void OnEnable()
 	{
@@ -152,6 +154,26 @@ public class EnemyController : UnitController
 			target = null;
 			animSpeed = 0f;
 			//ArrivedAtTargetLocation();
+		}
+	}
+
+	protected override void OnTriggerEnter2D(Collider2D bam)
+	{
+		base.OnTriggerEnter2D(bam);
+		if(bam.CompareTag("Treasure")&& !bCarryingTreasure)
+		{
+			Treasure pickup = bam.GetComponent<Treasure>();//treasure implements IPickup
+			pickup.Pickup(transform);
+			bCarryingTreasure = true;
+			myTreasure = pickup;
+			//bam.gameObject.SetActive(false);
+		}
+		if(bam.CompareTag("Capture") && bCarryingTreasure)
+		{
+			UnityEventManager.TriggerEvent("TreasureEvent", myTreasure.Value);
+			bCarryingTreasure = false;
+			myTreasure.PutDown();
+			myTreasure = null;
 		}
 	}
 }
