@@ -12,7 +12,6 @@ public class PeasantAI : NpcBase
 //	private enum Behaviour{Flee, Work, Alert}
 //	Behaviour currentState;
 
-	[SerializeField] Transform safeSpace;
 	List<UnitController> enemies = new List<UnitController>();
 	public bool alertRaised, spotEnemy;
 
@@ -88,18 +87,27 @@ public class PeasantAI : NpcBase
 	{
 		if(alertRaised)
 		{
-			enemies = FindTargets<UnitController>("Unit", u=> !u.teamID.Equals(teamID));
-			targetEnemy = TargetNearest<UnitController>(enemies);
-			if(targetEnemy!=null)
+			List<Safety> safeSpaces = FindTargets<Safety>("Safety", s=> s.isOpen);
+			Transform safeHouse = TargetNearest<Safety>(safeSpaces).transform;
+			if(safeHouse !=null)
 			{
-				Vector3 enemyVector = targetEnemy.Location-Location;
-				if(Vector3.Distance(Location, targetEnemy.Location)<20)
-				{
-					movement = -enemyVector.normalized;
-					animSpeed = 1f;
-					mover.Move(movement);
-				}
+				movement = (safeHouse.position-Location).normalized;
+				animSpeed = 1f;
+				//agent.destination = target.position;
+				mover.Move(movement);
 			}
+//			enemies = FindTargets<UnitController>("Unit", u=> !u.teamID.Equals(teamID));
+//			targetEnemy = TargetNearest<UnitController>(enemies);
+//			if(targetEnemy!=null)
+//			{
+//				Vector3 enemyVector = targetEnemy.Location-Location;
+//				if(Vector3.Distance(Location, targetEnemy.Location)<20)
+//				{
+//					movement = -enemyVector.normalized;
+//					animSpeed = 1f;
+//					mover.Move(movement);
+//				}
+//			}
 //			if(currentState!= Behaviour.Flee)
 //			currentState = Behaviour.Flee;
 		}

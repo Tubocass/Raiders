@@ -28,7 +28,7 @@ public class NpcBase : UnitController
 		}
 		return targets;
 	}
-	protected virtual T TargetNearest<T>(List<T> targets) where T:MonoBehaviour
+	protected virtual T TargetNearest<T>(List<T> targets) where T:Component
 	{
 		float nearestDist, newDist;
 		T nearestTarget = null;

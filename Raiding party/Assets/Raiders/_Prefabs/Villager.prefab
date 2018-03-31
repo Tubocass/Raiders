@@ -138,7 +138,7 @@ MonoBehaviour:
     type: 2}
   mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   refractoryPeriod: 0
   distToFeet: 0.2
   attackStrength: 0
@@ -151,13 +151,14 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 256
+      m_Bits: 768
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  safeSpace: {fileID: 0}
-  target: {fileID: 0}
+  Leader: {fileID: 0}
+  allowedToFight: 0
+  isFollowing: 0
   alertRaised: 1
   spotEnemy: 0
 --- !u!114 &114934068411710370

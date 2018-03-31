@@ -71,6 +71,7 @@
      <Compile Include="Assets\Raiders\_Scripts\Player\InputControls.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Player\PlayerWeapon.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\Safety.cs" />
      <Compile Include="Assets\Raiders\_Scripts\ScoreUI.cs" />
      <Compile Include="Assets\Raiders\_Scripts\SoundManager.cs" />
      <Compile Include="Assets\Raiders\_Scripts\SwordController.cs" />
