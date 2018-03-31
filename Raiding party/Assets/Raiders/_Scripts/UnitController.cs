@@ -7,7 +7,7 @@ public class UnitController : MonoBehaviour
 	public static int TotalCreated;
 	public int unitID, teamID;
 	public Vector3 Location{get{return transform.position;}}
-	public bool isActive{get{return gameObject.activeSelf;}set{gameObject.SetActive(value); if(value==false)OnDisable();}}
+	public bool isActive{get{return gameObject.activeSelf;}set{if(value==false)OnDisable(); gameObject.SetActive(value); }}
 
 	[SerializeField] protected GameObject treasureDrop;
 	[SerializeField] protected LayerMask mask;

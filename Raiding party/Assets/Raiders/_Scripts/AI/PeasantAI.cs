@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeasantAI : UnitController
+public class PeasantAI : NpcBase
 {
 	/*	Behaviors:
 	 * 		Mill about
@@ -13,10 +13,7 @@ public class PeasantAI : UnitController
 //	Behaviour currentState;
 
 	[SerializeField] Transform safeSpace;
-	[SerializeField] Transform target;
-
 	List<UnitController> enemies = new List<UnitController>();
-	UnitController targetEnemy;
 	public bool alertRaised, spotEnemy;
 
 	protected override void OnEnable()
@@ -48,50 +45,51 @@ public class PeasantAI : UnitController
 		}
 		AsessSituation();
 	}
-	UnitController TargetNearest()
-	{
-		float nearestEnemyDist, newDist;
-		UnitController enemy = null;
-
-		Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position,50,mask);
-		if(cols.Length>0)
-		{
-			for(int f = 0; f<cols.Length-1;f++)
-			{
-				if(cols[f].CompareTag("Unit"))
-				{
-					UnitController ot = cols[f].GetComponent<UnitController>();
-					if(ot!=null && !ot.teamID.Equals(teamID) && !enemies.Contains(ot))
-					{
-						enemies.Add(ot);
-					}
-				}
-			}
-		}
-		if(enemies.Count>0)
-		{
-			nearestEnemyDist = (enemies[0].Location-Location).sqrMagnitude; //Vector3.Distance(Location,enemies[0].Location);
-			for(int f = 0; f<enemies.Count;f++)
-			{
-				if(enemies[f].isActive)
-				{
-					newDist = (enemies[f].Location-Location).sqrMagnitude;//Vector3.Distance(Location,unit.Location);
-					if(newDist <= nearestEnemyDist)
-					{
-						nearestEnemyDist = newDist;
-						enemy = enemies[f];
-					}
-				}
-			}
-		}
-
-		return enemy;
-	}
+//	UnitController TargetNearest()
+//	{
+//		float nearestEnemyDist, newDist;
+//		UnitController enemy = null;
+//
+//		Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position,50,mask);
+//		if(cols.Length>0)
+//		{
+//			for(int f = 0; f<cols.Length-1;f++)
+//			{
+//				if(cols[f].CompareTag("Unit"))
+//				{
+//					UnitController ot = cols[f].GetComponent<UnitController>();
+//					if(ot!=null && !ot.teamID.Equals(teamID) && !enemies.Contains(ot))
+//					{
+//						enemies.Add(ot);
+//					}
+//				}
+//			}
+//		}
+//		if(enemies.Count>0)
+//		{
+//			nearestEnemyDist = (enemies[0].Location-Location).sqrMagnitude; //Vector3.Distance(Location,enemies[0].Location);
+//			for(int f = 0; f<enemies.Count;f++)
+//			{
+//				if(enemies[f].isActive)
+//				{
+//					newDist = (enemies[f].Location-Location).sqrMagnitude;//Vector3.Distance(Location,unit.Location);
+//					if(newDist <= nearestEnemyDist)
+//					{
+//						nearestEnemyDist = newDist;
+//						enemy = enemies[f];
+//					}
+//				}
+//			}
+//		}
+//
+//		return enemy;
+//	}
 	void AsessSituation()
 	{
 		if(alertRaised)
 		{
-			targetEnemy = TargetNearest();
+			enemies = FindTargets<UnitController>("Unit", u=> !u.teamID.Equals(teamID));
+			targetEnemy = TargetNearest<UnitController>(enemies);
 			if(targetEnemy!=null)
 			{
 				Vector3 enemyVector = targetEnemy.Location-Location;

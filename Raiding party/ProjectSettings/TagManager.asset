@@ -12,6 +12,7 @@ TagManager:
   - Unit
   - Impass
   - Capture
+  - Safety
   layers:
   - Default
   - TransparentFX

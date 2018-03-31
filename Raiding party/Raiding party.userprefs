@@ -1,24 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Raiders\_Scripts\ScoreUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Raiders\_Scripts\AI\EnemyController.cs">
     <Files>
-      <File FileName="Assets\Raiders\_Scripts\AI\EnemyController.cs" Line="64" Column="4" />
+      <File FileName="Assets\Raiders\_Scripts\AI\EnemyController.cs" Line="11" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\AI\PeasantAI.cs" Line="1" Column="1" />
       <File FileName="Assets\Raiders\_Scripts\Weapon.cs" Line="1" Column="1" />
       <File FileName="Assets\Raiders\_Scripts\UnitMover.cs" Line="1" Column="1" />
       <File FileName="Assets\Raiders\_Scripts\AIHealth.cs" Line="1" Column="1" />
-      <File FileName="..\..\NNGather\HiveMind\Assets\_Scripts\MoM's\MoMController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\ZOrderer.cs" Line="1" Column="1" />
-      <File FileName="..\..\Sport Club\Super Sport Club\Assets\_Scripts\Grid_Setup.cs" Line="1" Column="1" />
-      <File FileName="..\..\Sport Club\Super Sport Club\Assets\_Scripts\UI Scripts\UIGameHUD.cs" Line="1" Column="1" />
       <File FileName="Assets\Raiders\_Scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\ScoreUI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\WeaponUI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\AI\PeasantAI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\CapturePoint.cs" Line="12" Column="2" />
-      <File FileName="Assets\Raiders\_Scripts\Treasure.cs" Line="7" Column="18" />
-      <File FileName="Assets\Raiders\_Scripts\IPickup.cs" Line="7" Column="25" />
-      <File FileName="Assets\Raiders\_Scripts\UnitController.cs" Line="12" Column="52" NotebookId="1" />
-      <File FileName="Assets\Raiders\_Scripts\Player\InputControls.cs" Line="87" Column="22" NotebookId="1" />
+      <File FileName="Assets\Raiders\_Scripts\CapturePoint.cs" Line="1" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\Treasure.cs" Line="1" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\IPickup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\UnitController.cs" Line="144" Column="1" NotebookId="1" />
+      <File FileName="Assets\Raiders\_Scripts\Player\InputControls.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

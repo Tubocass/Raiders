@@ -5,17 +5,13 @@ using UnityEngine.Serialization;
 using UnityEngine.Events;
 using UnityEngine.AI;
 
-public class EnemyController : UnitController 
+public class EnemyController : NpcBase 
 {
 	[SerializeField] GameObject weapon;
-	[SerializeField] bool allowedToFight = false, isFollowing = false;
-	[SerializeField] UnitController Leader;
-	Transform target;
-	UnitController targetEnemy;
 	List<UnitController> enemies = new List<UnitController>();
 	NavMeshAgent agent;
 	bool bCarryingTreasure = false;
-	Treasure myTreasure;
+	Treasure carriedTreasure;
 
 	protected override void OnEnable()
 	{
@@ -31,9 +27,10 @@ public class EnemyController : UnitController
 	protected override void Start()
 	{
 		base.Start();
-		targetEnemy = TargetNearest();
+		enemies = FindTargets<UnitController>("Unit", ot=> ot!=null && !ot.teamID.Equals(teamID));
+		targetEnemy = TargetNearest<UnitController>(enemies);
 		if(targetEnemy!=null)
-		target = targetEnemy.transform;
+			target = targetEnemy.transform;
 //		if(weapon!=null)
 //		{
 //			currentWeapon = weapon.GetComponent<Weapon>();
@@ -81,7 +78,9 @@ public class EnemyController : UnitController
 				}
 			}else if(allowedToFight)
 				{
-					targetEnemy = TargetNearest();
+				enemies = FindTargets<UnitController>("Unit", ot=> ot!=null && !ot.teamID.Equals(teamID));
+				targetEnemy = TargetNearest<UnitController>(enemies);
+					//targetEnemy = TargetNearest(FindTargets("Unit"));
 				if(targetEnemy!=null)
 					target = targetEnemy.transform;
 				else
@@ -99,64 +98,64 @@ public class EnemyController : UnitController
 			target = Leader.transform;
 		}
 	}
-	bool IsTargetingEnemy()
-	{
-		if(targetEnemy!=null && targetEnemy.isActive)
-			return true;
-		else return false;
-	}
-
-	UnitController TargetNearest()
-	{
-		float nearestEnemyDist, newDist;
-		UnitController enemy = null;
-
-		Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position,50,mask);
-		if(cols.Length>0)
-		{
-			for(int f = 0; f<cols.Length-1;f++)
-			{
-				if(cols[f].CompareTag("Unit"))
-				{
-					UnitController ot = cols[f].GetComponent<UnitController>();
-					if(ot!=null && !ot.teamID.Equals(teamID) && !enemies.Contains(ot))
-					{
-						enemies.Add(ot);
-					}
-				}
-			}
-		}
-		if(enemies.Count>0)
-		{
-			nearestEnemyDist = (enemies[0].Location-Location).sqrMagnitude; //Vector3.Distance(Location,enemies[0].Location);
-			for(int f = 0; f<enemies.Count;f++)
-			{
-				if(enemies[f].isActive)
-				{
-					newDist = (enemies[f].Location-Location).sqrMagnitude;//Vector3.Distance(Location,unit.Location);
-					if(newDist <= nearestEnemyDist)
-					{
-						nearestEnemyDist = newDist;
-						enemy = enemies[f];
-					}
-				}
-			}
-		}
-
-		return enemy;
-	}
-	protected void TargetLost(int id)
-	{
-		if(targetEnemy!=null && id == targetEnemy.unitID)
-		{
-			enemies.Clear();
-			targetEnemy = null;
-			target = null;
-			animSpeed = 0f;
-			//ArrivedAtTargetLocation();
-		}
-	}
-
+//	bool IsTargetingEnemy()
+//	{
+//		if(targetEnemy!=null && targetEnemy.isActive)
+//			return true;
+//		else return false;
+//	}
+		
+//	UnitController TargetNearest()
+//	{
+//		float nearestEnemyDist, newDist;
+//		UnitController enemy = null;
+//
+//		Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position,50,mask);
+//		if(cols.Length>0)
+//		{
+//			for(int f = 0; f<cols.Length-1;f++)
+//			{
+//				if(cols[f].CompareTag("Unit"))
+//				{
+//					UnitController ot = cols[f].GetComponent<UnitController>();
+//					if(ot!=null && !ot.teamID.Equals(teamID) && !enemies.Contains(ot))
+//					{
+//						enemies.Add(ot);
+//					}
+//				}
+//			}
+//		}
+//		if(enemies.Count>0)
+//		{
+//			nearestEnemyDist = (enemies[0].Location-Location).sqrMagnitude; //Vector3.Distance(Location,enemies[0].Location);
+//			for(int f = 0; f<enemies.Count;f++)
+//			{
+//				if(enemies[f].isActive)
+//				{
+//					newDist = (enemies[f].Location-Location).sqrMagnitude;//Vector3.Distance(Location,unit.Location);
+//					if(newDist <= nearestEnemyDist)
+//					{
+//						nearestEnemyDist = newDist;
+//						enemy = enemies[f];
+//					}
+//				}
+//			}
+//		}
+//
+//		return enemy;
+//	}
+//	protected void TargetLost(int id)
+//	{
+//		if(targetEnemy!=null && id == targetEnemy.unitID)
+//		{
+//			enemies.Clear();
+//			targetEnemy = null;
+//			target = null;
+//			animSpeed = 0f;
+//			//ArrivedAtTargetLocation();
+//		}
+//	}
+//
 	protected override void OnTriggerEnter2D(Collider2D bam)
 	{
 		base.OnTriggerEnter2D(bam);
@@ -165,15 +164,15 @@ public class EnemyController : UnitController
 			Treasure pickup = bam.GetComponent<Treasure>();//treasure implements IPickup
 			pickup.Pickup(transform);
 			bCarryingTreasure = true;
-			myTreasure = pickup;
+			carriedTreasure = pickup;
 			//bam.gameObject.SetActive(false);
 		}
 		if(bam.CompareTag("Capture") && bCarryingTreasure)
 		{
-			UnityEventManager.TriggerEvent("TreasureEvent", myTreasure.Value);
+			UnityEventManager.TriggerEvent("TreasureEvent", carriedTreasure.Value);
 			bCarryingTreasure = false;
-			myTreasure.PutDown();
-			myTreasure = null;
+			carriedTreasure.PutDown();
+			carriedTreasure = null;
 		}
 	}
 }

@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Raiders\_Scripts\AI\EnemyController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\GuardAI.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\AI\NpcBase.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\PeasantAI.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\WarriorAI.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AIHealth.cs" />
