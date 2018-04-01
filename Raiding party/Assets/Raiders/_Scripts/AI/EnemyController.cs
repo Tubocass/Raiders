@@ -8,15 +8,12 @@ using UnityEngine.AI;
 public class EnemyController : NpcBase 
 {
 	[SerializeField] GameObject weapon;
-	List<UnitController> enemies = new List<UnitController>();
-	NavMeshAgent agent;
 	bool bCarryingTreasure = false;
 	Treasure carriedTreasure;
 
 	protected override void OnEnable()
 	{
 		base.OnEnable();
-		//agent = GetComponent<NavMeshAgent>();
 		UnityEventManager.StartListeningInt("TargetUnavailable", TargetLost);
 	}
 	protected override void OnDisable()
@@ -27,33 +24,24 @@ public class EnemyController : NpcBase
 	protected override void Start()
 	{
 		base.Start();
-		enemies = FindTargets<UnitController>("Unit", ot=> ot!=null && !ot.teamID.Equals(teamID));
-		targetEnemy = TargetNearest<UnitController>(enemies);
+		enemies = FindTargets<UnitController>("Unit",Location,50f,mask, ot=> ot!=null && !ot.teamID.Equals(teamID));
+		targetEnemy = TargetNearest<UnitController>(Location,enemies);
 		if(targetEnemy!=null)
 			target = targetEnemy.transform;
-//		if(weapon!=null)
-//		{
-//			currentWeapon = weapon.GetComponent<Weapon>();
-//		}
 	}
 
 	public override void Update()
 	{
-//		if(IsTargetingEnemy())
-//		{
-//			if(Vector3.Distance(Location,targetEnemy.Location)<1f)
-//			{
-//				if(canAttack)
-//				{
-//					Attack();
-//				}
-//				animSpeed = 0f;
-//			}
-//		}else{
-//			
-//		}
-
-		//if(isFollowing)
+		/*Follow Leader
+		 * 		stick close to leader (don't chase x distance away)
+		 * 		Kill anything immediately around
+		 * 		Assist in anything the leader does
+		 * Berserk
+		 * 		Kill anything immediately around
+		 * 		Look for and chase down enemies
+		 * 
+		 */
+	
 		base.Update();
 		if(target!=null && Vector3.Distance(Location,target.position)>1f)//Am I going somewhere
 		{
@@ -78,8 +66,8 @@ public class EnemyController : NpcBase
 				}
 			}else if(allowedToFight)
 				{
-				enemies = FindTargets<UnitController>("Unit", ot=> ot!=null && !ot.teamID.Equals(teamID));
-				targetEnemy = TargetNearest<UnitController>(enemies);
+				enemies = FindTargets<UnitController>("Unit",Location,50f,mask, ot=> ot!=null && !ot.teamID.Equals(teamID));
+				targetEnemy = TargetNearest<UnitController>(Location,enemies);
 					//targetEnemy = TargetNearest(FindTargets("Unit"));
 				if(targetEnemy!=null)
 					target = targetEnemy.transform;
@@ -98,64 +86,7 @@ public class EnemyController : NpcBase
 			target = Leader.transform;
 		}
 	}
-//	bool IsTargetingEnemy()
-//	{
-//		if(targetEnemy!=null && targetEnemy.isActive)
-//			return true;
-//		else return false;
-//	}
-		
-//	UnitController TargetNearest()
-//	{
-//		float nearestEnemyDist, newDist;
-//		UnitController enemy = null;
-//
-//		Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position,50,mask);
-//		if(cols.Length>0)
-//		{
-//			for(int f = 0; f<cols.Length-1;f++)
-//			{
-//				if(cols[f].CompareTag("Unit"))
-//				{
-//					UnitController ot = cols[f].GetComponent<UnitController>();
-//					if(ot!=null && !ot.teamID.Equals(teamID) && !enemies.Contains(ot))
-//					{
-//						enemies.Add(ot);
-//					}
-//				}
-//			}
-//		}
-//		if(enemies.Count>0)
-//		{
-//			nearestEnemyDist = (enemies[0].Location-Location).sqrMagnitude; //Vector3.Distance(Location,enemies[0].Location);
-//			for(int f = 0; f<enemies.Count;f++)
-//			{
-//				if(enemies[f].isActive)
-//				{
-//					newDist = (enemies[f].Location-Location).sqrMagnitude;//Vector3.Distance(Location,unit.Location);
-//					if(newDist <= nearestEnemyDist)
-//					{
-//						nearestEnemyDist = newDist;
-//						enemy = enemies[f];
-//					}
-//				}
-//			}
-//		}
-//
-//		return enemy;
-//	}
-//	protected void TargetLost(int id)
-//	{
-//		if(targetEnemy!=null && id == targetEnemy.unitID)
-//		{
-//			enemies.Clear();
-//			targetEnemy = null;
-//			target = null;
-//			animSpeed = 0f;
-//			//ArrivedAtTargetLocation();
-//		}
-//	}
-//
+
 	protected override void OnTriggerEnter2D(Collider2D bam)
 	{
 		base.OnTriggerEnter2D(bam);

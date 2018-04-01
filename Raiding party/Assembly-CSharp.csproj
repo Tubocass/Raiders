@@ -53,8 +53,13 @@
   <ItemGroup>
      <Compile Include="Assets\Raiders\_Scripts\AI\EnemyController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\GuardAI.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\AI\IBehaviourState.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\NpcBase.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\PeasantAI.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\AI\State_Chase.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\AI\State_Flee.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\AI\State_Follow.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\AI\State_Idle.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\WarriorAI.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AIHealth.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Bullet.cs" />

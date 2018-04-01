@@ -5,13 +5,4 @@ using UnityEngine;
 public class CapturePoint : MonoBehaviour 
 {
 
-	void Start () 
-	{
-		
-	}
-
-	void Update () 
-	{
-		
-	}
 }

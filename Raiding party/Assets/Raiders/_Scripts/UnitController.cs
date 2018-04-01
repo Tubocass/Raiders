@@ -6,6 +6,7 @@ public class UnitController : MonoBehaviour
 {
 	public static int TotalCreated;
 	public int unitID, teamID;
+	public UnitMover mover;
 	public Vector3 Location{get{return transform.position;}}
 	public bool isActive{get{return gameObject.activeSelf;}set{if(value==false)OnDisable(); gameObject.SetActive(value); }}
 
@@ -16,7 +17,6 @@ public class UnitController : MonoBehaviour
 	[SerializeField] ContactFilter2D filter;
 
 	protected Collider2D myCollider;
-	protected UnitMover mover;
 	protected Vector3 movement = Vector3.zero;
 	protected Animator anim;
 	protected Weapon currentWeapon;
