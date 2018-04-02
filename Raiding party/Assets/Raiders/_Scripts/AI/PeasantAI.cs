@@ -19,18 +19,19 @@ public class PeasantAI : NpcBase
 	protected override void OnEnable()
 	{
 		base.OnEnable();
-		UnityEventManager.StartListening("AlarmEvent", Flee);
+		//UnityEventManager.StartListening("AlarmEvent", Flee);
 	}
 	protected override void OnDisable()
 	{
 		base.OnDisable();
-		UnityEventManager.StopListening("AlarmEvent", Flee);
+		//UnityEventManager.StopListening("AlarmEvent", Flee);
 	}
 	protected override void Start()
 	{
 		base.Start();
 		fleeState = new State_Flee(this, mask);
 		idleState = new State_Idle(this);
+		idleState.TargetSpotted += Flee;
 		BehaviourState = idleState;
 		//target = GameObject.FindGameObjectWithTag("Player").transform;
 	}

@@ -8,8 +8,6 @@ public class InputControls : UnitController
 	PlayerHealth myHealth;
 	PlayerWeapon myWeapon;
 	float lastInputX, lastInputY;
-	bool bCarryingTreasure = false;
-	Treasure myTreasure;
 
 	protected override void OnEnable()
 	{
@@ -22,6 +20,7 @@ public class InputControls : UnitController
 	protected override void Start()
 	{
 		base.Start();
+		canPickupTreasure = true;
 		myHealth = GetComponent<PlayerHealth>();
 		myWeapon = GetComponent<PlayerWeapon>();
 	}
@@ -57,35 +56,9 @@ public class InputControls : UnitController
 			Attack();
 		}
 	}
-
-	bool IsBlocked(Vector3 dir)
-	{
-		RaycastHit2D hit = Physics2D.Raycast(Location,dir,1,mask);
-		if(hit.collider!=null&& hit.collider.CompareTag("Impass"))
-		{
-			Debug.Log("Blocked");
-			return true;
-		}else{
-			return false;
-		}
-	}
+		
 	protected override void OnTriggerEnter2D(Collider2D bam)
 	{
 		base.OnTriggerEnter2D(bam);
-		if(bam.CompareTag("Treasure")&& !bCarryingTreasure)
-		{
-			Treasure pickup = bam.GetComponent<Treasure>();//treasure implements IPickup
-			pickup.Pickup(transform);
-			bCarryingTreasure = true;
-			myTreasure = pickup;
-			//bam.gameObject.SetActive(false);
-		}
-		if(bam.CompareTag("Capture") && bCarryingTreasure)
-		{
-			UnityEventManager.TriggerEvent("TreasureEvent", myTreasure.Value);
-			bCarryingTreasure = false;
-			myTreasure.PutDown();
-			myTreasure = null;
-		}
 	}
 }

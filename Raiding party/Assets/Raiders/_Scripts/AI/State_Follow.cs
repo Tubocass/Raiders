@@ -23,7 +23,7 @@ public class State_Follow : IBehaviourState
 	{
 		if(leader!=null)
 		{
-			if(Vector3.Distance(NpcController.Location,leader.Location)>=2f)//Am I going somewhere
+			if(Vector3.Distance(NpcController.Location,leader.Location)>=1.5f)//Am I going somewhere
 			{
 				movement = (leader.Location-NpcController.Location).normalized;
 				NpcController.Animate(movement, 1f);

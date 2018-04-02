@@ -22,6 +22,8 @@ public class UnitController : MonoBehaviour
 	protected Weapon currentWeapon;
 	protected float animSpeed = 1f;
 	protected bool canAttack = true;
+	protected bool bCarryingTreasure = false, canPickupTreasure = false;
+	Treasure carriedTreasure;
 
 	protected virtual void OnEnable()
 	{
@@ -80,11 +82,12 @@ public class UnitController : MonoBehaviour
 			RaycastHit2D[] results = new RaycastHit2D[10];
 			if(Physics2D.Raycast(transform.position, dir, filter, results, 1f)>0)
 			{
+				UnitController uni;
 				for(int r=0; r<results.Length-1;r++)
 				{
 					if(results[r].collider!=null)
 					{
-						UnitController uni = results[r].collider.GetComponent<UnitController>();
+						uni = results[r].collider.GetComponent<UnitController>();
 						if (uni!= null && uni.teamID!= teamID) 
 						{
 							var enemyHealth = uni.GetComponent<IHealth>();
@@ -124,12 +127,22 @@ public class UnitController : MonoBehaviour
 		GameObject.Instantiate(treasureDrop,Location,Quaternion.identity);
 		UnityEventManager.TriggerEvent("TargetUnavailable",unitID);
 	}
-	protected virtual void OnTriggerEnter2D(Collider2D other)
+	protected virtual void OnTriggerEnter2D(Collider2D bam)
 	{
-		if(other.CompareTag("Capture"))
+		if(bam.CompareTag("Treasure")&& canPickupTreasure && !bCarryingTreasure)
 		{
-			Debug.Log("Cap!");
-
+			Treasure pickup = bam.GetComponent<Treasure>();//treasure implements IPickup
+			pickup.Pickup(transform);
+			bCarryingTreasure = true;
+			carriedTreasure = pickup;
+			//bam.gameObject.SetActive(false);
+		}
+		if(bam.CompareTag("Capture") && bCarryingTreasure)
+		{
+			UnityEventManager.TriggerEvent("TreasureEvent", carriedTreasure.Value);
+			bCarryingTreasure = false;
+			carriedTreasure.PutDown();
+			carriedTreasure = null;
 		}
 	}
 //	protected virtual void OnTriggerStay2D(Collider2D other)

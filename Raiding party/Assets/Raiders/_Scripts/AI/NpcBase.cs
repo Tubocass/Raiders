@@ -10,6 +10,7 @@ public class NpcBase : UnitController
 	public List<UnitController> enemies = new List<UnitController>();
 	protected Transform target;
 	protected UnitController targetEnemy;
+	protected float pursuitRange = 50f;
 
 	public IBehaviourState BehaviourState 
 	{
@@ -109,7 +110,7 @@ public class NpcBase : UnitController
 	}
 	public UnitController NearestEnemy()
 	{
-		List<UnitController> enemies = FindTargets<UnitController>("Unit", Location, 50f, mask, u=> !u.teamID.Equals(teamID));
+		List<UnitController> enemies = FindTargets<UnitController>("Unit", Location, pursuitRange, mask, u=> !u.teamID.Equals(teamID));
 		UnitController targetEnemy = TargetNearest<UnitController>(Location ,enemies);
 		if(targetEnemy!=null)
 		{

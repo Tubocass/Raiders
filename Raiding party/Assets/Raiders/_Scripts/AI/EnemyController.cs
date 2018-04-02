@@ -8,12 +8,10 @@ using UnityEngine.AI;
 public class EnemyController : NpcBase 
 {
 	[SerializeField] GameObject weapon;
-	bool bCarryingTreasure = false;
-	Treasure carriedTreasure;
 	State_Chase chaseState;
 	State_Follow followState;
 	State_Idle idleState;
-	float pursuitRange = 50f;
+
 	protected override void OnEnable()
 	{
 		base.OnEnable();
@@ -29,8 +27,10 @@ public class EnemyController : NpcBase
 	protected override void Start()
 	{
 		base.Start();
+		canPickupTreasure = true;
 		followState = new State_Follow(this, Leader);
 		idleState = new State_Idle(this);
+		idleState.TargetSpotted += DecisionTree;
 		if(isFollowing)
 		{
 			FollowLeader();
@@ -95,7 +95,11 @@ public class EnemyController : NpcBase
 		if(Leader != null && Leader.isActive)
 		{
 			FollowLeader();//Can't find any targets, follow the Leader
-		}else BehaviourState = idleState;
+		}else 
+		{
+			BehaviourState = idleState;
+			pursuitRange = 50f;
+		}
 
 	}
 	void FollowLeader()
@@ -120,35 +124,9 @@ public class EnemyController : NpcBase
 			BehaviourState = idleState;
 		}
 	}
-//	protected override void EnemiesAround()
-//	{
-//		enemies = FindTargets<UnitController>("Unit",Location, pursuitRange,mask, ot=> ot!=null && !ot.teamID.Equals(teamID));
-//		targetEnemy = TargetNearest<UnitController>(Location,enemies);
-//		if(targetEnemy!=null)
-//		{
-//			chaseState = new State_Chase(this, targetEnemy);
-//			BehaviourState = chaseState;
-//		}
-//	}
-
 
 	protected override void OnTriggerEnter2D(Collider2D bam)
 	{
 		base.OnTriggerEnter2D(bam);
-		if(bam.CompareTag("Treasure")&& !bCarryingTreasure)
-		{
-			Treasure pickup = bam.GetComponent<Treasure>();//treasure implements IPickup
-			pickup.Pickup(transform);
-			bCarryingTreasure = true;
-			carriedTreasure = pickup;
-			//bam.gameObject.SetActive(false);
-		}
-		if(bam.CompareTag("Capture") && bCarryingTreasure)
-		{
-			UnityEventManager.TriggerEvent("TreasureEvent", carriedTreasure.Value);
-			bCarryingTreasure = false;
-			carriedTreasure.PutDown();
-			carriedTreasure = null;
-		}
 	}
 }
