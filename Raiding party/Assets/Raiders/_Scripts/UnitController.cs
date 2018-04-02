@@ -49,13 +49,22 @@ public class UnitController : MonoBehaviour
 	{
 		transform.position = new Vector3(Location.x,Location.y,ZOrderer.NormalZ(Location.y-distToFeet));
 	}
-	protected void Animate()
+	public void Animate()
 	{
 		if(anim.runtimeAnimatorController!=null)
 		{
 			anim.SetFloat("X",movement.x);
 			anim.SetFloat("Y",movement.y);
 			anim.SetFloat("Speed", animSpeed);
+		}
+	}
+	public void Animate(Vector3 dir, float speed)
+	{
+		if(anim.runtimeAnimatorController!=null)
+		{
+			anim.SetFloat("X",dir.x);
+			anim.SetFloat("Y",dir.y);
+			anim.SetFloat("Speed", speed);
 		}
 	}
 	public virtual void Attack()
@@ -113,6 +122,7 @@ public class UnitController : MonoBehaviour
 	public void Dead()
 	{
 		GameObject.Instantiate(treasureDrop,Location,Quaternion.identity);
+		UnityEventManager.TriggerEvent("TargetUnavailable",unitID);
 	}
 	protected virtual void OnTriggerEnter2D(Collider2D other)
 	{

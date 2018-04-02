@@ -10,24 +10,35 @@ public class EnemyController : NpcBase
 	[SerializeField] GameObject weapon;
 	bool bCarryingTreasure = false;
 	Treasure carriedTreasure;
-
+	State_Chase chaseState;
+	State_Follow followState;
+	State_Idle idleState;
+	float pursuitRange = 50f;
 	protected override void OnEnable()
 	{
 		base.OnEnable();
 		UnityEventManager.StartListeningInt("TargetUnavailable", TargetLost);
+		UnityEventManager.StartListening("AlarmEvent", DecisionTree);
 	}
 	protected override void OnDisable()
 	{
 		base.OnDisable();
 		UnityEventManager.StopListeningInt("TargetUnavailable", TargetLost);
+		UnityEventManager.StopListening("AlarmEvent", DecisionTree);
 	}
 	protected override void Start()
 	{
 		base.Start();
-		enemies = FindTargets<UnitController>("Unit",Location,50f,mask, ot=> ot!=null && !ot.teamID.Equals(teamID));
-		targetEnemy = TargetNearest<UnitController>(Location,enemies);
-		if(targetEnemy!=null)
-			target = targetEnemy.transform;
+		followState = new State_Follow(this, Leader);
+		idleState = new State_Idle(this);
+		if(isFollowing)
+		{
+			FollowLeader();
+		}else
+		{
+			BehaviourState = idleState;
+			pursuitRange = 50f;
+		}
 	}
 
 	public override void Update()
@@ -43,49 +54,83 @@ public class EnemyController : NpcBase
 		 */
 	
 		base.Update();
-		if(target!=null && Vector3.Distance(Location,target.position)>1f)//Am I going somewhere
-		{
-			movement = (target.position-Location).normalized;
-			animSpeed = 1f;
-			//agent.destination = target.position;
-			mover.Move(movement);
-		}else{//we don't have a target, or we've arrived
-			animSpeed = 0f;
-			if(IsTargetingEnemy())
-			{
-				Vector3 enemyVector = targetEnemy.Location-Location;
+//		if(target!=null && Vector3.Distance(Location,target.position)>1f)//Am I going somewhere
+//		{
+//			movement = (target.position-Location).normalized;
+//			animSpeed = 1f;
+//			//agent.destination = target.position;
+//			mover.Move(movement);
+//		}else{//we don't have a target, or we've arrived
+//			animSpeed = 0f;
+//			if(IsTargetingEnemy())
+//			{
+//				Vector3 enemyVector = targetEnemy.Location-Location;
+//
+//				if(Vector3.Dot(enemyVector,movement)>0)//am I facing the enemy
+//				{
+//					if(canAttack)
+//					{
+//						Attack();
+//					}
+//				}else{
+//					//mover.Move(enemyVector);
+//				}
+//			}else 
 
-				if(Vector3.Dot(enemyVector,movement)>0)//am I facing the enemy
-				{
-					if(canAttack)
-					{
-						Attack();
-					}
-				}else{
-					//mover.Move(enemyVector);
-				}
-			}else if(allowedToFight)
-				{
-				enemies = FindTargets<UnitController>("Unit",Location,50f,mask, ot=> ot!=null && !ot.teamID.Equals(teamID));
-				targetEnemy = TargetNearest<UnitController>(Location,enemies);
-					//targetEnemy = TargetNearest(FindTargets("Unit"));
-				if(targetEnemy!=null)
-					target = targetEnemy.transform;
-				else
-					FollowLeader();//Can't find any targets, follow the Leader
-				}
+		BehaviourState.AssesSituation();
+		//Animate();
+	}
+	public void DecisionTree()
+	{
+		if(allowedToFight)
+		{
+			targetEnemy = NearestEnemy();
+			if(targetEnemy!=null)
+			{
+				chaseState = new State_Chase(this, targetEnemy);
+				BehaviourState = chaseState;
+				return;
 			}
-			
-		Animate();
+		}
+		if(Leader != null && Leader.isActive)
+		{
+			FollowLeader();//Can't find any targets, follow the Leader
+		}else BehaviourState = idleState;
+
 	}
 	void FollowLeader()
 	{
 		if(Leader != null && Leader.isActive)
 		{
 			isFollowing = true;
-			target = Leader.transform;
+			pursuitRange = 20f;
+			BehaviourState = followState;
 		}
 	}
+//	protected bool IsTargetingEnemy()
+//	{
+//		if(targetEnemy!=null && targetEnemy.isActive)
+//			return true;
+//		else return false;
+//	}
+	protected void TargetLost(int id)
+	{
+		if(targetEnemy!=null && id == targetEnemy.unitID)
+		{
+			BehaviourState = idleState;
+		}
+	}
+//	protected override void EnemiesAround()
+//	{
+//		enemies = FindTargets<UnitController>("Unit",Location, pursuitRange,mask, ot=> ot!=null && !ot.teamID.Equals(teamID));
+//		targetEnemy = TargetNearest<UnitController>(Location,enemies);
+//		if(targetEnemy!=null)
+//		{
+//			chaseState = new State_Chase(this, targetEnemy);
+//			BehaviourState = chaseState;
+//		}
+//	}
+
 
 	protected override void OnTriggerEnter2D(Collider2D bam)
 	{

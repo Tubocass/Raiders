@@ -25,45 +25,38 @@ public class State_Flee : IBehaviourState
 //	public void Animate();
 	public void AssesSituation()
 	{
-		UnitController targetEnemy = NpcController.NearbyEnemy();
-		if(alertRaised)
+		UnitController targetEnemy = NpcController.NearestEnemy();
+		safeHouse = NpcBase.TargetNearest<Safety>(NpcController.Location,safeSpaces).transform;
+		if(targetEnemy !=null)
 		{
-			if(targetEnemy !=null)
+			Vector3 enemyVector = targetEnemy.Location-NpcController.Location;
+			Vector3 homeVector = safeHouse.position-NpcController.Location;
+
+			//if(enemyVector.magnitude<=10)
+			if(enemyVector.magnitude<homeVector.magnitude)
 			{
-				Vector3 enemyVector = targetEnemy.Location-NpcController.Location;
-				if(enemyVector.magnitude<10)
-				{
-					movement = -enemyVector.normalized;
-					animSpeed = 1f;
-					NpcController.mover.Move(movement);
-					bMovingToSafety = false;
-					beingChased = true;
-					Debug.Log("Running Away");
-				}else beingChased = false;
-			}
-			if(!beingChased && !bMovingToSafety)
-			{
-				safeHouse = NpcBase.TargetNearest<Safety>(NpcController.Location,safeSpaces).transform;
-				RunToSafety();
-				Debug.Log("Going Home");
-			}
-			if(bMovingToSafety)
-			{
-				if(Vector3.Distance(NpcController.Location,safeHouse.position)>1f)
-				{
-					RunToSafety();
-					Debug.Log("Running Home");
-				}else{
-					animSpeed = 0f;
-					bMovingToSafety = false;
-					Debug.Log("At Home");
-				}
-			}
-		}else if(targetEnemy !=null)
-		{
-			Debug.Log("Alert!");
+				movement = -enemyVector.normalized;
+				animSpeed = 1f;
+				NpcController.mover.Move(movement);
+				bMovingToSafety = false;
+				beingChased = true;
+			}else beingChased = false;
 		}
-			
+		if(!beingChased && !bMovingToSafety)
+		{
+			//safeHouse = NpcBase.TargetNearest<Safety>(NpcController.Location,safeSpaces).transform;
+			RunToSafety();
+		}
+		if(bMovingToSafety)
+		{
+			if(Vector3.Distance(NpcController.Location,safeHouse.position)>=1f)
+			{
+				RunToSafety();
+			}else{
+				animSpeed = 0f;
+				bMovingToSafety = false;
+			}
+		}
 	}
 	void RunToSafety()
 	{

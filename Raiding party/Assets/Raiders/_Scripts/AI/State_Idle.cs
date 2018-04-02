@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class State_Idle : IBehaviourState
 {
-	UnitController NpcController;
-	public State_Idle(UnitController unit)
+	NpcBase NpcController;
+	public State_Idle(NpcBase unit)
 	{
 		NpcController = unit;
 	}
@@ -14,6 +14,11 @@ public class State_Idle : IBehaviourState
 	//	public void Animate();
 	public void AssesSituation()
 	{
-		
+		UnitController targetEnemy = NpcController.NearestEnemy();
+		if(targetEnemy != null)
+		{
+			Debug.Log("Alarm");
+			UnityEventManager.TriggerEvent("AlarmEvent");
+		}
 	}
 }

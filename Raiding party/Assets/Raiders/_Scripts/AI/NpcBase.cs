@@ -107,7 +107,7 @@ public class NpcBase : UnitController
 
 		return nearestTarget;
 	}
-	public UnitController NearbyEnemy()
+	public UnitController NearestEnemy()
 	{
 		List<UnitController> enemies = FindTargets<UnitController>("Unit", Location, 50f, mask, u=> !u.teamID.Equals(teamID));
 		UnitController targetEnemy = TargetNearest<UnitController>(Location ,enemies);
@@ -117,20 +117,7 @@ public class NpcBase : UnitController
 		}
 		else return null;
 	}
-	protected bool IsTargetingEnemy()
+	protected virtual void EnemiesAround()
 	{
-		if(targetEnemy!=null && targetEnemy.isActive)
-			return true;
-		else return false;
-	}
-	protected void TargetLost(int id)
-	{
-		if(targetEnemy!=null && id == targetEnemy.unitID)
-		{
-			//targets.Clear();
-			targetEnemy = null;
-			target = null;
-			animSpeed = 0f;
-		}
 	}
 }

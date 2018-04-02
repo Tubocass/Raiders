@@ -46,7 +46,6 @@ public class AIHealth : MonoBehaviour, IHealth
 	{
 		//UnityEventManager.TriggerEvent("Score",pointValue);
 		//SoundManager.instance.PlaySingle(death);
-		UnityEventManager.TriggerEvent("TargetUnavailable",GetComponent<UnitController>().unitID);
 		controller.Dead();
 		StopCoroutine(FlashDamage());
 		spriteRenderer.color = original;
