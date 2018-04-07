@@ -16,10 +16,14 @@ public class State_Chase : IBehaviourState
 	}
 	public void EnterState()
 	{
+		Debug.Log("Entering Chase");
 //		NpcController.enemies = NpcBase.FindTargets<UnitController>("Unit", NpcController.Location, 50f, mask, ot=> ot!=null && !ot.teamID.Equals(teamID));
 //		NpcBase targetEnemy = NpcBase.TargetNearest<UnitController>(NpcController.Location, NpcController.enemies);
 	}
-	public void ExitState(){}
+	public void ExitState()
+	{
+		Debug.Log("Exiting Chase");
+	}
 //	public void Animate();
 	public void AssesSituation()
 	{

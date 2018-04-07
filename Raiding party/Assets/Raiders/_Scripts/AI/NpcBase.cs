@@ -110,8 +110,8 @@ public class NpcBase : UnitController
 	}
 	public UnitController NearestEnemy()
 	{
-		List<UnitController> enemies = FindTargets<UnitController>("Unit", Location, pursuitRange, mask, u=> !u.teamID.Equals(teamID));
-		UnitController targetEnemy = TargetNearest<UnitController>(Location ,enemies);
+		enemies = FindTargets<UnitController>("Unit", Location, pursuitRange, mask, u=> u.isActive && !u.teamID.Equals(teamID));
+		targetEnemy = TargetNearest<UnitController>(Location ,enemies);
 		if(targetEnemy!=null)
 		{
 			return targetEnemy;

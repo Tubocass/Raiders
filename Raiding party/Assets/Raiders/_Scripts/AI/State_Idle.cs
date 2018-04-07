@@ -19,13 +19,9 @@ public class State_Idle : IBehaviourState
 	public void AssesSituation()
 	{
 		UnitController targetEnemy = NpcController.NearestEnemy();
-		if(targetEnemy != null)
+		if(targetEnemy != null && TargetSpotted!=null)
 		{
-			//Debug.Log("Alarm");
-			if(TargetSpotted!=null)
-			{
-				TargetSpotted();
-			}
+			TargetSpotted();
 			//UnityEventManager.TriggerEvent("AlarmEvent");
 		}
 	}

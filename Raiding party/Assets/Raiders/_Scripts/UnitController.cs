@@ -49,7 +49,7 @@ public class UnitController : MonoBehaviour
 	}
 	public virtual void Update()
 	{
-		transform.position = new Vector3(Location.x,Location.y,ZOrderer.NormalZ(Location.y-distToFeet));
+		transform.position = new Vector3(Location.x, Location.y, ZOrderer.NormalHeight(Location.y-distToFeet));
 	}
 	public void Animate()
 	{
@@ -125,6 +125,7 @@ public class UnitController : MonoBehaviour
 	public void Dead()
 	{
 		GameObject.Instantiate(treasureDrop,Location,Quaternion.identity);
+		isActive = false;
 		UnityEventManager.TriggerEvent("TargetUnavailable",unitID);
 	}
 	protected virtual void OnTriggerEnter2D(Collider2D bam)

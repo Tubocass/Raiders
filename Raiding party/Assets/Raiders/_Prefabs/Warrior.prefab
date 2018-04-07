@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitID: 0
   teamID: 0
+  mover: {fileID: 0}
   treasureDrop: {fileID: 1231188486983670, guid: 1ef491b1d9399b44a837c5fd2630fff3,
     type: 2}
   mask:
@@ -170,10 +171,11 @@ MonoBehaviour:
     maxDepth: 1
     minNormalAngle: 0
     maxNormalAngle: 0
-  weapon: {fileID: 0}
+  Leader: {fileID: 114021682824979030, guid: 14b1fc85c17a73548aeeaac55320414e, type: 2}
   allowedToFight: 1
   isFollowing: 0
-  Leader: {fileID: 114021682824979030, guid: 14b1fc85c17a73548aeeaac55320414e, type: 2}
+  enemies: []
+  weapon: {fileID: 0}
 --- !u!212 &212182189007744644
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -207,7 +209,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300138, guid: 95666895110383d4fa76208bf0f66ee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

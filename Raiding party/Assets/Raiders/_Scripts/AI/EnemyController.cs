@@ -16,13 +16,11 @@ public class EnemyController : NpcBase
 	{
 		base.OnEnable();
 		UnityEventManager.StartListeningInt("TargetUnavailable", TargetLost);
-		UnityEventManager.StartListening("AlarmEvent", DecisionTree);
 	}
 	protected override void OnDisable()
 	{
 		base.OnDisable();
 		UnityEventManager.StopListeningInt("TargetUnavailable", TargetLost);
-		UnityEventManager.StopListening("AlarmEvent", DecisionTree);
 	}
 	protected override void Start()
 	{
@@ -121,7 +119,7 @@ public class EnemyController : NpcBase
 	{
 		if(targetEnemy!=null && id == targetEnemy.unitID)
 		{
-			BehaviourState = idleState;
+			DecisionTree();
 		}
 	}
 

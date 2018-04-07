@@ -13,7 +13,7 @@ public class ZOrderer : MonoBehaviour
 		yMin = Bottom.position.y;
 	}
 
-	public static float NormalZ(float yPos)
+	public static float NormalHeight(float yPos)
 	{
 		float z = (yPos-yMin)/(yMax-yMin);
 		return z;

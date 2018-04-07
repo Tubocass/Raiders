@@ -1,22 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Raiders\_Scripts\AI\PeasantAI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Raiders\_Scripts\AIHealth.cs">
     <Files>
-      <File FileName="Assets\Raiders\_Scripts\AI\EnemyController.cs" Line="63" Column="25" />
-      <File FileName="Assets\Raiders\_Scripts\AI\PeasantAI.cs" Line="90" Column="17" />
-      <File FileName="Assets\Raiders\_Scripts\Weapon.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\UnitMover.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\AIHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\CapturePoint.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\Treasure.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\IPickup.cs" Line="1" Column="1" />
-      <File FileName="..\..\Sport Club\Super Sport Club\Assets\_Scripts\UI Scripts\UIGameHUD.cs" Line="1" Column="1" />
-      <File FileName="..\..\Sport Club\Super Sport Club\Assets\_Scripts\Grid_Setup.cs" Line="2" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\Safety.cs" Line="8" Column="1" />
-      <File FileName="Assets\Raiders\_Scripts\UnitController.cs" Line="144" Column="1" NotebookId="1" />
-      <File FileName="Assets\Raiders\_Scripts\Player\InputControls.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Raiders\_Scripts\AI\NpcBase.cs" Line="31" Column="73" NotebookId="1" />
+      <File FileName="Assets\Raiders\_Scripts\BreadthFirst.cs" Line="1" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\ZOrderer.cs" Line="4" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\AI\EnemyController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\AI\State_Chase.cs" Line="9" Column="2" />
+      <File FileName="Assets\Raiders\_Scripts\AI\State_Flee.cs" Line="1" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\AI\NpcBase.cs" Line="1" Column="1" />
+      <File FileName="Assets\Raiders\_Scripts\UnitController.cs" Line="11" Column="16" />
+      <File FileName="Assets\Raiders\_Scripts\AIHealth.cs" Line="26" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
