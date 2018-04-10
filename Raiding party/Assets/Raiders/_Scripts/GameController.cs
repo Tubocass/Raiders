@@ -1,19 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour 
 {
-	[SerializeField] Tilemap buildingLayer;
-	// Use this for initialization
-	void Start () 
+	public string Starlevel;
+	public void StartGame()
 	{
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		SceneManager.LoadScene(Starlevel);
 	}
 }
