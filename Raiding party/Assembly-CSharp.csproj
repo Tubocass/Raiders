@@ -59,7 +59,7 @@
      <Compile Include="Assets\Raiders\_Scripts\AI\Pathfinding\Heap.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\Pathfinding\Node.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\Pathfinding\Pathfinding.cs" />
-     <Compile Include="Assets\Raiders\_Scripts\AI\Pathfinding\Unit.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\AI\Pathfinding\PathingUnit.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\PeasantAI.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\State_Chase.cs" />
      <Compile Include="Assets\Raiders\_Scripts\AI\State_Flee.cs" />

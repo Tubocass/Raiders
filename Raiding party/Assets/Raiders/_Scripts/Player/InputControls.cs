@@ -40,7 +40,7 @@ public class InputControls : UnitController
 //
 		if(lastInputX != 0f || lastInputY != 0f)
 		{
-			movement.Set(lastInputX, lastInputY, 0);
+			movement.Set(lastInputX, 0, lastInputY);
 			if(!IsFacingWall(movement))
 			{
 				mover.Move(movement);

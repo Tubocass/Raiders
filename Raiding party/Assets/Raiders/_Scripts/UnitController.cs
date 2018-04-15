@@ -14,9 +14,8 @@ public class UnitController : MonoBehaviour
 	[SerializeField] protected LayerMask mask;
 	[SerializeField] protected float refractoryPeriod, distToFeet = 0.35f;
 	[SerializeField] protected int attackStrength;
-	[SerializeField] ContactFilter2D filter;
 
-	protected Collider2D myCollider;
+	protected Collider myCollider;
 	protected Vector3 movement = Vector3.zero;
 	protected Animator anim;
 	protected Weapon currentWeapon;
@@ -36,7 +35,7 @@ public class UnitController : MonoBehaviour
 	protected virtual void Start()
 	{
 
-		myCollider = GetComponent<Collider2D>();
+		myCollider = GetComponent<Collider>();
 		anim = GetComponent<Animator>();
 		mover = GetComponent<UnitMover>();
 		unitID = TotalCreated;
@@ -49,14 +48,14 @@ public class UnitController : MonoBehaviour
 	}
 	public virtual void Update()
 	{
-		transform.position = new Vector3(Location.x, Location.y, ZOrderer.NormalHeight(Location.y-distToFeet));
+		//transform.position = new Vector3(Location.x, ZOrderer.NormalHeight(Location.z-distToFeet), Location.z);
 	}
 	public void Animate()
 	{
 		if(anim.runtimeAnimatorController!=null)
 		{
 			anim.SetFloat("X",movement.x);
-			anim.SetFloat("Y",movement.y);
+			anim.SetFloat("Y",movement.z);
 			anim.SetFloat("Speed", animSpeed);
 		}
 	}
@@ -65,7 +64,7 @@ public class UnitController : MonoBehaviour
 		if(anim.runtimeAnimatorController!=null)
 		{
 			anim.SetFloat("X",dir.x);
-			anim.SetFloat("Y",dir.y);
+			anim.SetFloat("Y",dir.z);
 			anim.SetFloat("Speed", speed);
 		}
 	}
@@ -79,15 +78,16 @@ public class UnitController : MonoBehaviour
 			Vector3 dir = new Vector3(anim.GetFloat("X"), anim.GetFloat("Y"));
 			//Debug.DrawRay(transform.position, dir);
 			anim.SetTrigger("Swing");
-			RaycastHit2D[] results = new RaycastHit2D[10];
-			if(Physics2D.Raycast(transform.position, dir, filter, results, 1f)>0)
+			//RaycastHit[] results = new RaycastHit[10];
+			RaycastHit hit = new RaycastHit();
+			if(Physics.Raycast(transform.position,dir, out hit, mask))
 			{
 				UnitController uni;
-				for(int r=0; r<results.Length-1;r++)
-				{
-					if(results[r].collider!=null)
+//				for(int r=0; r<results.Length-1;r++)
+//				{
+				if(hit.collider!=null)
 					{
-						uni = results[r].collider.GetComponent<UnitController>();
+						uni = hit.collider.GetComponent<UnitController>();
 						if (uni!= null && uni.teamID!= teamID) 
 						{
 							var enemyHealth = uni.GetComponent<IHealth>();
@@ -96,7 +96,7 @@ public class UnitController : MonoBehaviour
 							//myWeapon.PrimaryAttack(Vector2.zero);
 						}
 					}
-				}
+//				}
 			}
 //			RaycastHit2D hit = Physics2D.Raycast (transform.position, dir, 1f, mask);
 //			if (hit.collider!= null && hit.collider.GetComponent<UnitController>().teamID!= teamID) 
@@ -116,11 +116,15 @@ public class UnitController : MonoBehaviour
 	}
 	public bool IsFacingWall(Vector3 dir)
 	{
-		RaycastHit2D hit = Physics2D.Raycast (transform.position+(dir*0.3f), dir, 0.2f, mask);
-		if (hit.collider!= null && hit.collider.CompareTag("Impass")) 
+		RaycastHit hit = new RaycastHit();
+		if(Physics.Raycast (transform.position+(dir*0.3f), dir, 0.2f, mask))
 		{
-			return true;
-		}else return false;
+			if (hit.collider!= null && hit.collider.CompareTag("Impass")) 
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	public void Dead()
 	{

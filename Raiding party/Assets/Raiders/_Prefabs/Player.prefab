@@ -54,11 +54,11 @@ GameObject:
   - component: {fileID: 212045640468332860}
   - component: {fileID: 114998233212930358}
   - component: {fileID: 114021682824979030}
-  - component: {fileID: 50989259042515804}
   - component: {fileID: 95073752380457434}
-  - component: {fileID: 61119506528027720}
   - component: {fileID: 114404762590611292}
   - component: {fileID: 114702808244196506}
+  - component: {fileID: 54050716307000502}
+  - component: {fileID: 65517419990409654}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -99,59 +99,41 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165650000110858}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.14, y: -0.22, z: -0.08}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -2.09, y: -0, z: 8.24}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children:
   - {fileID: 4205019143471184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50989259042515804
-Rigidbody2D:
-  serializedVersion: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!54 &54050716307000502
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165650000110858}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_UseGravity: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Constraints: 0
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!61 &61119506528027720
-BoxCollider2D:
+--- !u!65 &65517419990409654
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165650000110858}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0024134666, y: 0.040311575}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.018868, y: 3.018868}
-    newSize: {x: 3.018868, y: 3.018868}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7662157, y: 1.0701952}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.91804504, y: 1.1439471, z: 0.20000005}
+  m_Center: {x: -0.012694995, y: 0.052082676, z: 3.885677e-16}
 --- !u!95 &95073752380457434
 Animator:
   serializedVersion: 3
@@ -182,7 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitID: 0
   teamID: 0
-  TreasureDrop: {fileID: 0}
+  mover: {fileID: 0}
+  treasureDrop: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 768
@@ -296,7 +279,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300038, guid: 95666895110383d4fa76208bf0f66ee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

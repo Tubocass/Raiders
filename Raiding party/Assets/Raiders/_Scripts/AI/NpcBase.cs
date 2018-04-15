@@ -30,7 +30,8 @@ public class NpcBase : UnitController
 	public static List<T> FindTargets<T>(string tag, Vector3 position, float distance, LayerMask mask , Predicate<T> boo)
 	{
 		List<T> targets = new List<T>();
-		Collider2D[] cols = Physics2D.OverlapCircleAll(position, distance, mask);
+		//Collider2D[] cols = Physics2D.OverlapCircleAll(position, distance, mask);
+		Collider[] cols = Physics.OverlapSphere(position, distance, mask);
 		if(cols.Length>0)
 		{
 			for(int f = 0; f<cols.Length;f++)
@@ -108,6 +109,7 @@ public class NpcBase : UnitController
 
 		return nearestTarget;
 	}
+
 	public UnitController NearestEnemy()
 	{
 		enemies = FindTargets<UnitController>("Unit", Location, pursuitRange, mask, u=> u.isActive && !u.teamID.Equals(teamID));
@@ -118,6 +120,7 @@ public class NpcBase : UnitController
 		}
 		else return null;
 	}
+
 	protected virtual void EnemiesAround()
 	{
 	}

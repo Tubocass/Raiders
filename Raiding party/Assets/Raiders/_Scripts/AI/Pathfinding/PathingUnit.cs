@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Unit : MonoBehaviour {
+public class PathingUnit : MonoBehaviour {
 	
 	public Transform target;
 	public float speed = 20;

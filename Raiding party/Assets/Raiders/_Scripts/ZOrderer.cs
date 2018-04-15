@@ -9,8 +9,8 @@ public class ZOrderer : MonoBehaviour
 
 	void Start () 
 	{
-		yMax = Top.position.y;
-		yMin = Bottom.position.y;
+		yMax = Top.position.z;
+		yMin = Bottom.position.z;
 	}
 
 	public static float NormalHeight(float yPos)

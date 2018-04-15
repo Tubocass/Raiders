@@ -98,7 +98,6 @@ public class EnemyController : NpcBase
 			BehaviourState = idleState;
 			pursuitRange = 50f;
 		}
-
 	}
 	void FollowLeader()
 	{
