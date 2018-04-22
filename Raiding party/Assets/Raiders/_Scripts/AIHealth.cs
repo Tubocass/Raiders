@@ -18,6 +18,8 @@ public class AIHealth : MonoBehaviour, IHealth
 		controller = GetComponent<UnitController>();
 		health = startHealth;
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		if(spriteRenderer==null)
+			spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		original = spriteRenderer.color;
 	}
 

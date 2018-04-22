@@ -28,7 +28,7 @@ public class State_Follow : IBehaviourState
 				movement = (leader.Location-NpcController.Location).normalized;
 				NpcController.Animate(movement, 1f);
 				//agent.destination = target.position;
-				NpcController.mover.Move(movement);
+				NpcController.mover.MoveTo(leader.Location);
 			}else NpcController.Animate(movement, 0f);
 		}
 	}

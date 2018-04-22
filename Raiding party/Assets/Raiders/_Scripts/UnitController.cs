@@ -18,7 +18,6 @@ public class UnitController : MonoBehaviour
 	protected Collider myCollider;
 	protected Vector3 movement = Vector3.zero;
 	protected Animator anim;
-	protected Weapon currentWeapon;
 	protected float animSpeed = 1f;
 	protected bool canAttack = true;
 	protected bool bCarryingTreasure = false, canPickupTreasure = false;
@@ -37,6 +36,8 @@ public class UnitController : MonoBehaviour
 
 		myCollider = GetComponent<Collider>();
 		anim = GetComponent<Animator>();
+		if(anim==null)
+			anim = GetComponentInChildren<Animator>();
 		mover = GetComponent<UnitMover>();
 		unitID = TotalCreated;
 		TotalCreated+=1;
@@ -48,7 +49,7 @@ public class UnitController : MonoBehaviour
 	}
 	public virtual void Update()
 	{
-		//transform.position = new Vector3(Location.x, ZOrderer.NormalHeight(Location.z-distToFeet), Location.z);
+		transform.position = new Vector3(Location.x, ZOrderer.NormalHeight(Location.z-distToFeet), Location.z);
 	}
 	public void Animate()
 	{
@@ -75,12 +76,13 @@ public class UnitController : MonoBehaviour
 			canAttack = false;
 			StartCoroutine(AttackCooldown());
 			myCollider.enabled = false;
-			Vector3 dir = new Vector3(anim.GetFloat("X"), anim.GetFloat("Y"));
+			Vector3 dir = new Vector3(anim.GetFloat("X"), Location.y, anim.GetFloat("Y"));
 			//Debug.DrawRay(transform.position, dir);
 			anim.SetTrigger("Swing");
 			//RaycastHit[] results = new RaycastHit[10];
 			RaycastHit hit = new RaycastHit();
-			if(Physics.Raycast(transform.position,dir, out hit, mask))
+			Debug.DrawRay(Location,dir);
+			if(Physics.Raycast(transform.position, dir, out hit, 2, mask))
 			{
 				UnitController uni;
 //				for(int r=0; r<results.Length-1;r++)
@@ -132,17 +134,20 @@ public class UnitController : MonoBehaviour
 		isActive = false;
 		UnityEventManager.TriggerEvent("TargetUnavailable",unitID);
 	}
-	protected virtual void OnTriggerEnter2D(Collider2D bam)
+	protected virtual void OnTriggerEnter(Collider bam)
 	{
 		if(bam.CompareTag("Treasure")&& canPickupTreasure && !bCarryingTreasure)
 		{
 			Treasure pickup = bam.GetComponent<Treasure>();//treasure implements IPickup
-			pickup.Pickup(transform);
-			bCarryingTreasure = true;
-			carriedTreasure = pickup;
+			if(pickup.IsAvailable)
+			{
+				pickup.Pickup(transform);
+				bCarryingTreasure = true;
+				carriedTreasure = pickup;
+			}
 			//bam.gameObject.SetActive(false);
 		}
-		if(bam.CompareTag("Capture") && bCarryingTreasure)
+		if(bam.CompareTag("Capture") && carriedTreasure!=null)
 		{
 			UnityEventManager.TriggerEvent("TreasureEvent", carriedTreasure.Value);
 			bCarryingTreasure = false;

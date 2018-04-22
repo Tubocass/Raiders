@@ -122,8 +122,8 @@ public class EnemyController : NpcBase
 		}
 	}
 
-	protected override void OnTriggerEnter2D(Collider2D bam)
+	protected override void OnTriggerEnter(Collider bam)
 	{
-		base.OnTriggerEnter2D(bam);
+		base.OnTriggerEnter(bam);
 	}
 }

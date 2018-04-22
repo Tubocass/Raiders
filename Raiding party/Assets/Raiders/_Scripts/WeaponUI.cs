@@ -19,10 +19,10 @@ public class WeaponUI : MonoBehaviour
 	{
 		ammoCounter.text = "Ammo: "+ ammoAmount;
 	}
-	public void ChangeWeapon(Weapon.WeaponType type, int ammo)
-	{
-		currentWeaponIcon.sprite = weaponImages[(int)type];
-		ammoAmount = ammo;
-		ammoCounter.text = "Ammo: "+ ammoAmount;
-	}
+//	public void ChangeWeapon(Weapon.WeaponType type, int ammo)
+//	{
+//		currentWeaponIcon.sprite = weaponImages[(int)type];
+//		ammoAmount = ammo;
+//		ammoCounter.text = "Ammo: "+ ammoAmount;
+//	}
 }

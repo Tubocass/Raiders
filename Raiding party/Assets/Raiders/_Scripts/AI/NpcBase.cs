@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NpcBase : UnitController 
 {
@@ -10,8 +11,15 @@ public class NpcBase : UnitController
 	public List<UnitController> enemies = new List<UnitController>();
 	protected Transform target;
 	protected UnitController targetEnemy;
+	NavMeshAgent agent;
 	protected float pursuitRange = 50f;
 
+	protected override void OnEnable()
+	{
+		base.OnEnable();
+		agent = GetComponent<NavMeshAgent>();
+		agent.updateRotation = false;
+	}
 	public IBehaviourState BehaviourState 
 	{
 		get{ return behaviourState; }

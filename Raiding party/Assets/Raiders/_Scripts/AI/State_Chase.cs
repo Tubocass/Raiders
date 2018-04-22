@@ -34,7 +34,7 @@ public class State_Chase : IBehaviourState
 				movement = (targetEnemy.Location-NpcController.Location).normalized;
 				NpcController.Animate(movement, 1f);
 				//agent.destination = target.position;
-				NpcController.mover.Move(movement);
+				NpcController.mover.MoveTo(targetEnemy.Location);
 			}else 
 			{
 				Vector3 enemyVector = targetEnemy.Location-NpcController.Location;

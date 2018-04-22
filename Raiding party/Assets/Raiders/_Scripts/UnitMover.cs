@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class UnitMover : MonoBehaviour 
 {
 	public Vector3 targetDir = Vector3.down;
 	[SerializeField] float moveSpeed;
 	Transform tran;
+	NavMeshAgent agent;
 	Rigidbody2D rigid;
 	void Start () 
 	{
 		tran = transform;
 		rigid = GetComponent<Rigidbody2D>();
+		agent = GetComponent<NavMeshAgent>();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +31,13 @@ public class UnitMover : MonoBehaviour
 //		}
 //	}
 
+	public void MoveTo(Vector3 destination)
+	{
+		if(agent!=null)
+		{
+			agent.SetDestination(destination);
+		}
+	}
 	public void Move(Vector3 direction)
 	{
 //		direction = direction/direction.magnitude;

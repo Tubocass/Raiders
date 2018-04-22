@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InputControls : UnitController 
 {
 	PlayerHealth myHealth;
-	PlayerWeapon myWeapon;
 	float lastInputX, lastInputY;
 
 	protected override void OnEnable()
@@ -22,7 +21,6 @@ public class InputControls : UnitController
 		base.Start();
 		canPickupTreasure = true;
 		myHealth = GetComponent<PlayerHealth>();
-		myWeapon = GetComponent<PlayerWeapon>();
 	}
 
 	public override void Update()
@@ -57,8 +55,8 @@ public class InputControls : UnitController
 		}
 	}
 		
-	protected override void OnTriggerEnter2D(Collider2D bam)
+	protected override void OnTriggerEnter(Collider bam)
 	{
-		base.OnTriggerEnter2D(bam);
+		base.OnTriggerEnter(bam);
 	}
 }
