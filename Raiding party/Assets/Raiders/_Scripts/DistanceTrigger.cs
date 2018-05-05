@@ -9,7 +9,7 @@ public class DistanceTrigger : MonoBehaviour
 
 	void Start()
 	{
-		transform.position = new Vector3(Location.x, ZOrderer.NormalHeight(Location.z-distToFeet), Location.z);
+		//transform.position = new Vector3(Location.x, ZOrderer.NormalHeight(Location.z-distToFeet), Location.z);
 	}
 
 

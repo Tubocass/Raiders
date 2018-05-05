@@ -51,7 +51,7 @@ public class InputControls : UnitController
 		Animate();
 		if (Input.GetMouseButtonDown (0)) 
 		{
-			Attack();
+			Attack(movement);
 		}
 	}
 		

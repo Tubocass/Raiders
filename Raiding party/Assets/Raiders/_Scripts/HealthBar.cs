@@ -31,9 +31,6 @@ public class HealthBar : MonoBehaviour
 		{
 			
 		}
-//		hits-=amount;
-//		if(hits<0)
-//		hits=0;
 		anim.SetInteger("Hits",hits);
 		return amount;
 	}

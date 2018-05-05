@@ -29,11 +29,10 @@ public class State_Chase : IBehaviourState
 	{
 		if(targetEnemy!=null)
 		{
-			if(Vector3.Distance(NpcController.Location,targetEnemy.Location)>=1f)//Am I going somewhere
+			if(Vector3.Distance(NpcController.Location,targetEnemy.Location)>1.25f)//Am I going somewhere
 			{
 				movement = (targetEnemy.Location-NpcController.Location).normalized;
 				NpcController.Animate(movement, 1f);
-				//agent.destination = target.position;
 				NpcController.mover.MoveTo(targetEnemy.Location);
 			}else 
 			{
@@ -41,7 +40,7 @@ public class State_Chase : IBehaviourState
 				
 				if(Vector3.Dot(enemyVector,movement)>0)//am I facing the enemy
 				{
-					NpcController.Attack();
+					NpcController.Attack(enemyVector);
 				}
 				NpcController.Animate(movement, 0f);
 			}

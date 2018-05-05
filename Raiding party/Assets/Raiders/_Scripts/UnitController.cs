@@ -49,7 +49,7 @@ public class UnitController : MonoBehaviour
 	}
 	public virtual void Update()
 	{
-		transform.position = new Vector3(Location.x, ZOrderer.NormalHeight(Location.z-distToFeet), Location.z);
+		//transform.position = new Vector3(Location.x, ZOrderer.NormalHeight(Location.z-distToFeet), Location.z);
 	}
 	public void Animate()
 	{
@@ -69,20 +69,18 @@ public class UnitController : MonoBehaviour
 			anim.SetFloat("Speed", speed);
 		}
 	}
-	public virtual void Attack()
+	public virtual void Attack(Vector3 dir)
 	{
 		if(canAttack)
 		{
 			canAttack = false;
 			StartCoroutine(AttackCooldown());
 			myCollider.enabled = false;
-			Vector3 dir = new Vector3(anim.GetFloat("X"), Location.y, anim.GetFloat("Y"));
-			//Debug.DrawRay(transform.position, dir);
 			anim.SetTrigger("Swing");
 			//RaycastHit[] results = new RaycastHit[10];
 			RaycastHit hit = new RaycastHit();
-			Debug.DrawRay(Location,dir);
-			if(Physics.Raycast(transform.position, dir, out hit, 2, mask))
+			Debug.DrawRay(Location, dir);
+			if(Physics.Raycast(Location, dir, out hit, 2, mask))
 			{
 				UnitController uni;
 //				for(int r=0; r<results.Length-1;r++)

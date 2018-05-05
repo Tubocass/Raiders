@@ -121,7 +121,8 @@ public class NpcBase : UnitController
 	public UnitController NearestEnemy()
 	{
 		enemies = FindTargets<UnitController>("Unit", Location, pursuitRange, mask, u=> u.isActive && !u.teamID.Equals(teamID));
-		targetEnemy = TargetNearest<UnitController>(Location ,enemies);
+        enemies.AddRange(collection: FindTargets<UnitController>("Player", Location, pursuitRange, mask, u => u.isActive && !u.teamID.Equals(teamID)));
+		targetEnemy = TargetNearest(Location ,enemies);
 		if(targetEnemy!=null)
 		{
 			return targetEnemy;
