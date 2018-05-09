@@ -128,7 +128,9 @@ public class UnitController : MonoBehaviour
 	}
 	public void Dead()
 	{
+        if(treasureDrop!=null)
 		GameObject.Instantiate(treasureDrop,Location,Quaternion.identity);
+
 		isActive = false;
 		UnityEventManager.TriggerEvent("TargetUnavailable",unitID);
 	}

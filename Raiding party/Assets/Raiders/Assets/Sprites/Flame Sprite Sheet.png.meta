@@ -1,18 +1,14 @@
 fileFormatVersion: 2
-guid: 949fe5f125c85af47b570009130e1c4a
+guid: 20bf69191807db14b9548e9924831758
 TextureImporter:
   fileIDToRecycleName:
-    21300000: thatched-roof_0
-    21300002: thatched-roof_1
-    21300004: thatched-roof_2
-    21300006: thatched-roof_3
-    21300008: thatched-roof_4
-    21300010: thatched-roof_6
-    21300012: thatched-roof_7
-    21300014: thatched-roof_8
-    21300016: thatched-roof_9
-    21300018: thatched-roof_10
-    21300020: thatched-roof_11
+    21300000: Flame Sprite Sheet_0
+    21300002: Flame Sprite Sheet_1
+    21300004: Flame Sprite Sheet_2
+    21300006: Flame Sprite Sheet_3
+    21300008: Flame Sprite Sheet_4
+    21300010: Flame Sprite Sheet_5
+    21300012: Flame Sprite Sheet_6
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -54,7 +50,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,221 +89,141 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: thatched-roof_0
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 448
-        width: 41
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fa5bec796cb98a46a6e2343c7eedce3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thatched-roof_1
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 404
-        width: 120
-        height: 108
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f13ceb65061bbd240a47d8ec3c0379dc
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thatched-roof_2
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 448
-        width: 46
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b74a3116d5629e45885ef221e04d70f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thatched-roof_3
-      rect:
-        serializedVersion: 2
-        x: 312
-        y: 384
-        width: 117
-        height: 110
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b70a5960feea9594c8a5839cb3a60e5a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thatched-roof_4
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 320
-        width: 64
-        height: 163
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96b41ea482ae5b34a827b5cf94eeeaf1
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thatched-roof_6
-      rect:
-        serializedVersion: 2
-        x: 407
-        y: 276
-        width: 24
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af286de0dd174db498db2cbf3f017903
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thatched-roof_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 288
-        width: 13
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e43b0ee8803f21247b3ad5307b06d5a3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thatched-roof_8
-      rect:
-        serializedVersion: 2
-        x: 472
-        y: 289
-        width: 8
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 749c84aea96cfe4479464133cc785b5f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: thatched-roof_9
+      name: Flame Sprite Sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 352
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 0
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6882d5997ec938943b4ab05b7c8b9391
+      spriteID: a87e1389b7c44e143aa6405605a9f237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thatched-roof_10
+      name: Flame Sprite Sheet_1
       rect:
         serializedVersion: 2
-        x: 312
-        y: 160
-        width: 116
-        height: 110
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 24
+        y: 0
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6df9a1b79d8690e47a92f051fa3adb06
+      spriteID: 96ad360ca23d3fd4c80b45a3693757c4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thatched-roof_11
+      name: Flame Sprite Sheet_2
       rect:
         serializedVersion: 2
-        x: 448
-        y: 96
-        width: 64
-        height: 163
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 48
+        y: 0
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63e15edf8fae6654ca90f6d9fb67d474
+      spriteID: 49a4af7fe783d52489adc2ac6fbb2414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85706c1844758e6428926b1d0c731269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de19057d347f9044eb6b33536a1a7252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85e9a9d671ba02f439c744cedd6e6a73
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27836a5d2a0292f41ac7bb350872365e
       vertices: []
       indices: 
       edges: []
@@ -315,7 +231,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2d18953786fb40045ad0e7e3d97530e3
+    spriteID: f83a00c297283c243858b5c1615e0628
     vertices: []
     indices: 
     edges: []

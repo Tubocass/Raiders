@@ -162,8 +162,7 @@ MonoBehaviour:
   unitID: 0
   teamID: 0
   mover: {fileID: 114805027460484578}
-  treasureDrop: {fileID: 1231188486983670, guid: 1ef491b1d9399b44a837c5fd2630fff3,
-    type: 2}
+  treasureDrop: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 768
