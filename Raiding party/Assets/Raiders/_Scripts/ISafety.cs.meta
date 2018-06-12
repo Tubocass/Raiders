@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 3156d9029e35f82498904fc1b3f5aba2
+guid: 6c11c481ca22c02448fcf6a1b5c6eb38
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - flamePrefab: {fileID: 1900351945854484, guid: 881a459cac44791449bad93b10aefb18,
-      type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

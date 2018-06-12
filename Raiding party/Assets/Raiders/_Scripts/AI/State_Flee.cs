@@ -11,6 +11,8 @@ public class State_Flee : IBehaviourState
 	bool alertRaised, bMovingToSafety, beingChased;
 	Vector3 movement;
 	float animSpeed;
+
+    public event Alarm NoLongerFleeing;
 	public State_Flee(NpcBase unit, LayerMask m)
 	{
 		NpcController = unit;
@@ -18,22 +20,24 @@ public class State_Flee : IBehaviourState
 	}
 	public void EnterState()
 	{
-		alertRaised = true;
+        alertRaised = true;
 		safeSpaces = NpcBase.FindTargets<Safety>("Safety",NpcController.Location,100f, mask, s=> s.isOpen);
-	}
+        if(safeSpaces.Count>0)
+        safeHouse = NpcBase.TargetNearest<Safety>(NpcController.Location, safeSpaces).transform;
+    }
 	public void ExitState(){}
 //	public void Animate();
 	public void AssesSituation()
 	{
 		UnitController targetEnemy = NpcController.NearestEnemy();
-		safeHouse = NpcBase.TargetNearest<Safety>(NpcController.Location,safeSpaces).transform;
+		
 		if(targetEnemy !=null)
 		{
 			Vector3 enemyVector = targetEnemy.Location-NpcController.Location;
 			Vector3 homeVector = safeHouse.position-NpcController.Location;
 
 			//if(enemyVector.magnitude<=10)
-			if(enemyVector.magnitude<homeVector.magnitude)
+			if(enemyVector.magnitude<homeVector.magnitude/2)
 			{
 				movement = -enemyVector.normalized;
 				animSpeed = 1f;
@@ -55,12 +59,21 @@ public class State_Flee : IBehaviourState
 			}else{
 				animSpeed = 0f;
 				bMovingToSafety = false;
+                safeHouse.GetComponent<Safety>().EnterSafety(this.NpcController);
+                if (NoLongerFleeing != null)
+                {
+                    NoLongerFleeing();
+                }
+                NpcController.gameObject.SetActive(false);
+
 			}
 		}
 	}
 	void RunToSafety()
 	{
-		if(safeHouse !=null)
+        if (safeSpaces.Count > 0)
+            safeHouse = NpcBase.TargetNearest<Safety>(NpcController.Location, safeSpaces).transform;
+        if (safeHouse !=null)
 		{
 			movement = (safeHouse.position-NpcController.Location).normalized;
 			animSpeed = 1f;

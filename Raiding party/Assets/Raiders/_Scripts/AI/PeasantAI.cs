@@ -10,8 +10,8 @@ public class PeasantAI : NpcBase
 	/*	Behaviors:
 //	 * 		Mill about
 //	 * 			Move between a couple of waypoints, animatiting different activities
-//	 * 		Raise Alarm
-//	 * 			Move to Sound Alarm
+//	 * 		Raise Alarm // X-Nope
+//	 * 			Move to Sound Alarm // X-Nope
 //	 * 		Flee
 //	 * 			Run away from immediate threats
 //	 * 			seek shelter
@@ -30,6 +30,7 @@ public class PeasantAI : NpcBase
 	{
 		base.Start();
 		fleeState = new State_Flee(this, mask);
+        fleeState.NoLongerFleeing += Idle;
 		idleState = new State_Idle(this);
 		idleState.TargetSpotted += Flee;
 		BehaviourState = idleState;
@@ -39,6 +40,10 @@ public class PeasantAI : NpcBase
 	{
 		BehaviourState = fleeState;
 	}
+    void Idle()
+    {
+        BehaviourState = idleState;
+    }
 
 	public override void Update()
 	{

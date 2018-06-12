@@ -82,9 +82,12 @@
     <Compile Include="Assets\Raiders\_Scripts\DistanceTrigger.cs" />
     <Compile Include="Assets\Raiders\_Scripts\GameController.cs" />
     <Compile Include="Assets\Raiders\_Scripts\HealthBar.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\IFlamable.cs" />
     <Compile Include="Assets\Raiders\_Scripts\IHealth.cs" />
     <Compile Include="Assets\Raiders\_Scripts\IPickup.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\ISafety.cs" />
     <Compile Include="Assets\Raiders\_Scripts\ItemPickup.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\LevelSelect.cs" />
     <Compile Include="Assets\Raiders\_Scripts\ObjectPool.cs" />
     <Compile Include="Assets\Raiders\_Scripts\Player\InputControls.cs" />
     <Compile Include="Assets\Raiders\_Scripts\Player\PlayerHealth.cs" />

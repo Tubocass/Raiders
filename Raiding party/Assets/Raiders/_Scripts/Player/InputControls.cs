@@ -39,11 +39,16 @@ public class InputControls : UnitController
 		if(lastInputX != 0f || lastInputY != 0f)
 		{
 			movement.Set(lastInputX, 0, lastInputY);
-			if(!IsFacingWall(movement))
-			{
-				mover.Move(movement);
-			}
-			animSpeed = 1f;
+            if (!IsFacingWall(movement))
+            {
+                mover.Move(movement);
+            }
+            else {
+                Debug.Log("Wall");
+               
+            }
+            Debug.DrawRay(Location, movement);
+            animSpeed = 1f;
 		}else {
 			animSpeed = 0f;
 		}
@@ -55,8 +60,16 @@ public class InputControls : UnitController
 		}
 	}
 		
-	protected override void OnTriggerEnter(Collider bam)
+	protected void OnTriggerStay(Collider bam)
 	{
-		base.OnTriggerEnter(bam);
+        //base.OnTriggerEnter(bam);
+        if (bam.CompareTag("Burnable"))
+        {
+            if (Input.GetMouseButtonUp(1))
+            { 
+                Building fb = bam.GetComponent<Building>();
+                fb.Ignite();
+            }
+        }
 	}
 }

@@ -2,29 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour
+public class Building : MonoBehaviour, IFlamable
 {
     //Animator anim;
     public Transform[] BurnPoints;
     public GameObject flamePrefab;
+    private Safety safety;
     GameObject[] flames;
-    bool isOccupied=false, isOnFire=false;
+    bool isOnFire=false;
 
     private void Awake()
     {
         // anim = GetComponent<Animator>();
+        safety = transform.parent.GetComponentInChildren<Safety>();
         flames = new GameObject[BurnPoints.Length];
         for (int f = 0; f < BurnPoints.Length; f++)
         {
             flames[f] = Instantiate(flamePrefab, BurnPoints[f].position, Quaternion.identity, this.transform) as GameObject;
             flames[f].SetActive(false);
         }
-        Ignite();
+       // Ignite();
     }
-
     public void Ignite()
     {
         isOnFire = true;
+        safety.Evacuate();
         StartCoroutine(SpreadFlame());
        // anim.SetBool("OnFire", true);
     }
