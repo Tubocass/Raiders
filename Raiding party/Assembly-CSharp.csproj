@@ -59,6 +59,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\Behavior.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\BehaviorTree.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\IBehavior.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\Repeater.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\Test_Behavior.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\EnemyController.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\GuardAI.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\IBehaviourState.cs" />
@@ -73,6 +78,7 @@
     <Compile Include="Assets\Raiders\_Scripts\AI\State_Flee.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\State_Follow.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\State_Idle.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\AI\State_SeekShelter.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\WarriorAI.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AIHealth.cs" />
     <Compile Include="Assets\Raiders\_Scripts\Building.cs" />

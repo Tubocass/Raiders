@@ -5,8 +5,11 @@ using UnityEngine;
 public class PeasantAI : NpcBase
 {
 	public bool alertRaised, spotEnemy;
-	State_Flee fleeState;
-	State_Idle idleState;
+    //State_Alert alertState;
+    State_SeekShelter seekShelterState;//substate of Alert
+	State_Flee fleeState;//substate of Alert
+    //State_WorkRoutine routineState;//mill about in ignorance of impending doom
+	State_Idle idleState;//rewrite as a "blank" state
 	/*	Behaviors:
 //	 * 		Mill about
 //	 * 			Move between a couple of waypoints, animatiting different activities
@@ -19,12 +22,10 @@ public class PeasantAI : NpcBase
 	protected override void OnEnable()
 	{
 		base.OnEnable();
-		//UnityEventManager.StartListening("AlarmEvent", Flee);
 	}
 	protected override void OnDisable()
 	{
 		base.OnDisable();
-		//UnityEventManager.StopListening("AlarmEvent", Flee);
 	}
 	protected override void Start()
 	{
@@ -34,9 +35,31 @@ public class PeasantAI : NpcBase
 		idleState = new State_Idle(this);
 		idleState.TargetSpotted += Flee;
 		BehaviourState = idleState;
-		//target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
-	void Flee()
+    void Assess()
+    {
+        /*if (bAlert)
+         * {
+         *    if(targetEnemy !=null)  
+         *    {
+         *    Vector3 enemyVector = targetEnemy.Location-NpcController.Location;
+			  Vector3 homeVector = safeHouse.position-NpcController.Location;
+             
+              if(enemyVector.magnitude<homeVector.magnitude/2)
+			  {
+				movement = -enemyVector.normalized;
+				animSpeed = 1f;
+				NpcController.mover.Move(movement);
+				bMovingToSafety = false;
+				beingChased = true;
+			}
+         }
+            }
+         * 
+         * 
+         */
+    }
+    void Flee()
 	{
 		BehaviourState = fleeState;
 	}

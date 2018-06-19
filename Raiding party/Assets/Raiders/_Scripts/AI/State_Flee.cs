@@ -76,8 +76,8 @@ public class State_Flee : IBehaviourState
         if (safeHouse !=null)
 		{
 			movement = (safeHouse.position-NpcController.Location).normalized;
-			animSpeed = 1f;
-			NpcController.mover.MoveTo(safeHouse.position);
+            NpcController.Animate(movement, 1f);
+            NpcController.mover.MoveTo(safeHouse.position);
 			bMovingToSafety = true;
 		}
 	}
