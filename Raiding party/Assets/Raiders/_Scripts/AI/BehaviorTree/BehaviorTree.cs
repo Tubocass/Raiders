@@ -1,26 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BehaviorTree : MonoBehaviour
+namespace Tuba
 {
-    Behavior rootNode;
-
-    private void Start()
+    public class BehaviorTree : MonoBehaviour
     {
-        Test_Behavior test = new Test_Behavior();
-        Repeater repeat = new Repeater(test);
-        rootNode = repeat;
-    }
+        [SerializeField] Behavior rootNode;
+        [SerializeField] Sequence sequence;
 
-    public void Tick()
-    {
-        rootNode.Tick();
-    }
+        private void Start()
+        {
+            //Test_Behavior test = new Test_Behavior();
+            //Repeater repeat = new Repeater(test);
+            //Sequence sequence = new Sequence();
+            //sequence.AddChild(new Condition(1<0));
+            //sequence.AddChild(repeat);
+            //sequence.AddChild(new Repeater(test));
+            // rootNode = sequence;
+        }
 
-    private void FixedUpdate()
-    {
-        Tick();
-    }
+        public void Tick()
+        {
+            rootNode.Tick();
+        }
 
+        private void FixedUpdate()
+        {
+            Tick();
+        }
+
+    }
 }
