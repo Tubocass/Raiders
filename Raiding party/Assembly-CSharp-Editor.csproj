@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\2DGamekit\Utilities\Editor\BTDebug.cs" />
-    <Compile Include="Assets\BehaviorBricks\Editor\BehaviorExecutorEditor.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Tubocass/Projects/Raiders/Raiding party/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -314,12 +313,6 @@
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.0f2/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="BBEditor">
-      <HintPath>C:/Users/Tubocass/Projects/Raiders/Raiding party/Assets/BehaviorBricks/Editor/Bin/BBEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="BehaviorBricks">
-      <HintPath>C:/Users/Tubocass/Projects/Raiders/Raiding party/Assets/BehaviorBricks/Runtime/BehaviorBricks.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/IO Dev/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>

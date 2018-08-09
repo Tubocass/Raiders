@@ -61,61 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\2DGamekit\Scripts\AI\BT.cs" />
-    <Compile Include="Assets\2DGamekit\Scripts\AI\GunnerBeam.cs" />
-    <Compile Include="Assets\2DGamekit\Scripts\AI\GunnerBeamController.cs" />
-    <Compile Include="Assets\2DGamekit\Scripts\AI\GunnerProjectile.cs" />
-    <Compile Include="Assets\2DGamekit\Scripts\AI\InstantiateObject.cs" />
-    <Compile Include="Assets\2DGamekit\Scripts\AI\SendSignal.cs" />
-    <Compile Include="Assets\2DGamekit\Scripts\Character\MonoBehaviours\CharacterController2D.cs" />
-    <Compile Include="Assets\2DGamekit\Scripts\Core\CameraShaker.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Animation\PlayAnimation.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Audio\PlaySound.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SetBool.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SetFloat.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SetInt.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\SetVector3.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\toggleBool.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Basic\WaitForSeconds.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\AddComponent.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\ClosestGameObjectFromList.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\ClosestGameObjectWithTag.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Destroy.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindGameObjectByName.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\FindGameObjectByTag.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\GetComponent.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\Instantiate.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\LookAt.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\SendMessage.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\GameObject\SetActive.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Navigation\MoveToGameObject.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Navigation\MoveToPosition.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Navigation\MoveToRandomPosition.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Physics\ApplyForce.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Physics\FromMouseToWorld.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Physics\SetVelocity.cs" />
-    <Compile Include="Assets\BehaviorBricks\Actions\System\Vector3\GetRandomInArea.cs" />
-    <Compile Include="Assets\BehaviorBricks\BehaviorExecutor.cs" />
-    <Compile Include="Assets\BehaviorBricks\BrickAsset.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckBool.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckButton.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckKey.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Basic\CheckMouseButton.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\IsTargetClose.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\IsTargetCloseAndInSight.cs" />
-    <Compile Include="Assets\BehaviorBricks\Conditions\System\Perception\IsTargetInSight.cs" />
-    <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneBulletScript.cs" />
-    <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneDayNightCycle.cs" />
-    <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneIsNight.cs" />
-    <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneShoot.cs" />
-    <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneShootOnce.cs" />
-    <Compile Include="Assets\BehaviorBricks\Samples\ProgrammersQuickStartGuide\Done\DoneSleepForever.cs" />
-    <Compile Include="Assets\BehaviorBricks\Samples\QuickStartGuide\Done\Resources\MassSpawner.cs" />
-    <Compile Include="Assets\BehaviorBricks\Samples\QuickStartGuide\Done\Resources\Spawner.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\Behavior.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\BehaviorTree.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\IBehavior.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\AI\BehaviorTree\WarriorBT.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\AI\AIHealth.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\EnemyController.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\IBehaviourState.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\NpcBase.cs" />
@@ -130,38 +76,32 @@
     <Compile Include="Assets\Raiders\_Scripts\AI\State_Follow.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\State_Idle.cs" />
     <Compile Include="Assets\Raiders\_Scripts\AI\State_SeekShelter.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\AIHealth.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\Building.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\Bullet.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\CapturePoint.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\DistanceTrigger.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\GameController.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\IFlamable.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\IHealth.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\IPickup.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\ISafety.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\ItemPickup.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\LevelSelect.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\ObjectPool.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\Building.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\Bullet.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\CameraFollow.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\CapturePoint.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\DistanceTrigger.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\ItemPickup.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\LevelSelect.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\Safety.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\Treasure.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\UnitController.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Generic\UnitMover.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\GameController.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\ObjectPool.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\SoundManager.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\UnityEventManager.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\ZOrderer.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Interfaces\IFlamable.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Interfaces\IHealth.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Interfaces\IPickup.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\Interfaces\ISafety.cs" />
     <Compile Include="Assets\Raiders\_Scripts\Player\InputControls.cs" />
     <Compile Include="Assets\Raiders\_Scripts\Player\PlayerHealth.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\Safety.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\ScoreUI.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\SoundManager.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\Treasure.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\UnitController.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\UnitMover.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\UnityEventManager.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\WeaponUI.cs" />
-    <Compile Include="Assets\Raiders\_Scripts\ZOrderer.cs" />
-    <None Include="Assets\Raiders\Assets\Free Audio\Metal Loop Pack\readme Unity.txt" />
-    <None Include="Assets\Raiders\Assets\Free Audio\Door SFX Pack\Readme.txt" />
-    <None Include="Assets\BehaviorBricks\readme.txt" />
-    <None Include="Assets\Raiders\Assets\Free Audio\Rock Loops Pack\Unity Readme.txt" />
-    <None Include="Assets\Raiders\Assets\ActRPGsprites\readme.txt" />
-    <None Include="Assets\Raiders\Assets\Free Audio\Rock Stingers Pack\Unity Readme.txt" />
+    <Compile Include="Assets\Raiders\_Scripts\UI\HealthBar.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\UI\ScoreUI.cs" />
+    <Compile Include="Assets\Raiders\_Scripts\UI\WeaponUI.cs" />
+    <None Include="Assets\Raiders\Assets\Sprites\ActRPGsprites\readme.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Tubocass/Projects/Raiders/Raiding party/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -368,9 +308,6 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.0f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="BehaviorBricks">
-      <HintPath>C:/Users/Tubocass/Projects/Raiders/Raiding party/Assets/BehaviorBricks/Runtime/BehaviorBricks.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/IO Dev/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
