@@ -96,6 +96,7 @@ public class NpcBase : UnitController
 	public static T TargetNearest<T>(Vector3 position ,List<T> targets) where T:Component
 	{
 		float nearestDist, newDist;
+        int targetIndex = 0;
 		T nearestTarget = null;
 
 		if(targets.Count>0)
@@ -109,10 +110,11 @@ public class NpcBase : UnitController
 					if(newDist <= nearestDist)
 					{
 						nearestDist = newDist;
-						nearestTarget = targets[f].GetComponent<T>();
+                        targetIndex = f;
 					}
 				}
 			}
+            nearestTarget = targets[targetIndex].GetComponent<T>();
 		}
 
 		return nearestTarget;
@@ -122,7 +124,7 @@ public class NpcBase : UnitController
 	{
 		enemies = FindTargets<UnitController>("Unit", Location, pursuitRange, mask, u=> u.isActive && !u.teamID.Equals(teamID));
         enemies.AddRange(collection: FindTargets<UnitController>("Player", Location, pursuitRange, mask, u => u.isActive && !u.teamID.Equals(teamID)));
-		targetEnemy = TargetNearest(Location ,enemies);
+		targetEnemy = TargetNearest(Location, enemies);
 		if(targetEnemy!=null)
 		{
 			return targetEnemy;
