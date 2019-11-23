@@ -81,6 +81,7 @@
      <Compile Include="Assets\Raiders\_Scripts\Generic\Treasure.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Generic\UnitController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Generic\UnitMover.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\BuildingSelect.cs" />
      <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\GameController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\ObjectPool.cs" />
      <Compile Include="Assets\Raiders\_Scripts\High_Level_MGMT\SoundManager.cs" />
@@ -98,6 +99,7 @@
      <Compile Include="Assets\Raiders\_Scripts\Resource Gathering\ProductionSource.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Resource Gathering\ResourceManager.cs" />
      <Compile Include="Assets\Raiders\_Scripts\TownInfo.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\UI\BuildingOutline.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UI\FillBar.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UI\GUIController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UI\HealthBar.cs" />
