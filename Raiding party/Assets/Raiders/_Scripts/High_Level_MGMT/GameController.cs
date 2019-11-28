@@ -6,5 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     ResourceManager resources;
+    string JSONSaveData;
 
+    public bool SaveGame()
+    {
+        return true;
+    }
 }
