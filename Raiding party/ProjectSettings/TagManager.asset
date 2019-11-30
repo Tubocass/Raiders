@@ -12,6 +12,7 @@ TagManager:
   - Capture
   - Safety
   - Burnable
+  - Town
   layers:
   - Default
   - TransparentFX

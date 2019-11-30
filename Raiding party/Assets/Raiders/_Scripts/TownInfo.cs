@@ -5,17 +5,38 @@ using UnityEngine;
 public class TownInfo : MonoBehaviour
 {
     public string townName;
-    public string townWealth;
-    public string townLevel;
-    public Vector3 location;
+    public float foodSupply, woodSupply, treasureSupply;
+    public int population, troopCount, townLevel;
+    public int foodslots, materialSlots, craftSlots;
+    List<ProductionSource> sources = new List<ProductionSource>();
 
-    private void Start()
+    public string getTownInfo()
     {
-        location = transform.position;
+        return string.Format("townName: {0}, food: {1}", this.townName, this.foodSupply);
     }
-    public string DisplayInfo()
+    public List<ProductionSource> getProductionSources()
     {
-
-        return string.Format("Village of: {0} \n Wealth: {1} \n Level: {2}", townName, townWealth, townLevel);
+        return sources;
     }
+    
+    private void Start() {
+        sources.Add(new ProductionSource(ProductionSource.Resource.Food, 1));
+    }
+    // public void changeFoodSupply(float amount)
+    // {
+    //     foodSupply += amount;
+    // }
+    // public void changeWoodSupply(float amount)
+    // {
+    //     woodSupply += amount;
+    // }
+    // public void changeTreasureSupply(float amount)
+    // {
+    //     treasureSupply += amount;
+    // }
+    // public void changeTroopCount(int amount)
+    // {
+    //     troopCount += amount;
+    // }
+    
 }
