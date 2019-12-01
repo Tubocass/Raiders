@@ -16,7 +16,7 @@ public class GUIController : MonoBehaviour
     [SerializeField] Sprite pastureSprite;
     [SerializeField] Sprite mineSprite;
     [SerializeField] Sprite weaponSmithSprite;
-    List<ProductionSource> productions;
+    List<Image> buildingImages = new List<Image>();
 
 
     // Start is called before the first frame update
@@ -45,31 +45,37 @@ public class GUIController : MonoBehaviour
 
         }
     }
-   void DisplayBuildings(ProductionSource[] buildings)
-   {
-       Sprite imageSprite = null;
-      
-       for(int i = 0; i<buildings.Length; i++)
-       {
-           switch(buildings[i].resourceType)
-           {
-               case ProductionSource.Resource.Food:
-               {
-                   if(buildings[i].isActive)
-                   {
-                       imageSprite = pastureSprite;
-                   }else
-                   {
-                       imageSprite = farmSprite;
-                   }
-                   break;
-               }
-           }
-            Image building = Instantiate(imageFab, Vector3.zero, imageFab.transform.rotation);
+    void ClearBuildings()
+    {
+        buildingImages.ForEach((b) =>{Destroy(b.gameObject);});
+        buildingImages.Clear();
+
+    }
+    void DisplayBuildings(ProductionSource[] buildings)
+    {
+        ClearBuildings();
+        for(int i = 0; i<buildings.Length; i++)
+        {
+            Sprite imageSprite = null;
+
+            switch(buildings[i].resourceType)
+            {
+                case ProductionSource.Resource.Food:
+                {
+                    if(buildings[i].isActive)
+                    {
+                        imageSprite = pastureSprite;
+                    }
+                    break;
+                }
+            }
+            Image building = Instantiate(imageFab, Vector3.zero,                imageFab.transform.rotation);
             building.sprite = imageSprite;
             building.transform.SetParent(this.slotPanel.transform);
-
-       }
+            buildingImages.Add(building);
+        }
+        RectTransform t = slotPanel.transform as RectTransform;
+        t.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 55 * buildingImages.Count);
     //        switch(productions[i].resourceType)
     //        {
     //            case ProductionSource.Resource.Food:
