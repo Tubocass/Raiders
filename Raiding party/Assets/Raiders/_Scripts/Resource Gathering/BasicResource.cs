@@ -15,7 +15,5 @@ public class Wood : BasicResource
 
 public class Wealth : BasicResource
 {
-    public Wealth()
-    {
-    }
+ 
 }

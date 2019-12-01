@@ -70,6 +70,7 @@
      <Compile Include="Assets\Raiders\_Scripts\AI\State_SeekShelter.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Army\Army.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Army\ArmyManagement.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\Controllers\TownController.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Generic\Building.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Generic\Bullet.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Generic\CameraFollow.cs" />
@@ -91,13 +92,13 @@
      <Compile Include="Assets\Raiders\_Scripts\Interfaces\IHealth.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Interfaces\IPickup.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Interfaces\ISafety.cs" />
+     <Compile Include="Assets\Raiders\_Scripts\Models\TownInfo.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Player\InputControls.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Raids\Raid.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Resource Gathering\BasicResource.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Resource Gathering\ProductionSource.cs" />
      <Compile Include="Assets\Raiders\_Scripts\Resource Gathering\ResourceManager.cs" />
-     <Compile Include="Assets\Raiders\_Scripts\TownInfo.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UI\BuildingOutline.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UI\FillBar.cs" />
      <Compile Include="Assets\Raiders\_Scripts\UI\GUIController.cs" />
