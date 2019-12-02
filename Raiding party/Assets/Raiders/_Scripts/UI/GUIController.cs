@@ -35,7 +35,6 @@ public class GUIController : MonoBehaviour
                     // string[] parts = currentTown.getTownInfo().Split(',');
                 }
             }
-
         }
     }
     void ClearBuildings()
