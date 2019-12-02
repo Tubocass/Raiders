@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
 
 public class GUIController : MonoBehaviour
 {
     [SerializeField] LayerMask mask;
     TownController currentTown;
+    List<Image> buildingImages = new List<Image>();
     [SerializeField] Text infoText;
     [SerializeField] Image imageFab;
     [SerializeField] GameObject slotPanel; 
@@ -16,14 +16,7 @@ public class GUIController : MonoBehaviour
     [SerializeField] Sprite pastureSprite;
     [SerializeField] Sprite mineSprite;
     [SerializeField] Sprite weaponSmithSprite;
-    List<Image> buildingImages = new List<Image>();
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-   
-    }
+    [SerializeField] Sprite plusSprite;
 
     // Update is called once per frame
     void Update()
@@ -65,6 +58,8 @@ public class GUIController : MonoBehaviour
                     if(buildings[i].isActive)
                     {
                         imageSprite = pastureSprite;
+                    }else{
+                        imageSprite = plusSprite;
                     }
                     break;
                 }
@@ -76,25 +71,5 @@ public class GUIController : MonoBehaviour
         }
         RectTransform t = slotPanel.transform as RectTransform;
         t.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 55 * buildingImages.Count);
-    //        switch(productions[i].resourceType)
-    //        {
-    //            case ProductionSource.Resource.Food:
-    //            {
-    //                imageSprite = farmSprite;
-    //                break;
-    //            }
-    //             case ProductionSource.Resource.Material:
-    //            {
-    //                imageSprite = mineSprite;
-    //                break;
-    //            }
-    //             case ProductionSource.Resource.Craft:
-    //            {
-    //                imageSprite = weaponSmithSprite;
-    //                break;
-    //            }
-    //        }
-    //    }
-      
    }
 }
