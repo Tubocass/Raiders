@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Land
+  - Buildings
+  - Units
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Land
+    uniqueID: 1499928627
+    locked: 0
+  - name: Objects
+    uniqueID: 3403631313
     locked: 0
