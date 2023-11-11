@@ -2,42 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputControl : MonoBehaviour
+namespace RaidingParty
 {
-    [SerializeField] Camera mainCamera;
-    [SerializeField] GameObject selection;
-    [SerializeField] Character selectedUnit;
-    
-
-    void Update()
+    public class InputControl : MonoBehaviour
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 point = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(point, mainCamera.transform.forward);
-            if(hit.collider != null)
-            {
-                selection = hit.collider.gameObject;
-                if (selection.GetComponent<Character>() != null)
-                {
-                    selectedUnit = selection.GetComponent<Character>();
-                }
-            }
-        }
+        [SerializeField] Camera mainCamera;
+        [SerializeField] GameObject selection;
+        [SerializeField] Character selectedUnit;
+        [SerializeField] float speed = 20;
+        Vector3 movement;
+        Vector2 point;
+        RaycastHit2D hit;
 
-        if (selectedUnit != null && Input.GetMouseButtonDown(1))
+        void Update()
         {
-            Vector2 point = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(point, mainCamera.transform.forward);
-            if (hit.collider != null)
+            if (Input.GetMouseButtonDown(0))
             {
-                Building building = hit.collider.GetComponent<Building>();
-                if (building != null)
+                point = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                hit = Physics2D.Raycast(point, mainCamera.transform.forward);
+                if (hit.collider != null)
                 {
-                    building.AssignWorker(selectedUnit);
+                    selection = hit.collider.gameObject;
+                    if (selection.GetComponent<Character>() != null)
+                    {
+                        selectedUnit = selection.GetComponent<Character>();
+                    }
                 }
             }
-            selectedUnit.MoveTo(point);
+
+            if (Input.GetMouseButton(0))
+            {
+
+            }
+            if (selectedUnit != null && Input.GetMouseButtonDown(1))
+            {
+                point = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                hit = Physics2D.Raycast(point, mainCamera.transform.forward);
+                if (hit.collider != null)
+                {
+                    BuildingInterface building = hit.collider.GetComponent<BuildingInterface>();
+                    if (building != null)
+                    {
+                        building.AssignWorker(selectedUnit);
+                    }
+                }
+                else
+                {
+                    selectedUnit.MoveTo(point);
+                }
+            }
+
+            float lastInputX = Input.GetAxis("Horizontal");
+            float lastInputY = Input.GetAxis("Vertical");
+            if (lastInputX != 0f || lastInputY != 0f)
+            {
+                movement = new Vector3(lastInputX, lastInputY, 0) + mainCamera.transform.position;
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, movement, speed * Time.deltaTime);
+            }
         }
     }
 }

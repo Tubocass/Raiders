@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PolyNav;
-using UnityEditor.Tilemaps;
 
-public class Character : MonoBehaviour
+namespace RaidingParty
 {
-    PolyNavAgent agent;
-    public Transform target;
-    void Start()
+    public class Character : MonoBehaviour
     {
-        agent = GetComponent<PolyNavAgent>();
-        // agent.SetDestination(target.position);
-        
-    }
+        PolyNavAgent agent;
+        void Start()
+        {
+            agent = GetComponent<PolyNavAgent>();
 
-    void Update()
-    {
-        
-    }
-    public void MoveTo(Vector3 target)
-    {
-        agent.SetDestination(target);
+        }
+
+        void Update()
+        {
+
+        }
+
+        public void MoveTo(Vector3 target)
+        {
+            agent.SetDestination(target);
+        }
     }
 }
