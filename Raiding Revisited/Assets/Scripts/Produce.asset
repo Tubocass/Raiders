@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa963c1aed9144840b6308563b94b4a1, type: 3}
-  m_Name: Planks
+  m_Script: {fileID: 11500000, guid: 5602b73840e96cf48bbdaaeb7df9fdc1, type: 3}
+  m_Name: Produce
   m_EditorClassIdentifier: 
-  stackLimit: 100

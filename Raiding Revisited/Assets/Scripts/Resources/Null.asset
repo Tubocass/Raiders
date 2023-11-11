@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa963c1aed9144840b6308563b94b4a1, type: 3}
-  m_Name: Planks
+  m_Name: Null
   m_EditorClassIdentifier: 
-  stackLimit: 100
+  stackLimit: 0

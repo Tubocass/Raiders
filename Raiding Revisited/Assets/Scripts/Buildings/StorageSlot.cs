@@ -12,24 +12,47 @@ namespace RaidingParty.Buildings
          *  int quantity
         */
         public ItemStack stack;
-        public ItemType itemType;
 
-       public void Fill(ItemStack stack)
+        public void Fill(ItemStack fillStack)
         {
-            this.stack = stack;
-            this.itemType = stack.Type;
+            if(stack.Type != null)
+            {
+                if (stack.Type == fillStack.Type)
+                {
+                    stack.Combine(fillStack);
+                }
+            }else
+            {
+                stack = fillStack;
+            }
+            Debug.Log("total: " + stack.Quantity);
         }
 
-        public ItemStack EmptySlot()
+        public ItemStack Pull(int amount)
         {
-            ItemStack empty = stack;
-            stack = null;
-            return empty;
+            ItemStack pullStack = stack.Split(amount);
+            
+            if(stack.Quantity < 1)
+            {
+                stack = null;
+            }
+
+            return pullStack;
         }
 
         public bool IsEmpty()
         {
-            return stack == null;
+            return stack.Type == null;
+        }
+
+        public bool IsFull()
+        {
+            return !IsEmpty() && stack.Quantity == stack.Type.stackLimit;
+        }
+
+        public ItemType GetItemType()
+        {
+            return stack != null ? stack.Type : null;
         }
     }
 }

@@ -3,10 +3,11 @@ using UnityEngine;
 
 namespace RaidingParty.Resources
 {
-    public class ItemStack : MonoBehaviour
+    [System.Serializable]
+    public class ItemStack
     {
-        private ItemType itemType;
-        private int quantity;
+        [SerializeField] private ItemType itemType;
+        [SerializeField] private int quantity;
         public ItemStack(ItemType type, int quantity)
         {
             this.itemType = type;
@@ -18,9 +19,14 @@ namespace RaidingParty.Resources
 
         public void Combine(ItemStack other)
         {
-            if(quantity + other.Quantity < itemType.stackLimit)
+            if(quantity + other.Quantity <= itemType.stackLimit)
             {
                 quantity += other.Quantity;
+            }else
+            {
+                int diff = itemType.stackLimit - quantity;
+                quantity += diff;
+                other.quantity -= diff;
             }
         }
 
