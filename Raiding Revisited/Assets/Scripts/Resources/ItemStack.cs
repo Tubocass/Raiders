@@ -17,17 +17,19 @@ namespace RaidingParty.Resources
         public ItemType Type { get { return itemType; } }
         public int Quantity { get { return quantity; } }
 
-        public void Combine(ItemStack other)
+        public ItemStack Combine(ItemStack other)
         {
             if(quantity + other.Quantity <= itemType.stackLimit)
             {
                 quantity += other.Quantity;
+                other.quantity = 0;
             }else
             {
                 int diff = itemType.stackLimit - quantity;
                 quantity += diff;
                 other.quantity -= diff;
             }
+            return other;
         }
 
         public ItemStack Split(int amount)
@@ -45,6 +47,11 @@ namespace RaidingParty.Resources
             }
 
             return split;
+        }
+
+        public bool IsFull()
+        {
+            return Type != null && quantity == Type.stackLimit;
         }
     }
 }

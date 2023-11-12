@@ -38,10 +38,15 @@ namespace RaidingParty
 
         [SerializeField] ResourceBuilding resource;
         [SerializeField] StorageBuilding storage;
+        [SerializeField] ProductionBuilding production;
 
         public void TestStorage()
         {
             storage.Store(resource.Produce());
+        }
+
+        public void TestProduction()
+        {
         }
 
     }

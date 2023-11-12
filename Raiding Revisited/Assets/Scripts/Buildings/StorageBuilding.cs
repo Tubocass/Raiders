@@ -25,8 +25,10 @@ namespace RaidingParty.Buildings
                 // check for combine first
                 if (!slots[s].IsFull() && slots[s].GetItemType() == item.Type)
                 {
-                    slots[s].Fill(item);
-                    return true;
+                    if(slots[s].Fill(item).Quantity == 0)
+                    {
+                        return true;
+                    }
                 }
                 else if (slots[s].IsEmpty())
                 {

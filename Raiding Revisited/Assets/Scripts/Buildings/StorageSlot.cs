@@ -6,26 +6,28 @@ namespace RaidingParty.Buildings
 {
     public class StorageSlot : MonoBehaviour
     {
-        /*
-         *  holds stack of items
-         *  ItemType storedItem
-         *  int quantity
-        */
-        public ItemStack stack;
+        [SerializeReference] public ItemStack stack;
 
-        public void Fill(ItemStack fillStack)
+        private void OnDestroy()
         {
-            if(stack.Type != null)
+            //stack = null;
+        }
+        public ItemStack Fill(ItemStack fillStack)
+        {
+            ItemStack leftover = null;
+            if(stack != null)
             {
-                if (stack.Type == fillStack.Type)
+                if(stack.Type == fillStack.Type && stack.Quantity < stack.Type.stackLimit)
                 {
-                    stack.Combine(fillStack);
+                    leftover = stack.Combine(fillStack);
                 }
-            }else
+            }
+            else
             {
                 stack = fillStack;
             }
             Debug.Log("total: " + stack.Quantity);
+            return leftover;
         }
 
         public ItemStack Pull(int amount)
@@ -42,7 +44,7 @@ namespace RaidingParty.Buildings
 
         public bool IsEmpty()
         {
-            return stack.Type == null;
+            return stack == null;
         }
 
         public bool IsFull()
