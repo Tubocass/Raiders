@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using RaidingParty.Buildings;
 using RaidingParty.Resources;
@@ -8,46 +6,27 @@ namespace RaidingParty
 {
     public class GameController : MonoBehaviour
     {
-        //public GridGenerator gridGenerator;
-        //Cell[,] grid;
-        //CellDisplay[,] cellDisplays;
-        //public Sprite testSprite;
-        //public Dictionary<Cell.LandType, Sprite> spriteDictionary = new Dictionary<Cell.LandType, Sprite>();
-        //public void Generate()
-        //{
-        //    grid = gridGenerator.GenerateGrid();
-        //    cellDisplays = new CellDisplay[gridGenerator.width, gridGenerator.length];
-        //    for (int w = 0; w < grid.GetLength(0); w++)
-        //    {
-        //        for (int l = 0; l < grid.GetLength(1); l++)
-        //        {
-        //            cellDisplays[w, l] = new CellDisplay();
-        //        }
-        //    }
-        //}
-        //public void UpdateDisplay()
-        //{
-        //    for (int w = 0; w < grid.GetLength(0); w++)
-        //    {
-        //        for (int l = 0; l < grid.GetLength(1); l++)
-        //        {
-        //            cellDisplays[w, l] = new CellDisplay();
-        //        }
-        //    }
-        //}
+        public int width, height;
+        [SerializeField] SpriteRenderer protoCell;
 
-        [SerializeField] ResourceBuilding resource;
-        [SerializeField] StorageBuilding storage;
-        [SerializeField] ProductionBuilding production;
+        GridGenerator gridGenerator;
+        SpriteRenderer[,] cellDisplays;
 
-        public void TestStorage()
+        private void Start()
         {
-            storage.Store(resource.Produce());
-        }
+            gridGenerator = new GridGenerator(width, height);
+            cellDisplays = new SpriteRenderer[width, height];
+            gridGenerator.GenerateGrid();
 
-        public void TestProduction()
-        {
+            for(int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    cellDisplays[x,y] = Instantiate(protoCell, new Vector3(x, y), Quaternion.identity);
+                    
+                }
+            }
         }
 
     }
-}
+} 

@@ -62,35 +62,39 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\ChangeSpeedOnDepth.cs" />
+    <Compile Include="Assets\Scripts\Village\Grid\GridGenerator.cs" />
     <Compile Include="Assets\Scripts\GameEventListener.cs" />
-    <Compile Include="Assets\Scripts\Buildings\ResourceBuilding.cs" />
+    <Compile Include="Assets\Scripts\Village\Buildings\ResourceBuilding.cs" />
+    <Compile Include="Assets\Scripts\Village\Grid\CellDisplay.cs" />
+    <Compile Include="Assets\Scripts\Village\Resources\ItemType.cs" />
+    <Compile Include="Assets\Scripts\Village\Buildings\ProductionBuilding.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
-    <Compile Include="Assets\Scripts\Buildings\StorageBuilding.cs" />
-    <Compile Include="Assets\Scripts\Resources\ItemStack.cs" />
     <Compile Include="Assets\Scripts\InputControl.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\CustomMapProvider.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\ClickToMove.cs" />
-    <Compile Include="Assets\Scripts\CellDisplay.cs" />
-    <Compile Include="Assets\Scripts\Buildings\StorageSlot.cs" />
-    <Compile Include="Assets\Scripts\RaidPanel.cs" />
     <Compile Include="Assets\Scripts\GameEventObject.cs" />
+    <Compile Include="Assets\Scripts\UI\Inspector.cs" />
+    <Compile Include="Assets\Scripts\Village\Buildings\StorageSlot.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\PatrolWaypoints.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\PolyNavMap.cs" />
-    <Compile Include="Assets\Scripts\GridGenerator.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\FollowTarget.cs" />
-    <Compile Include="Assets\Scripts\Buildings\BuildingInterface.cs" />
+    <Compile Include="Assets\Scripts\Village\Grid\CellData.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\PolyNavAgent.cs" />
+    <Compile Include="Assets\Scripts\UI\RaidPanel.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\DirectionChecker.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\PatrolRandomWaypoints.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\AStar.cs" />
-    <Compile Include="Assets\Scripts\Buildings\ProductionBuilding.cs" />
+    <Compile Include="Assets\Scripts\Village\Grid\CellController.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\PolyNavObstacle.cs" />
-    <Compile Include="Assets\Scripts\Resources\ItemType.cs" />
+    <Compile Include="Assets\Scripts\Village\Resources\ItemStack.cs" />
+    <Compile Include="Assets\Scripts\Village\Buildings\StorageBuilding.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\Heap.cs" />
+    <Compile Include="Assets\Scripts\Village\Buildings\BuildingInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\UI Toolkit\Building Interface.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\ParadoxNotion\PolyNav2D\README.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
@@ -103,6 +107,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\UI Toolkit\building.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
