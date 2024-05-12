@@ -1,3 +1,14 @@
-Label {
-    font-size: 18px;
+.datumHolder {
+    max-width: 100px;
+    max-height: 100%;
+    flex-grow: 1;
+    background-color: rgba(166, 166, 166, 0.84);
+    border-left-color: rgba(0, 0, 0, 0.76);
+    border-right-color: rgba(0, 0, 0, 0.76);
+    border-top-color: rgba(0, 0, 0, 0.76);
+    border-bottom-color: rgba(0, 0, 0, 0.76);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
 }

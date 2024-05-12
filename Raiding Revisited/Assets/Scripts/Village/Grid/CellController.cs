@@ -1,25 +1,49 @@
 ﻿using UnityEngine;
 
 namespace RaidingParty
-{
+{ 
     public class CellController : MonoBehaviour
     {
-        CellData cellData;
+        [SerializeField] SpriteMap cellDisplay;
         SpriteRenderer spriteRenderer;
+
+        LandData landData;
+        BuildingData buildingData;
+
+        private void OnEnable()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        public void SetData(LandData data)
+        {
+            landData = data;
+            spriteRenderer.sprite = cellDisplay.spriteMap[data.LandType];
+        }
+
+        public LandData GetLandData()
+        {
+            return landData;
+        }
+
+        public BuildingData GetBuildingData()
+        {
+            return buildingData;
+        }
+
+        public void SetBuildingData(BuildingData building)
+        {
+            buildingData = building;
+        }
 
         public void StartBuilding()
         {
-            /*
-             * params: buildType
-             * set plannedBuilding with Building factory
-            */
+           buildingData.CurrentBuildState = BuildState.Building;
         }
 
         public void FinishBuilding()
         {
-            /*
-             * plannedBuilding becomes constructedBuilding
-            */
+            buildingData.CurrentBuildState = BuildState.Occupied;
         }
     }
 }

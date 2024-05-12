@@ -1,28 +1,29 @@
 ﻿namespace RaidingParty
 {
-    public class GridGenerator
+    public class GameGrid
     {
-        public int width;
-        public int length;
-        CellData[,] grid;
-        public CellData[,] Grid {  get { return grid; } }
+        int width;
+        int height;
+        LandData[,] grid;
+        public LandData[,] Grid {  get { return grid; } }
 
-        public GridGenerator(int width, int length)
+        public GameGrid(int width, int height)
         {
             this.width = width;
-            this.length = length;
+            this.height = height;
         }
 
         public void GenerateGrid()
         {
-            grid = new CellData[width, length];
+            grid = new LandData[width, height];
             for (int w = 0; w < width; w++)
             {
-                for (int l = 0; l < length; l++)
+                for (int h = 0; h < height; h++)
                 {
-                    grid[w, l] = new CellData(CellData.LandType.Grass);
+                    grid[w, h] = new LandData(LandType.Grass);
                 }
             }
         }
+
     }
 }

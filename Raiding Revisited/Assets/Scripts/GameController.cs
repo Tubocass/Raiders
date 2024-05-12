@@ -1,29 +1,33 @@
 using UnityEngine;
-using RaidingParty.Buildings;
-using RaidingParty.Resources;
 
 namespace RaidingParty
 {
     public class GameController : MonoBehaviour
     {
-        public int width, height;
-        [SerializeField] SpriteRenderer protoCell;
+        [SerializeField] int width, height;
+        [SerializeField] GameObject protoCell;
+        CellController[,] cellControllers;
 
-        GridGenerator gridGenerator;
-        SpriteRenderer[,] cellDisplays;
-
+        GameGrid gameGrid;
+        
         private void Start()
         {
-            gridGenerator = new GridGenerator(width, height);
-            cellDisplays = new SpriteRenderer[width, height];
-            gridGenerator.GenerateGrid();
+            GenerateBoard();
+        }
 
-            for(int x = 0; x < width; x++)
+        public void GenerateBoard()
+        {
+            gameGrid = new GameGrid(width, height);
+            gameGrid.GenerateGrid();
+            cellControllers = new CellController[width, height];
+
+            for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
-                    cellDisplays[x,y] = Instantiate(protoCell, new Vector3(x, y), Quaternion.identity);
-                    
+                    cellControllers[x, y] = Instantiate(protoCell, new Vector3(x,y), Quaternion.identity, this.transform)
+                        .GetComponent<CellController>();
+                    cellControllers[x, y].SetData(gameGrid.Grid[x, y]);
                 }
             }
         }

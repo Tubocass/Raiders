@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RaidingParty
 {
     public class InputControl : MonoBehaviour
     {
+        public UnityEvent<CellController> clicked = new UnityEvent<CellController>();
         [SerializeField] Camera mainCamera;
         [SerializeField] GameObject selection;
         [SerializeField] Character selectedUnit;
@@ -13,6 +13,11 @@ namespace RaidingParty
         Vector3 movement;
         Vector2 point;
         RaycastHit2D hit;
+
+        private void Awake()
+        {
+            mainCamera = Camera.main;
+        }
 
         void Update()
         {
@@ -23,17 +28,21 @@ namespace RaidingParty
                 if (hit.collider != null)
                 {
                     selection = hit.collider.gameObject;
-                    if (selection.GetComponent<Character>() != null)
+
+                    Character unit = selection.GetComponent<Character>();
+                    if (unit != null)
                     {
-                        selectedUnit = selection.GetComponent<Character>();
+                        selectedUnit = unit;
+                    }
+
+                    CellController cell = selection.GetComponent<CellController>();
+                    if (cell != null)
+                    {
+                        clicked.Invoke(cell);
                     }
                 }
             }
-
-            if (Input.GetMouseButton(0))
-            {
-
-            }
+            
             if (selectedUnit != null && Input.GetMouseButtonDown(1))
             {
                 point = mainCamera.ScreenToWorldPoint(Input.mousePosition);

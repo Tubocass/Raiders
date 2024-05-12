@@ -62,12 +62,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\ChangeSpeedOnDepth.cs" />
+    <Compile Include="Assets\Scripts\Village\Buildings\BuildingData.cs" />
     <Compile Include="Assets\Scripts\Village\Grid\GridGenerator.cs" />
     <Compile Include="Assets\Scripts\GameEventListener.cs" />
     <Compile Include="Assets\Scripts\Village\Buildings\ResourceBuilding.cs" />
-    <Compile Include="Assets\Scripts\Village\Grid\CellDisplay.cs" />
     <Compile Include="Assets\Scripts\Village\Resources\ItemType.cs" />
     <Compile Include="Assets\Scripts\Village\Buildings\ProductionBuilding.cs" />
+    <Compile Include="Assets\Scripts\Village\Grid\SpriteMap.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
     <Compile Include="Assets\Scripts\InputControl.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\CustomMapProvider.cs" />
@@ -78,10 +79,10 @@
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\PatrolWaypoints.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\PolyNavMap.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\FollowTarget.cs" />
-    <Compile Include="Assets\Scripts\Village\Grid\CellData.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\PolyNavAgent.cs" />
     <Compile Include="Assets\Scripts\UI\RaidPanel.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\DirectionChecker.cs" />
+    <Compile Include="Assets\Scripts\Village\Grid\LandData.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\PatrolRandomWaypoints.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\AStar.cs" />
     <Compile Include="Assets\Scripts\Village\Grid\CellController.cs" />
