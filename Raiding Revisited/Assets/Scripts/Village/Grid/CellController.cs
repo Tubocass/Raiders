@@ -18,8 +18,27 @@ namespace RaidingParty
         public void SetData(LandData data)
         {
             landData = data;
-            spriteRenderer.sprite = cellDisplay.spriteMap[data.LandType];
+            landData.TileChanged += UpdateSprite;
+            UpdateSprite();
         }
+
+        void UpdateSprite()
+        {
+            // update land
+            spriteRenderer.sprite = cellDisplay.spriteMap[landData.LandType];
+
+            // update building
+            if (landData.IsOccupied())
+            {
+                // draw building over land
+            }
+        }
+
+        public void ChangeTile (LandType newType)
+        {
+            landData.LandType = newType;
+        }
+
 
         public LandData GetLandData()
         {

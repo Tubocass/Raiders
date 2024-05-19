@@ -1,0 +1,3 @@
+.couplet {
+    flex-direction: row;
+}

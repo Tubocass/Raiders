@@ -25,5 +25,10 @@
             }
         }
 
+        public LandData AtLocation(int x, int y) 
+        { 
+            return grid[x, y]; 
+        }
+
     }
 }

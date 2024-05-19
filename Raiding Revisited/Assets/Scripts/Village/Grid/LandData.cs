@@ -4,11 +4,25 @@
 
     public class LandData
     {
-        public LandType LandType { get; set; }
+        public delegate void Changed();
+        public event Changed TileChanged;
+
+        public LandType LandType { get { return landType; } 
+            set { landType = value; TileChanged(); } }
+        public BuildingData BuildingData { get { return buildingData; } 
+            set { buildingData = value; TileChanged(); } }
+
+        private LandType landType;
+        private BuildingData buildingData;
 
         public LandData(LandType type)
         {
-            LandType = type;
+            landType = type;
+        }
+
+        public bool IsOccupied()
+        {
+            return BuildingData != null;
         }
 
     }

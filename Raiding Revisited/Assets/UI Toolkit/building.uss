@@ -1,5 +1,5 @@
 .datumHolder {
-    max-width: 100px;
+    max-width: 110px;
     max-height: 100%;
     flex-grow: 1;
     background-color: rgba(166, 166, 166, 0.84);

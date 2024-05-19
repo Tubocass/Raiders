@@ -7,12 +7,15 @@ namespace RaidingParty
         [SerializeField] int width, height;
         [SerializeField] GameObject protoCell;
         CellController[,] cellControllers;
-
+        //Blackboard blackboard;
         GameGrid gameGrid;
+        VillageData villageData;
+        //string board = "board";
         
         private void Start()
         {
             GenerateBoard();
+            //blackboard = new Blackboard();
         }
 
         public void GenerateBoard()
