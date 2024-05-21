@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RaidingParty.Resources
 {
@@ -25,9 +24,9 @@ namespace RaidingParty.Resources
                 other.quantity = 0;
             }else
             {
-                int diff = itemType.stackLimit - quantity;
-                quantity += diff;
-                other.quantity -= diff;
+                int diff = (quantity + other.quantity) - itemType.stackLimit;
+                quantity = itemType.stackLimit;
+                other.quantity = diff;
             }
             return other;
         }
