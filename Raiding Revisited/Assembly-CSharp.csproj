@@ -69,13 +69,16 @@
     <Compile Include="Assets\Scripts\Village\Buildings\ResourceBuilding.cs" />
     <Compile Include="Assets\Scripts\Village\Resources\ItemType.cs" />
     <Compile Include="Assets\Scripts\Village\Buildings\ProductionBuilding.cs" />
+    <Compile Include="Assets\Scripts\Village\VillageController.cs" />
     <Compile Include="Assets\Scripts\Village\Grid\SpriteMap.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\Village\Buildings\Shelter.cs" />
     <Compile Include="Assets\Scripts\InputControl.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\CustomMapProvider.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\ClickToMove.cs" />
     <Compile Include="Assets\Scripts\GameEventObject.cs" />
     <Compile Include="Assets\Scripts\Village\Buildings\StorageSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\VillageDataUI.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\PatrolWaypoints.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\Scripts\Runtime\PolyNavMap.cs" />
     <Compile Include="Assets\ParadoxNotion\PolyNav2D\DEMO\Scripts\FollowTarget.cs" />

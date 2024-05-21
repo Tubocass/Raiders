@@ -29,14 +29,12 @@ namespace RaidingParty
                 {
                     selection = hit.collider.gameObject;
 
-                    Character unit = selection.GetComponent<Character>();
-                    if (unit != null)
+                    if (selection.TryGetComponent<Character>(out var unit))
                     {
                         selectedUnit = unit;
                     }
 
-                    CellController cell = selection.GetComponent<CellController>();
-                    if (cell != null)
+                    if (selection.TryGetComponent<CellController>(out var cell))
                     {
                         clicked.Invoke(cell);
                     }
@@ -52,7 +50,7 @@ namespace RaidingParty
                     BuildingInterface building = hit.collider.GetComponent<BuildingInterface>();
                     if (building != null)
                     {
-                        building.AssignWorker(selectedUnit);
+                        //building.AssignWorker(selectedUnit);
                     }
                 }
                 else

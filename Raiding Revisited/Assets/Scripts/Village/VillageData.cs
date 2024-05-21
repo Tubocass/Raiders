@@ -1,19 +1,15 @@
 ﻿
-
 namespace RaidingParty
 {
-    public class VillageData
+    [System.Serializable]
+    public class VillageData 
     {
-
-        int maxFood;
-        int maxPopulation;
-        int maxTreasure;
+        public int maxFood;
+        public int maxPopulation;
+        public int maxTreasure;
 
         public int foodAmount;
         public int populationAmount;
         public int treasureAmount;
-        
-        
-
     }
 }

@@ -3,7 +3,7 @@
 namespace RaidingParty
 {
     public enum BuildState { Clear, Occupied, Building, Destroying }
-    public enum BuildingType { Farm, WoodCutter, Tannery }
+    public enum BuildingType { Shelter, Production, Storage }
 
     public class BuildingData 
     {

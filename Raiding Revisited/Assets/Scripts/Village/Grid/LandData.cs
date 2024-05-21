@@ -2,9 +2,11 @@
 {
     public enum LandType { Water, Grass, Forest, Stone }
 
+    public delegate void Changed();
+
+    [System.Serializable]
     public class LandData
     {
-        public delegate void Changed();
         public event Changed TileChanged;
 
         public LandType LandType { get { return landType; } 

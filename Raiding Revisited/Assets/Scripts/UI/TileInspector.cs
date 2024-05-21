@@ -26,12 +26,12 @@ namespace RaidingParty
         public void DisplayInfo(CellController cell)
         {
             selectedCell = cell;
-            landTypeLabel.text = selectedCell.GetLandData().LandType.ToString();
-            BuildingData bd = selectedCell.GetBuildingData();
-            if (bd != null)
+            LandData selectedData = cell.GetLandData();
+            landTypeLabel.text = selectedData.LandType.ToString();
+            if (selectedData.IsOccupied())
             {
-                buildTypeLabel.text = bd.BuildingType.ToString();
-                buildStateLabel.text = bd.CurrentBuildState.ToString();
+                buildTypeLabel.text = selectedData.BuildingData.BuildingType.ToString();
+                buildStateLabel.text = selectedData.BuildingData.CurrentBuildState.ToString();
             }
         }
 
@@ -51,7 +51,7 @@ namespace RaidingParty
         {
             if (selectedCell != null) 
             {
-                selectedCell.ChangeTile(Enum.Parse<LandType>(change.newValue));
+                selectedCell.ChangeLandType(Enum.Parse<LandType>(change.newValue));
             }
         }
 

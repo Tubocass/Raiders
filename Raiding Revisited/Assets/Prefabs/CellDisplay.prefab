@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6163555090862356841}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7126303, y: 0.18609682, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,10 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6163555090862356841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0376c9162ebce4c46b9b6e9448a05235, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f4197195b490cc4aa1b640c0e3340a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellDisplay: {fileID: 11400000, guid: 50e3d839c4eaadc48a12e2c60258613e, type: 2}
+  spriteMap: {fileID: 11400000, guid: 50e3d839c4eaadc48a12e2c60258613e, type: 2}
 --- !u!61 &-178083903817331460
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 
 namespace RaidingParty
-{ 
+{
     public class CellController : MonoBehaviour
     {
-        [SerializeField] SpriteMap cellDisplay;
+        [SerializeField] SpriteMap spriteMap;
         SpriteRenderer spriteRenderer;
 
         LandData landData;
-        BuildingData buildingData;
 
         private void OnEnable()
         {
@@ -25,7 +24,7 @@ namespace RaidingParty
         void UpdateSprite()
         {
             // update land
-            spriteRenderer.sprite = cellDisplay.spriteMap[landData.LandType];
+            spriteRenderer.sprite = spriteMap.spriteMap[landData.LandType];
 
             // update building
             if (landData.IsOccupied())
@@ -34,11 +33,15 @@ namespace RaidingParty
             }
         }
 
-        public void ChangeTile (LandType newType)
+        public void ChangeLandType (LandType newType)
         {
             landData.LandType = newType;
         }
 
+        public void ChangeBuildingType(BuildingType newType)
+        {
+            landData.BuildingData.BuildingType = newType;
+        }
 
         public LandData GetLandData()
         {
@@ -47,22 +50,12 @@ namespace RaidingParty
 
         public BuildingData GetBuildingData()
         {
-            return buildingData;
+            return landData.BuildingData;
         }
 
         public void SetBuildingData(BuildingData building)
         {
-            buildingData = building;
-        }
-
-        public void StartBuilding()
-        {
-           buildingData.CurrentBuildState = BuildState.Building;
-        }
-
-        public void FinishBuilding()
-        {
-            buildingData.CurrentBuildState = BuildState.Occupied;
+            landData.BuildingData = building;
         }
     }
 }
