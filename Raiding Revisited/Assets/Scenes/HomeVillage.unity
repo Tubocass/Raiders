@@ -194,6 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1159933182}
   - component: {fileID: 1159933181}
+  - component: {fileID: 1159933184}
   - component: {fileID: 1159933183}
   m_Layer: 0
   m_Name: GameController
@@ -214,9 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d77e0ab96d3df64c86ccc55b1682a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 3
-  height: 3
-  protoCell: {fileID: 6163555090862356841, guid: cf96d8739c8fe624885a93837a7d36ca, type: 3}
+  homeVillage: {fileID: 11400000, guid: ea149c717fa6771489c8b3a617978c93, type: 2}
 --- !u!4 &1159933182
 Transform:
   m_ObjectHideFlags: 0
@@ -263,6 +262,23 @@ MonoBehaviour:
   selection: {fileID: 0}
   selectedUnit: {fileID: 0}
   speed: 20
+--- !u!114 &1159933184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159933180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dc0badf706193478b542607c7d8a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 3
+  height: 3
+  protoCell: {fileID: 6163555090862356841, guid: cf96d8739c8fe624885a93837a7d36ca, type: 3}
+  villageData: {fileID: 0}
+  UIController: {fileID: 1749261986}
 --- !u!1 &1726896666
 GameObject:
   m_ObjectHideFlags: 0

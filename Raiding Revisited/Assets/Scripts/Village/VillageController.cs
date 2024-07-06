@@ -5,22 +5,52 @@ namespace RaidingParty
     public class VillageController : MonoBehaviour
     {
         [SerializeField] int width, height;
+        [SerializeField] GameObject protoCell;
+        CellController[,] cellDisplays;
+        //Blackboard blackboard;
+        [SerializeField] VillageData villageData;
+        [SerializeField] VillageDataUI UIController;
 
-        VillageData villageData;
-        GameGrid gameGrid;
-
-
-        void CalcPopulation()
+        private void Start()
         {
-            if (gameGrid != null)
+            //GenerateBoard();
+            //blackboard = new Blackboard();
+        }
+
+        public void GenerateBoard()
+        {
+            cellDisplays = new CellController[width, height];
+
+            for (int x = 0; x < width; x++)
             {
-                foreach (LandData cell in gameGrid.Grid) 
+                for (int y = 0; y < height; y++)
                 {
-                    if(cell.BuildingData.BuildingType == BuildingType.Shelter)
-                    {
-                    }
+                    cellDisplays[x, y] = Instantiate(protoCell, new Vector3(x, y), Quaternion.identity, this.transform)
+                        .GetComponent<CellController>();
                 }
             }
         }
+
+        public void LoadVillage(VillageData village)
+        {
+            villageData = village;
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    cellDisplays[x, y].SetData(villageData.AtLocation(x, y));
+                }
+            }
+        }
+
+        public void SetupHomeVillage()
+        {
+            /*
+             * load home village into Village UI
+            */
+            UIController.SetVillage(villageData);
+        }
+
+       
     }
 }

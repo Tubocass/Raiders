@@ -1,23 +1,17 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using RaidingParty.Resources;
 
 namespace RaidingParty.Buildings
 {
     public class StorageBuilding : MonoBehaviour, BuildingInterface
     {
-        /*
-         *  StorageSlot[] slots
-         *  Store(ItemType, int)
-         *  Collect(ItemType, int)
-        */
-
         StorageSlot[] slots = new StorageSlot[6];
 
         private void Awake()
         {
             slots = GetComponentsInChildren<StorageSlot>();
         }
+
         public bool Store(ItemStack item)
         {
             for(int s = 0; s < slots.Length; s++)

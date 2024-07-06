@@ -7,6 +7,7 @@ namespace RaidingParty.Resources
     {
         [SerializeField] private ItemType itemType;
         [SerializeField] private int quantity;
+
         public ItemStack(ItemType type, int quantity)
         {
             this.itemType = type;

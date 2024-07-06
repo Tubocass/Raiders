@@ -28,11 +28,11 @@ namespace RaidingParty
             selectedCell = cell;
             LandData selectedData = cell.GetLandData();
             landTypeLabel.text = selectedData.LandType.ToString();
-            if (selectedData.IsOccupied())
-            {
-                buildTypeLabel.text = selectedData.BuildingData.BuildingType.ToString();
-                buildStateLabel.text = selectedData.BuildingData.CurrentBuildState.ToString();
-            }
+            //if (selectedData.IsOccupied())
+            //{
+            //    buildTypeLabel.text = selectedData.BuildingData.BuildingType.ToString();
+            //    buildStateLabel.text = selectedData.BuildingData.CurrentBuildState.ToString();
+            //}
         }
 
         void SetupDropdown()

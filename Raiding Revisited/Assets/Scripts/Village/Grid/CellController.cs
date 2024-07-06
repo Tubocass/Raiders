@@ -8,6 +8,7 @@ namespace RaidingParty
         SpriteRenderer spriteRenderer;
 
         LandData landData;
+        BuildingData buildingData;
 
         private void OnEnable()
         {
@@ -27,7 +28,7 @@ namespace RaidingParty
             spriteRenderer.sprite = spriteMap.spriteMap[landData.LandType];
 
             // update building
-            if (landData.IsOccupied())
+            if (landData.IsOccupied)
             {
                 // draw building over land
             }
@@ -40,7 +41,7 @@ namespace RaidingParty
 
         public void ChangeBuildingType(BuildingType newType)
         {
-            landData.BuildingData.BuildingType = newType;
+            buildingData.BuildingType = newType;
         }
 
         public LandData GetLandData()
@@ -50,12 +51,12 @@ namespace RaidingParty
 
         public BuildingData GetBuildingData()
         {
-            return landData.BuildingData;
+            return buildingData;
         }
 
         public void SetBuildingData(BuildingData building)
         {
-            landData.BuildingData = building;
+            buildingData = building;
         }
     }
 }

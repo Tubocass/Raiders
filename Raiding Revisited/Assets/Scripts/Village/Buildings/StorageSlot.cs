@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using RaidingParty.Resources;
 
 namespace RaidingParty.Buildings
@@ -12,6 +11,7 @@ namespace RaidingParty.Buildings
         {
             //stack = null;
         }
+
         public ItemStack Fill(ItemStack fillStack)
         {
             ItemStack leftover = null;
