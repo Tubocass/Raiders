@@ -33,9 +33,9 @@ namespace RaidingParty
 
         void UpdateValues()
         {
-            foodAmount.text = string.Format("{0} / {1}", village.foodAmount, village.maxFood);
-            populationAmount.text = string.Format("{0} / {1}", village.populationAmount, village.maxPopulation);
-            treasureAmount.text = string.Format("{0} / {1}", village.treasureAmount, village.maxTreasure);
+            //foodAmount.text = string.Format("{0} / {1}", village.foodAmount, village.maxFood);
+            //populationAmount.text = string.Format("{0} / {1}", village.populationAmount, village.maxPopulation);
+            //treasureAmount.text = string.Format("{0} / {1}", village.treasureAmount, village.maxTreasure);
         }
     }
 }

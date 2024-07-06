@@ -18,4 +18,8 @@
             <ui:Label tabindex="-1" text="Value" parse-escape-sequences="true" display-tooltip-when-elided="true" name="treasureAmount" />
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="Time" style="flex-grow: 1; position: absolute; right: 0; height: 5%; width: 5%; background-color: rgb(61, 138, 152); align-items: center; justify-content: flex-start; align-self: auto;">
+        <ui:Label tabindex="-1" text="Jan" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+    </ui:VisualElement>
+    <ui:Button text="Advance" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Advance" style="width: 10%; height: 10%; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; max-width: 10%; max-height: 10%; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; background-image: none; position: absolute; top: 422px; left: 751px;" />
 </ui:UXML>

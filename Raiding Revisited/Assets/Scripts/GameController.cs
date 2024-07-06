@@ -11,6 +11,7 @@ namespace RaidingParty
         GameGrid gameGrid;
         VillageData villageData;
         //string board = "board";
+
         private void Start()
         {
             GenerateBoard();
@@ -32,6 +33,21 @@ namespace RaidingParty
                     cellDisplays[x, y].SetData(gameGrid.Grid[x, y]);
                 }
             }
+        }
+
+        public void SetupHomeVillage()
+        {
+            /*
+             * load home village into Village UI
+            */
+        }
+
+        public void AdvanceTime()
+        {
+            /*
+             * basically a FSM
+             * when the season changes - resources are harvested, taxes and tributes are paid, troops finish training
+            */
         }
 
     }
