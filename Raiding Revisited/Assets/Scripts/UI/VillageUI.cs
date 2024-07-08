@@ -10,13 +10,13 @@ namespace RaidingParty
         Label foodAmount;
         Label populationAmount;
         Label treasureAmount;
-        VisualElement root;
         VillageData village;
+        TileInspector tileInspector;
 
 
         void OnEnable()
         {
-            root = GetComponent<UIDocument>().rootVisualElement;
+            VisualElement root = GetComponent<UIDocument>().rootVisualElement;
             villageName = root.Q<Label>(name: "locationName");
             foodAmount = root.Q<Label>(name: "foodAmount");
             populationAmount = root.Q<Label>(name: "populationAmount");
@@ -33,12 +33,31 @@ namespace RaidingParty
             RegisterIntChangeEvent(foodAmount, village.FoodAmountChnaged);
             RegisterIntChangeEvent(populationAmount, village.PopulationAmountChnaged);
             RegisterIntChangeEvent(treasureAmount, village.TreasureAmountChnaged);
-
         }
 
         void RegisterIntChangeEvent(Label label, UnityEvent<int> ev)
         {
             ev.AddListener(value => { label.text = value.ToString(); });
+        }
+
+        public void HandleTileSelection(CellController cell)
+        {
+            LandData land = cell.GetLandData();
+            if (land.isOccupied)
+            {
+                // Display building's interface
+            } else
+            {
+                DisplayBuildOptions(land.LandType);
+            }
+        }
+
+        public void DisplayBuildOptions(LandType landType)
+        {
+            // get list of options based off landType
+            // add a card for each build option available
+            
+            
         }
     }
 }

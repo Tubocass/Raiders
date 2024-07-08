@@ -6,6 +6,8 @@ namespace RaidingParty
     {
         [SerializeField] VillageData homeVillage;
         VillageController villageController;
+        VillageUI villageUI;
+        InputController input;
 
         private void Start()
         {
@@ -13,6 +15,7 @@ namespace RaidingParty
 
             villageController = GetComponent<VillageController>();
             villageController.LoadVillage(homeVillage);
+            //input.CellSelection += villageUI.HandleTileSelection();
 
         }
 

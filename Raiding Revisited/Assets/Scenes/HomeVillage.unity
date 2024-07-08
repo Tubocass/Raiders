@@ -243,21 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38049dce5b123bf4c831fc814ff0cc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked:
+  CellSelection:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 251748748}
-        m_TargetAssemblyTypeName: RaidingParty.Inspector, Assembly-CSharp
-        m_MethodName: DisplayInfo
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   mainCamera: {fileID: 0}
   selection: {fileID: 0}
   selectedUnit: {fileID: 0}
@@ -274,8 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dc0badf706193478b542607c7d8a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 3
-  height: 3
   protoCell: {fileID: 6163555090862356841, guid: cf96d8739c8fe624885a93837a7d36ca, type: 3}
   villageData: {fileID: 0}
   UIController: {fileID: 1749261986}

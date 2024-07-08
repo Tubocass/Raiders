@@ -3,9 +3,9 @@ using UnityEngine.Events;
 
 namespace RaidingParty
 {
-    public class InputControl : MonoBehaviour
+    public class InputController : MonoBehaviour
     {
-        public UnityEvent<CellController> clicked = new UnityEvent<CellController>();
+        public UnityEvent<CellController> CellSelection = new UnityEvent<CellController>();
         [SerializeField] Camera mainCamera;
         [SerializeField] GameObject selection;
         [SerializeField] Character selectedUnit;
@@ -36,7 +36,7 @@ namespace RaidingParty
 
                     if (selection.TryGetComponent<CellController>(out var cell))
                     {
-                        clicked.Invoke(cell);
+                        CellSelection.Invoke(cell);
                     }
                 }
             }
