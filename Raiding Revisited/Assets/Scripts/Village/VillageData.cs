@@ -1,6 +1,4 @@
-﻿using RaidingParty.Resources;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RaidingParty
 {
@@ -22,6 +20,11 @@ namespace RaidingParty
         //List<BuildingData> buildings;
         //List<ItemStack> resources;
 
+        private void OnEnable()
+        {
+    
+        }
+
         public void GenerateGrid()
         {
             grid = new LandData[width, height];
@@ -29,7 +32,7 @@ namespace RaidingParty
             {
                 for (int h = 0; h < height; h++)
                 {
-                    grid[w, h] = new LandData(LandType.Grass);
+                    grid[w, h] = new LandData();
                 }
             }
         }

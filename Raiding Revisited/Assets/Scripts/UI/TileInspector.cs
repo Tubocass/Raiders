@@ -20,7 +20,7 @@ namespace RaidingParty
             buildTypeLabel = root.Q<Label>(name: "label1");
             buildStateLabel = root.Q<Label>(name: "label2");
 
-            SetupDropdown();
+            //SetupDropdown();
         }
 
         public void DisplayInfo(CellController cell)
@@ -35,25 +35,25 @@ namespace RaidingParty
             //}
         }
 
-        void SetupDropdown()
-        {
-            DropdownField dropdown = root.Q<DropdownField>(name: "Options");
-            dropdown.choices.Clear();
-            foreach (string type in Enum.GetNames(typeof(LandType)))
-            {
-                dropdown.choices.Add(type);
-            }
+        //void SetupDropdown()
+        //{
+        //    DropdownField dropdown = root.Q<DropdownField>(name: "Options");
+        //    dropdown.choices.Clear();
+        //    foreach (string type in Enum.GetNames(typeof(LandType)))
+        //    {
+        //        dropdown.choices.Add(type);
+        //    }
 
-            dropdown.RegisterCallback<ChangeEvent<string>>(ChangeTile);
-        }
+        //    dropdown.RegisterCallback<ChangeEvent<string>>(ChangeTile);
+        //}
 
-        void ChangeTile(ChangeEvent<string> change)
-        {
-            if (selectedCell != null) 
-            {
-                selectedCell.ChangeLandType(Enum.Parse<LandType>(change.newValue));
-            }
-        }
+        //void ChangeTile(ChangeEvent<string> change)
+        //{
+        //    if (selectedCell != null) 
+        //    {
+        //        selectedCell.ChangeLandType(Enum.Parse<LandType>(change.newValue));
+        //    }
+        //}
 
     }
 }

@@ -14,7 +14,7 @@ namespace RaidingParty
             villageController = GetComponent<VillageController>();
             villageController.GenerateBoard();
             villageController.LoadVillage(homeVillage);
-            villageController.SetupHomeVillage();
+            //villageController.SetupHomeVillage();
 
             //blackboard = new Blackboard();
         }

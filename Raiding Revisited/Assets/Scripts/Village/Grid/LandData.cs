@@ -1,31 +1,41 @@
-﻿namespace RaidingParty
-{
-    public enum LandType { Water, Grass, Forest, Stone }
+﻿using UnityEngine;
 
+namespace RaidingParty
+{
     public delegate void Changed();
 
     [System.Serializable]
     public class LandData
     {
         public event Changed TileChanged;
-        public bool IsOccupied = false;
-        public LandType LandType { get { return landType; } 
-            set { landType = value; TileChanged(); } }
-        //public BuildingData BuildingData { get { return buildingData; } 
-        //    set { buildingData = value; TileChanged(); } }
+        LandAsset asset;
+        //public bool IsOccupied = false;
+        private BuildingData buildingData;
 
-        private LandType landType;
-        //private BuildingData buildingData;
-
-        public LandData(LandType type)
+        public BuildingData BuildingData
         {
-            landType = type;
+            get { return buildingData; }
+            set { buildingData = value; TileChanged(); }
+        }
+        public LandType LandType { get { return asset.LandType; } }
+        public Sprite Sprite { get { return asset.Sprite; } }
+
+        public LandData() { }
+        public LandData(LandAsset asset)
+        {
+            this.asset = asset;
         }
 
-        //public bool IsOccupied()
-        //{
-        //    return BuildingData != null;
-        //}
+        public void ChangeLandType (LandAsset asset) 
+        { 
+            this.asset = asset;
+            TileChanged();
+        }
+
+        public bool IsOccupied()
+        {
+            return BuildingData != null;
+        }
 
     }
 }

@@ -5,14 +5,15 @@ namespace RaidingParty
     public class CellController : MonoBehaviour
     {
         [SerializeField] SpriteMap spriteMap;
-        SpriteRenderer spriteRenderer;
+        SpriteRenderer landRenderer;
+        [SerializeField] SpriteRenderer buildingRenderer; //attached by prefab
 
         LandData landData;
         BuildingData buildingData;
 
         private void OnEnable()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            landRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void SetData(LandData data)
@@ -25,23 +26,13 @@ namespace RaidingParty
         void UpdateSprite()
         {
             // update land
-            spriteRenderer.sprite = spriteMap.spriteMap[landData.LandType];
+            landRenderer.sprite = landData.Sprite;
 
             // update building
-            if (landData.IsOccupied)
+            if (landData.IsOccupied())
             {
                 // draw building over land
             }
-        }
-
-        public void ChangeLandType (LandType newType)
-        {
-            landData.LandType = newType;
-        }
-
-        public void ChangeBuildingType(BuildingType newType)
-        {
-            buildingData.BuildingType = newType;
         }
 
         public LandData GetLandData()
@@ -49,14 +40,26 @@ namespace RaidingParty
             return landData;
         }
 
-        public BuildingData GetBuildingData()
+        public void ChangeLandType (LandType newType)
         {
-            return buildingData;
+            //landData.LandType = newType;
         }
+
 
         public void SetBuildingData(BuildingData building)
         {
             buildingData = building;
         }
+
+        public BuildingData GetBuildingData()
+        {
+            return buildingData;
+        }
+
+        //public void ChangeBuildingType(BuildingType newType)
+        //{
+        //    buildingData.BuildingType = newType;
+        //}
+
     }
 }

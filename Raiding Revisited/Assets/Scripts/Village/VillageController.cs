@@ -34,6 +34,8 @@ namespace RaidingParty
         public void LoadVillage(VillageData village)
         {
             villageData = village;
+            UIController.SetVillage(villageData);
+
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
@@ -46,10 +48,15 @@ namespace RaidingParty
         public void SetupHomeVillage()
         {
             /*
-             * load home village into Village UI
             */
-            UIController.SetVillage(villageData);
         }
+
+        public void ProduceResources()
+        {
+
+        }
+
+     
 
        
     }
