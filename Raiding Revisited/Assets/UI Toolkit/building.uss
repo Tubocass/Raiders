@@ -1,5 +1,5 @@
-.datumHolder {
-    max-width: 110px;
+.buildingOption {
+    max-width: 10%;
     max-height: 100%;
     flex-grow: 1;
     background-color: rgba(166, 166, 166, 0.84);
@@ -11,4 +11,15 @@
     border-right-width: 1px;
     border-bottom-width: 1px;
     border-left-width: 1px;
+    min-width: 8%;
+}
+
+.buildingLabel {
+    font-size: 16px;
+    -unity-text-align: upper-center;
+}
+
+.buildingImage {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/ParadoxNotion/PolyNav2D/DEMO/spaceship.png?fileID=2800000&guid=19bbb0e77d8074a42a9e2c9de8736ec9&type=3#spaceship');
 }

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 namespace RaidingParty
 {
@@ -7,18 +9,16 @@ namespace RaidingParty
     public class VillageData : ScriptableObject
     {
         public string locationName;
-        //public int maxFood;
-        //public int foodAmount;
-        //public int maxPopulation;
+        public int foodAmount;
         public int populationAmount;
-        //public int treasureAmount;
+        public int treasureAmount;
 
-        [SerializeField] int width, height;
+        public int width, height;
         LandData[,] grid;
-        //public LandData[,] Grid { get { return grid; } }
-        //List<LandData> landSquares;
-        //List<BuildingData> buildings;
-        //List<ItemStack> resources;
+        public UnityEvent<int> FoodAmountChnaged;
+        public UnityEvent<int> PopulationAmountChnaged;
+        public UnityEvent<int> TreasureAmountChnaged;
+
 
         private void OnEnable()
         {

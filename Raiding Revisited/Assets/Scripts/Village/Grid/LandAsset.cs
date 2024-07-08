@@ -2,7 +2,6 @@
 
 namespace RaidingParty
 {
-    public enum LandType { Water, Grass, Forest, Stone }
     public class LandAsset
     {
         private LandType landType;

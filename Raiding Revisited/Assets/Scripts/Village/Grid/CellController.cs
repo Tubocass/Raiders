@@ -19,19 +19,15 @@ namespace RaidingParty
         public void SetData(LandData data)
         {
             landData = data;
-            landData.TileChanged += UpdateSprite;
             UpdateSprite();
         }
 
         void UpdateSprite()
         {
-            // update land
-            landRenderer.sprite = landData.Sprite;
-
-            // update building
-            if (landData.IsOccupied())
+            landRenderer.sprite = spriteMap.landSprites[landData.LandType];
+            if(landData.isOccupied)
             {
-                // draw building over land
+                //buildingRenderer.sprite = spriteMap.buildingSprites[landData.BuildSite.Type];
             }
         }
 
@@ -45,7 +41,6 @@ namespace RaidingParty
             //landData.LandType = newType;
         }
 
-
         public void SetBuildingData(BuildingData building)
         {
             buildingData = building;
@@ -55,11 +50,5 @@ namespace RaidingParty
         {
             return buildingData;
         }
-
-        //public void ChangeBuildingType(BuildingType newType)
-        //{
-        //    buildingData.BuildingType = newType;
-        //}
-
     }
 }

@@ -13,6 +13,17 @@ MonoBehaviour:
   m_Name: Home
   m_EditorClassIdentifier: 
   locationName: Home Town
+  foodAmount: 500
   populationAmount: 420
+  treasureAmount: 300
   width: 3
   height: 3
+  FoodAmountChnaged:
+    m_PersistentCalls:
+      m_Calls: []
+  PopulationAmountChnaged:
+    m_PersistentCalls:
+      m_Calls: []
+  TreasureAmountChnaged:
+    m_PersistentCalls:
+      m_Calls: []

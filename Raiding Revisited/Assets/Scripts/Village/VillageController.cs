@@ -4,20 +4,27 @@ namespace RaidingParty
 {
     public class VillageController : MonoBehaviour
     {
-        [SerializeField] int width, height;
         [SerializeField] GameObject protoCell;
-        CellController[,] cellDisplays;
-        //Blackboard blackboard;
         [SerializeField] VillageData villageData;
-        [SerializeField] VillageDataUI UIController;
+        [SerializeField] VillageUI UIController;
+        CellController[,] cellDisplays;
 
-        private void Start()
+        public void LoadVillage(VillageData village)
         {
-            //GenerateBoard();
-            //blackboard = new Blackboard();
+            villageData = village;
+            UIController.SetVillage(villageData);
+            GenerateBoard(village.width, village.height);
+
+            for (int x = 0; x < village.width; x++)
+            {
+                for (int y = 0; y < village.height; y++)
+                {
+                    cellDisplays[x, y].SetData(villageData.AtLocation(x, y));
+                }
+            }
         }
 
-        public void GenerateBoard()
+        void GenerateBoard(int width, int height)
         {
             cellDisplays = new CellController[width, height];
 
@@ -31,24 +38,9 @@ namespace RaidingParty
             }
         }
 
-        public void LoadVillage(VillageData village)
+        public void UnloadVillage()
         {
-            villageData = village;
-            UIController.SetVillage(villageData);
 
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    cellDisplays[x, y].SetData(villageData.AtLocation(x, y));
-                }
-            }
-        }
-
-        public void SetupHomeVillage()
-        {
-            /*
-            */
         }
 
         public void ProduceResources()
@@ -56,8 +48,5 @@ namespace RaidingParty
 
         }
 
-     
-
-       
     }
 }

@@ -1,13 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/building.uss?fileID=7433441132597879392&amp;guid=69c65158a514a404d979c030bc0eb2cd&amp;type=3#building" />
-    <ui:VisualElement style="flex-grow: 1; flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; bottom: 0; top: auto; height: 150px; width: 100%; position: absolute; left: auto;">
-        <ui:VisualElement name="VisualElement" class="datumHolder">
-            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label0" />
-            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label1" />
-            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label2" />
-        </ui:VisualElement>
-        <ui:VisualElement class="datumHolder">
-            <ui:DropdownField label="Dropdown" index="-1" choices="one,two,three" name="Options" style="flex-direction: column;" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; bottom: 0; top: auto; height: 15%; width: 80%; position: absolute; left: auto; max-height: 15%; align-self: center; min-height: 10%;">
+        <ui:VisualElement name="buildingOption" class="buildingOption">
+            <ui:VisualElement name="buildingImage" class="buildingImage" />
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="buildingLabel" class="buildingLabel" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

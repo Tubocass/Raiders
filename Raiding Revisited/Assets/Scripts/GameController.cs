@@ -12,11 +12,8 @@ namespace RaidingParty
             homeVillage.GenerateGrid();
 
             villageController = GetComponent<VillageController>();
-            villageController.GenerateBoard();
             villageController.LoadVillage(homeVillage);
-            //villageController.SetupHomeVillage();
 
-            //blackboard = new Blackboard();
         }
 
         public void AdvanceTime()

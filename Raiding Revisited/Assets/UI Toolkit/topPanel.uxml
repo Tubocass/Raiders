@@ -3,7 +3,7 @@
     <ui:VisualElement name="InfoPanel" style="height: 5%; flex-direction: row; width: 50%; align-self: center; align-items: stretch; justify-content: space-between;">
         <ui:VisualElement name="TownName" class="couplet">
             <ui:Label tabindex="-1" text="village/city/fort" parse-escape-sequences="true" display-tooltip-when-elided="true" />
-            <ui:Label tabindex="-1" text="Name" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            <ui:Label tabindex="-1" text="Name" parse-escape-sequences="true" display-tooltip-when-elided="true" name="locationName" />
         </ui:VisualElement>
         <ui:VisualElement name="Population" class="couplet">
             <ui:Label tabindex="-1" text="image" parse-escape-sequences="true" display-tooltip-when-elided="true" />

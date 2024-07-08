@@ -2,40 +2,31 @@
 
 namespace RaidingParty
 {
-    public delegate void Changed();
+    public enum LandType { Water, Grass, Forest, Stone }
 
-    [System.Serializable]
-    public class LandData
+    public struct LandData
     {
-        public event Changed TileChanged;
-        LandAsset asset;
-        //public bool IsOccupied = false;
-        private BuildingData buildingData;
+        public LandType LandType;
+        public BuildingData BuildSite;
+        public bool isOccupied;
 
-        public BuildingData BuildingData
+        public LandData(LandType landType) 
         {
-            get { return buildingData; }
-            set { buildingData = value; TileChanged(); }
+            LandType = landType;
+            BuildSite = null;
+            isOccupied = false;
         }
-        public LandType LandType { get { return asset.LandType; } }
-        public Sprite Sprite { get { return asset.Sprite; } }
 
-        public LandData() { }
-        public LandData(LandAsset asset)
+        public void SetBuilding(BuildingData building)
         {
-            this.asset = asset;
+            BuildSite = building;
+            isOccupied = true;
         }
 
-        public void ChangeLandType (LandAsset asset) 
-        { 
-            this.asset = asset;
-            TileChanged();
-        }
-
-        public bool IsOccupied()
+        public void RemoveBuilding()
         {
-            return BuildingData != null;
+            BuildSite = null;
+            isOccupied = false;
         }
-
     }
 }

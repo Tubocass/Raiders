@@ -7,12 +7,11 @@ namespace RaidingParty
 
     public abstract class BuildingData
     {
-        public LandData buildingLand;
+        private LandData buildSite;
         private BuildingAsset asset;
         private BuildState buildingState;
         private BuildingType type;
-        private BuildState buildState;
-        private LandData land;
+        public BuildingType Type { get { return type; } }
 
         public BuildState CurrentBuildState { get { return buildingState; } }
 
@@ -20,7 +19,7 @@ namespace RaidingParty
         {
             this.asset = asset;
             buildingState = buildState;
-            buildingLand = land;
+            buildSite = land;
         }
 
         public void StartBuilding()
